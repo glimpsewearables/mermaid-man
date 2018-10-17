@@ -1,0 +1,36 @@
+{
+  "name": "glimpsewebapp2",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "ajv": "^6.5.3",
+    "axios": "^0.18.0",
+    "browserify-fs": "^1.0.0",
+    "download": "^7.1.0",
+    "file-system": "^2.2.2",
+    "fs": "0.0.1-security",
+    "i": "^0.3.6",
+    "image-downloader": "^3.4.1",
+    "js-file-download": "^0.4.1",
+    "react": "^16.4.2",
+    "react-burger-menu": "^2.5.2",
+    "react-burgers": "^1.0.4",
+    "react-dom": "^16.4.2",
+    "react-download-link": "^2.2.0",
+    "react-hamburger-menu": "^1.1.1",
+    "react-images": "^0.5.19",
+    "react-photo-gallery": "^6.2.0",
+    "react-scripts": "1.1.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).",
+  "main": "index.js",
+  "devDependencies": {},
+  "author": "Michael",
+  "license": "ISC"
+}
