@@ -6,10 +6,6 @@
   background-color: #f2f2f2;
 }
 
-.Header, .Gallery{
-  margin-left: 250px;
-}
-
 .sidebarEvents>li{
   display: block;
   margin: 20px;

@@ -10,7 +10,8 @@
 
 .title{
   text-align: left;
-  font-size: 37px;
+  font-size: 32px;
+  font-weight: 700;
 }
 
 .notification-wrapper-position{
@@ -47,6 +48,9 @@
 
 .header{
   padding: 10px;
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .notificationBox{

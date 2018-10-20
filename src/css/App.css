@@ -1,8 +1,10 @@
+@import url("https://fonts.googleapis.com/css?family=Nunito+Sans:400,400i,600,700");
+
 .App {
   text-align: center;
   display: flex;
   flex-direction:column;  
-  max-height: 100vh;
+  font-family:"Nunito Sans", Helvetica, sans-serif;
 }
 
 .Gallery{
@@ -10,19 +12,13 @@
 }
 
 body{
-  font-family: Helvetica, sans-serif;
-  overflow: hidden;
-  height: 100vh;
+  font-family: "Nunito Sans", Helvetica, sans-serif;
+  max-height: 100vh;
 }
 
 h1{
   font-size: 35pt;
   font-weight: 400;
   margin:0;
-}
-
-.header, .gallery{
-  margin: 0 auto 0 auto;
-  max-width: 1000px;
 }
 

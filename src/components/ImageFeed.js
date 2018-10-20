@@ -57,6 +57,7 @@ class ImageFeed extends Component {
       currentImage: this.state.currentImage - 1,
     });
   }
+
   gotoNext() {
     this.setState({
       currentImage: this.state.currentImage + 1,
@@ -64,11 +65,9 @@ class ImageFeed extends Component {
   }
 
   componentWillMount(){
-    this.getUserMedia();
   }
   
   getUserMedia(){
-    console.log("in getMedia")
     /*
     axios.(method: 'POST',
             url:"http://127.0.0.1:8000/getOneUser",
@@ -92,10 +91,21 @@ class ImageFeed extends Component {
   }
 
   render() {
+    axios({method: 'GET',
+            url:"http://34.207.219.52/media/getAllVideos",
+            config : {headers: { 
+                    "Access-Control-Allow-Origin": "POST, GET, OPTIONS",
+                    "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, application/json",
+                    "Content-Type": 'application/json' }}
+                  }).then(function(rsp){
+                    console.log(rsp);
+                  }).catch(function(error){
+                    console.log(error)
+                  });
+
     return (
       <div className="Gallery">
         <div className="gallery">
-          <div>
           <Gallery photos={photos} onClick={this.openLightbox} />
           <Lightbox images={photos}
             onClose={this.closeLightbox}
@@ -104,7 +114,6 @@ class ImageFeed extends Component {
             currentImage={this.state.currentImage}
             isOpen={this.state.lightboxIsOpen}
           />
-        </div>
         </div>
       </div>
     );
