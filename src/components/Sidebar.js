@@ -28,36 +28,43 @@ class Sidebar extends Component {
   }
 
   render() {
-    let { open } = this.state;
+    let { open } = this.props;
     return (
-      <div className={open ? "Sidebar " : "Sidebar SidebarOpened SidebarOpenColor" }>
-        {/* Will render only on mobile */}
-        <div className="hamburgerBttn">
-          <HamburgerMenu
-            isOpen={!open}
-            menuClicked={this.handleClick.bind(this)}
-            width={18}
-            height={15}
-            strokeWidth={2}
-            rotate={0}
-            color='black'
-            borderRadius={0}
-            animationDuration={0.6}
-          />
-        </div>
-          <Account />
-          <div className="sidebarContentWrapper">
-            <ul className="sidebarEvents">
-               {/* each of these will update state  to filter for that event. yo.*/}
-              <li href="/">Event #1</li> 
-              <li href="/">Event #2</li>
-              <li href="/">Event #3</li>
-            </ul>
-            <div className="settings"
-             onClick={this.showSettings}>
-              <img src={settingsIcon}/>
+      <div>
+        <div className={open ? "Sidebar " : "Sidebar SidebarOpened SidebarOpenColor" }>
+          {/* Will render only on mobile */}
+            <Account />
+            <div className="sidebarContentWrapper">
+              <div className="hamburgerBttn">
+                  <HamburgerMenu
+                    isOpen={!open}
+                    menuClicked={this.props.onOpenChange}
+                    width={16}
+                    height={13}
+                    strokeWidth={2}
+                    rotate={0}
+                    color='black'
+                    borderRadius={0}
+                    animationDuration={0}
+                    animation={false}
+                  />
+              </div>
+              <ul className="sidebarEvents">
+                <li href="/">Event #1</li> 
+                <li href="/">Event #2</li>
+                <li href="/">Event #3</li>
+              </ul>
+
+              <div className="settings"
+              onClick={this.showSettings}>
+                <img src={settingsIcon}/>
+              </div>
             </div>
+        </div>
+        {!open ?
+          <div className="overlay">
           </div>
+        : null}
       </div>
     );
   }

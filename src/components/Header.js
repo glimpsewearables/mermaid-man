@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import bell from '../assets/bell.svg'
 
+
 class Header extends Component {
   constructor(props){
     super(props);

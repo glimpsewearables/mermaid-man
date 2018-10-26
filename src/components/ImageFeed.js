@@ -91,7 +91,7 @@ class ImageFeed extends Component {
   }
 
   render() {
-    axios({method: 'GET',
+    /*axios({method: 'GET',
             url:"http://34.207.219.52/media/getAllVideos",
             config : {headers: { 
                     "Access-Control-Allow-Origin": "POST, GET, OPTIONS",
@@ -102,6 +102,7 @@ class ImageFeed extends Component {
                   }).catch(function(error){
                     console.log(error)
                   });
+    */
 
     return (
       <div className="Gallery">

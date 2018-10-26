@@ -11,13 +11,8 @@
     z-index: 1;
 }
 
-.hamburger{
-    position: relative;
-    left: 20px;
-}
-
 .logoTitle{
     position: relative;
-    left: 40px;
+    left: 75px;
     font-size: 18px;
 }
