@@ -35,13 +35,17 @@ class App extends Component {
             onOpenChange={this.onOpenChange}
           />
           <div className="contentWrapper">
+            <div className="eventTitle">
+              <h2>Bumpershoot</h2>
+              <h3>10/18/14</h3>
+            </div>
             <Sidebar 
               open={this.state.open}
               onOpenChange={this.onOpenChange}
             />
           
-            <Header />
-            <GlimpseGallery />
+            <GlimpseGallery color="#222536" title={"Highlights"} date={"10/12/18"} />
+            <GlimpseGallery color="#FE7879" title={"Photos from Glimpse"} />
           </div>
       </div>
     );

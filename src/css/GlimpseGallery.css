@@ -1,6 +1,5 @@
 .Add{
-  border: 1px solid white;
-  background-color: darkGrey !important;
+  background-color: darkGrey;
 
   display: flex !important;
   flex-direction:column !important;
@@ -17,11 +16,11 @@
     height: 24px !important;
 }
 
-.container {
+.grid-container{
     max-width: 1024px;
-    margin: 0 auto;
+    margin: 10px auto 40px auto;
 }
-  
+
 .photos {
     display: flex;
     background-color: darkGrey;
@@ -29,50 +28,95 @@
     flex-wrap: wrap;
     justify-content: flex-start;
     align-content: stretch;
-    align-items: stretch !importnt;
+    align-items: stretch !important;
     padding: 0;
     max-width: 980px;
 }
 
-.photos img, .photos div.Add {
+.photos img, .photos div {
     display: block;
     float: left;
     flex: 0 0 auto;
-    background-color: #fff;
     overflow: hidden;
+}
+
+/* .photos div.cardColor{
+    flex-grow: 1 !important;
+    flex:1;
+    background-color: orange;
+    height: 100%;
+    overflow: hidden;
+    width: 100px !important;
+} */
+
+.cardColor{
+  color: white;
+
+  display: flex !important;
+  position: relative;
+  flex-direction:column !important;
+  
+  vertical-align: middle !important;
+  text-align: left;
+
+  width: 100%;
+  height: 215px !important;
+}
+
+.colorSpan{
+    position: relative;
+    top: 40%;
+    display: flex;
+    padding-left: 15px;
+}
+
+
+.colorSpan, .colorSpan>span{
+    width: 100% !important;
+    height: auto !important;
+}
+
+.cardTitleEvent{
+    font-size:1.2em;
+    color: white;
+}
+
+.cardTitleDate{
+    font-size:0.90em;
+    color: white;
 }
 
 
 @media screen and (min-width: 1024px) {
-.photos img, .photos div.Add {
-    width: calc(100%/6);
-    height: calc(100%/6);
-}
+    .photos img, .photos div {
+        width: calc(100%/6);
+        height: calc(100%/6);
+    }
 }
 
 @media screen and (min-width: 769px) and (max-width: 1024px) {
-.photos img, .photos div.Add {
+.photos img, .photos div {
     width: calc(100%/4);
     height: calc(100%/4);
 }
 }
 
 @media screen and (min-width: 481px) and (max-width: 768px) {
-.photos img, .photos div.Add {
+.photos img, .photos div {
     width: calc(100%/3);
     height: calc(100%/3);
 }
 }
 
 @media screen and (min-width: 321px) and (max-width: 480px) {
-.photos img, .photos div.Add {
+.photos img, .photos div {
     width: calc(100%/2);
     height: calc(100%/2);
 }
 }
 
 @media screen  and (max-width: 320px) {
-    .photos img, .photos div.Add {
+    .photos img, .photos div {
         width: 100%;
         height: 100%;
     }

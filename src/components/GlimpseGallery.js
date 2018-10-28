@@ -1,8 +1,11 @@
 import React, { Component } from 'react'
 import Lightbox from '../lightbox/Lightbox';
 import Photo from "./Photo.js";
+import TitleCard from "./TitleCard";
 import Add from "./Add.js";
-import AddButton from '../assets/AddButton'
+
+import AddButton from '../assets/AddButton';
+
 
 
 
@@ -64,14 +67,15 @@ export default class GlimpseGallery extends Component {
     }
     
   render() {
-
     return (
         <div className="grid-container container">
             <div className="photos">
-                {photos.map( (item, index) => <Photo key={index} src={item.src} 
-                                                     openLightbox={this.openLightbox}   
-                                                     index={index} /> )}
-                 <Add />  
+            <TitleCard color={this.props.color}
+                       title={this.props.title}
+                       date={this.props.date}   />
+            {photos.map( (item, index) => <Photo key={index} src={item.src} 
+                                                 openLightbox={this.openLightbox}   
+                                                 index={index} /> )}
             </div>
             <Lightbox 
                 onClick={this.openLightbox}
