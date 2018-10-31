@@ -1,0 +1,39 @@
+@import url("https://fonts.googleapis.com/css?family=Nunito+Sans:400,400i,600,700");
+
+.App {
+  text-align: left;
+  display: flex;
+  flex-direction:column;  
+  font-family:"Nunito Sans", Helvetica, sans-serif;
+}
+
+.eventTitle{
+  max-width: 1024px;
+  margin: 0px auto;
+}
+
+.eventTitle > *{
+  margin: 0;
+  padding: 0;
+  font-weight: 500;
+}
+
+.Gallery{
+  flex:1;
+}
+
+body{
+  font-family: "Nunito Sans", Helvetica, sans-serif;
+  max-height: 100vh;
+}
+
+h1{
+  font-size: 35pt;
+  font-weight: 400;
+  margin:0;
+}
+
+
+.contentWrapper{
+  padding-top: 10px;
+}

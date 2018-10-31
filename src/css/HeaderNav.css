@@ -1,0 +1,18 @@
+.headerNav{
+    align-items: center;
+    display: flex;
+    background-color: white;
+    box-shadow: 0 2px 2px darkGrey;
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top:0;
+    width: 100vw;
+    height: 40px;
+    z-index: 1;
+}
+
+.logoTitle{
+    position: relative;
+    left: 75px;
+    font-size: 18px;
+}

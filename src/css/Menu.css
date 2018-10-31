@@ -1,0 +1,91 @@
+.Sidebar{
+  width: 250px;
+  height: 100vh;
+  position: fixed;
+  left: 0px;
+  top:0px;
+  z-index:2;
+  background-color: #f2f2f2;
+}
+
+.overlay{
+  background-color: #191919;
+  height: 100vh;
+  opacity: 0.85;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  z-index:1;
+}
+
+.sidebarEvents>li{
+  display: block;
+  margin: 20px;
+}
+
+
+.sidebarContentWrapper {
+  height:100vh;
+  position: relative;
+}
+.sidebarEvents {
+  margin-left: 0;
+  padding-left: 0;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.settings{
+  position: absolute;
+  bottom: 0px;
+  left: 10px;
+}
+
+.account-wrapper{
+  top: -10px;
+  left:0;
+  width: 100%;
+  font-size: 1.1em;
+  padding-left: 20px;
+  position: absolute;
+  text-align: left;
+}
+
+.account{
+  color: black;
+}
+
+.account>p{
+  padding-top:0;
+}
+
+@media only screen and (max-width:768px){
+  /* remove side bar and reposition */
+  .Header, .Gallery{
+    margin-left:0;
+  }
+}
+
+.Sidebar{
+  background: transparent;
+  left: -200px !important;
+  background-color:none !important;
+}
+
+.SidebarOpenColor{
+  background: #f2f2f2 !important;
+  transition: 0ms;
+}
+.SidebarOpened{
+  left: 0px !important;
+  transition: 550ms;
+}
+
+.hamburgerBttn{
+  z-index: 1100;
+  display: inline-block;
+  position: absolute;
+  top: 12px;
+  right: 17px;
+}
