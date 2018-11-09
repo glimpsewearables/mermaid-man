@@ -37,3 +37,13 @@ h1{
 .contentWrapper{
   padding-top: 10px;
 }
+
+.colorLayout{
+  background-color:orange;
+}
+
+.slickCarousellGrid{
+  max-width: 100%;
+  margin: 0 auto 200px auto;
+  background-color: pink;
+}
