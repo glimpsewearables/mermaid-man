@@ -21,4 +21,4 @@ chrome-user-data
 *.iml
 .vscode
 *.swp
-*.swo
+*.swo.DS_Store
