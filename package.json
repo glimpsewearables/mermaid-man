@@ -26,11 +26,17 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "client": "cd client && yarn start",
+    "server": "nodemon server.js",
+    "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\""
   },
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).",
-  "main": "index.js",
-  "devDependencies": {},
+  "main": "src/index.js",
+  "devDependencies": {
+    "concurrently": "^4.0.1"
+  },
   "author": "Michael",
+  "proxy": "http://localhost:5000/",
   "license": "ISC"
 }
