@@ -30,46 +30,30 @@
     align-content: stretch;
     align-items: stretch !important;
     padding: 0;
-    max-width: 980px;
 }
 
 .photos img, .photos div {
-    display: block;
     float: left;
-    flex: 0 0 auto;
-    overflow: hidden;
 }
 
-/* .photos div.cardColor{
-    flex-grow: 1 !important;
-    flex:1;
-    background-color: orange;
-    height: 100%;
-    overflow: hidden;
-    width: 100px !important;
-} */
+.photos div.colorCard{
+    height: auto !important;
 
-.cardColor{
-  color: white;
+}
 
-  display: flex !important;
-  position: relative;
-  flex-direction:column !important;
-  
-  vertical-align: middle !important;
-  text-align: left;
+.highlightSlide{
+    background-color: #f2f2f2;
+}
 
-  width: 100%;
-  height: 215px !important;
+.highlightSlide> img{
+    max-height: 350px !important;
 }
 
 .colorSpan{
     position: relative;
     top: 40%;
-    display: flex;
     padding-left: 15px;
 }
-
 
 .colorSpan, .colorSpan>span{
     width: 100% !important;
@@ -86,38 +70,112 @@
     color: white;
 }
 
+video {
+    padding:0;
+    margin: 0;
+    max-width: 100%;
+}
+
+.carousel{
+    max-height: 5% !important;
+}
+
+.videoContent{
+    background-color: "black";
+    line-height: auto;
+}
+
+img{
+    height: 100%;
+    width: 100%;
+}
+
+.noGrid{
+    width: 100%;
+    height: 100%;
+}
+
+.video{
+    object-fit: cover;
+}
 
 @media screen and (min-width: 1024px) {
-    .photos img, .photos div {
-        width: calc(100%/6);
-        height: calc(100%/6);
+ .gridMedia {
+        width: calc(100%/4) !important;
+        height: calc(100%/4)!important;
     }
 }
 
 @media screen and (min-width: 769px) and (max-width: 1024px) {
-.photos img, .photos div {
-    width: calc(100%/4);
-    height: calc(100%/4);
-}
+    .gridMedia{
+        height: calc(100%/4) !important;
+    }
+
+    .photos > div {
+        width: calc(100%/4) !important;
+    }
 }
 
 @media screen and (min-width: 481px) and (max-width: 768px) {
-.photos img, .photos div {
-    width: calc(100%/3);
-    height: calc(100%/3);
-}
+  .gridMedia{
+    width: calc(100%/2);
+    height: calc(100%/2);
+  }
+
+  .photos > div {
+    width: calc(100%/2) !important;
+  }
 }
 
 @media screen and (min-width: 321px) and (max-width: 480px) {
-.photos img, .photos div {
-    width: calc(100%/2);
-    height: calc(100%/2);
-}
+    .gridMedia {
+        width: calc(100%/2);
+    }
+
+    .photos > div {
+        width: calc(100%/2) !important;
+    }
 }
 
 @media screen  and (max-width: 320px) {
-    .photos img, .photos div {
+    .gridMedia{
         width: 100%;
         height: 100%;
     }
 } 
+
+.photos-div{
+    display: flex;
+    flex-direction: column;
+}
+
+
+.colorSpan{
+}
+  
+
+.cardColor{
+    color: white;
+    display: block;
+    flex-grow: 1;
+    position: relative;
+    text-align: left;
+}
+
+.video-react{
+}
+
+.thumbs-wrapper, {
+    display: none !important;
+}
+
+.slick-dots{
+    display: 100%;
+}
+
+.slick-arrow{
+    display: none !important;
+}
+.slider > .slide{
+    max-height: 85vw !important;
+}
