@@ -2,6 +2,9 @@
     "family": "mermaid-man",
     "containerDefinitions": [
         {
+            "environment": [{
+                "NODE_ENV": "production"
+            }],
             "image": "471137844663.dkr.ecr.us-west-2.amazonaws.com/docker-images:web_latest",
             "name": "mermaid-man",
             "cpu": 10,
