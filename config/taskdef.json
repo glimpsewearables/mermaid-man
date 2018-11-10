@@ -1,0 +1,18 @@
+{
+    "family": "mermaid-man",
+    "containerDefinitions": [
+        {
+            "image": "471137844663.dkr.ecr.us-west-2.amazonaws.com/docker-images:web_latest",
+            "name": "mermaid-man",
+            "cpu": 10,
+            "memory": 256,
+            "essential": true,
+            "portMappings": [
+                {
+                    "containerPort": 3000,
+                    "hostPort": 80
+                }
+            ]
+        }
+    ]
+}
