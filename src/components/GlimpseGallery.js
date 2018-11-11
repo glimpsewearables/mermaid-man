@@ -12,7 +12,7 @@ import AddButton from '../assets/AddButton';
 
 import '../css/GlimpseGallery.css';
 
-<<<<<<< HEAD
+/*
 const photos = [
     { src: 'https://s3.amazonaws.com/pi-1/user6/images/09995_user6_image_2018-08-31_14.00.07.jpg', width: 1, height: 1 },
     { src: 'https://s3.amazonaws.com/pi-1/user6/images/09996_user6_image_2018-08-31_13.59.21.jpg', width: 1, height: 1 },
@@ -28,9 +28,8 @@ const photos = [
     { src: 'https://s3.amazonaws.com/glimpse-q1-demo/img7_lolla.png', width: 1, height: 1 },
     { src: 'https://s3.amazonaws.com/glimpse-q1-demo/img8_lolla.png', width: 1, height: 1 },
   ];
-=======
+*/
 const photos = [];
->>>>>>> 2171f6b11c64b6291df5a47ded19e98bfb881fa9
 
 export default class GlimpseGallery extends Component {
   constructor(props){
@@ -95,42 +94,12 @@ export default class GlimpseGallery extends Component {
 
   render() {
     return (
-<<<<<<< HEAD
-        <div className="grid-container">
-            <div className="photos">
-            <TitleCard color={this.props.color}
-                       title={this.props.title}
-                       date={this.props.date}/>
-            {photos.map( (item, index) =>{
-                if(item.src.split(".")[3] == "mp4"){
-                    return <Video key={index} 
-                                    src={item.src} />
-                } else{
-                    return <Photo   name={"gridMedia"}
-                                    key={index} src={item.src} 
-                                    openLightbox={this.openLightbox}   
-                                    index={index} />
-                }
-            }
-             )}
-            </div>
-            <Lightbox 
-                onClick={this.openLightbox}
-                images={photos}
-                onClose={this.closeLightbox}
-                onClickPrev={this.gotoPrevious}
-                onClickNext={this.gotoNext}
-                currentImage={this.state.currentImage}
-                isOpen={this.state.lightboxIsOpen}
-            />
-=======
       <div className="grid-container container">
         <div className="photos">
           <TitleCard color={this.props.color}
                        title={this.props.title}
                        date={this.props.date}   />
           {this.state.photos}
->>>>>>> 2171f6b11c64b6291df5a47ded19e98bfb881fa9
         </div>
         <Lightbox 
           onClick={this.openLightbox}
