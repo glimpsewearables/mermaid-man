@@ -1,13 +1,9 @@
-FROM node:7-alpine
+FROM node:8-alpine
 
-RUN mkdir src
-RUN mkdir src/app
-WORKDIR ./src/app/
-
-ENV PATH /src/app/node_modules/.bin:$PATH
-
-COPY package.json /usr/src/app/package.json
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app
+COPY . .
 RUN npm install
-RUN npm install react-scripts@1.1.1 -g
+EXPOSE 3000
 
-CMD ["npm", "start"]
+CMD [ "yarn", "dev" ]
