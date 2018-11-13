@@ -7,6 +7,7 @@ import './css/HeaderNav.css';
 import './css/Gallery.css';
 
 import Login from "./components/Login/Login";
+import SignUp from "./components/Login/SignUp";
 
 import Sidebar from './components/Sidebar'
 import HeaderNav from './components/HeaderNav';
@@ -38,7 +39,7 @@ class App extends Component {
       <div className="App">
         { !this.state.login 
         ?
-          <Login />
+          <SignUp />
         : <div> 
         { this.state.event
           ?<div> 

@@ -82,7 +82,10 @@ export default class GlimpseGallery extends Component {
           openLightbox={this.openLightbox}   
           index={index} />) 
       }))
-      .catch(err => console.log(err));
+      .catch(err => {
+        console.log(err)
+        console.log("caught an error, server call did not go through")
+      } );
   }
 
   callApi = async () => {
