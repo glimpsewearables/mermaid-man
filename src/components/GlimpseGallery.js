@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import axios from 'axios';
 import Lightbox from '../lightbox/Lightbox';
 import Photo from "./Photo.js";
 import Video from "./Video.js";
@@ -6,29 +7,8 @@ import TitleCard from "./TitleCard";
 import Add from "./Add.js";
 
 import AddButton from '../assets/AddButton';
-
-
-
-
 import '../css/GlimpseGallery.css';
 
-/*
-const photos = [
-    { src: 'https://s3.amazonaws.com/pi-1/user6/images/09995_user6_image_2018-08-31_14.00.07.jpg', width: 1, height: 1 },
-    { src: 'https://s3.amazonaws.com/pi-1/user6/images/09996_user6_image_2018-08-31_13.59.21.jpg', width: 1, height: 1 },
-    { src: 'https://s3.amazonaws.com/pi-1/user7/images/09986_user7_image_2018-08-31_16.38.51.jpg', width: 1, height: 1 },
-    { src: 'https://s3.amazonaws.com/pi-1/allUser/user1/images/1_user1_image_2018-08-03_14.33.25.jpg', width: 1, height: 1 },
-    { src: 'https://s3.amazonaws.com/glimpse-q1-demo/img10_lolla.png', width: 1, height: 1 },
-    { src: 'https://s3.amazonaws.com/glimpse-q1-demo/img11_lolla.png', width: 1, height: 1 },
-    { src: 'https://s3.amazonaws.com/glimpse-q1-demo/img12_lolla.png', width: 1, height: 1 },
-    { src: 'https://s3.amazonaws.com/glimpse-q1-demo/img2_lolla.png', width: 1, height: 1 },
-    { src: 'https://s3.amazonaws.com/glimpse-q1-demo/img3_lolla.png', width: 1, height: 1 },
-    { src: 'https://s3.amazonaws.com/glimpse-q1-demo/img4_lolla.png', width: 1, height: 1 },
-    { src: 'https://s3.amazonaws.com/glimpse-q1-demo/img6_lolla.png', width: 1, height: 1 },
-    { src: 'https://s3.amazonaws.com/glimpse-q1-demo/img7_lolla.png', width: 1, height: 1 },
-    { src: 'https://s3.amazonaws.com/glimpse-q1-demo/img8_lolla.png', width: 1, height: 1 },
-  ];
-*/
 const photos = [];
 
 export default class GlimpseGallery extends Component {
@@ -38,7 +18,8 @@ export default class GlimpseGallery extends Component {
     this.state = { 
         currentImage:0,
         userImgs:{},
-        userVideos:{} 
+        userVideos:{},
+        photos:[]
     };
 
     this.closeLightbox = this.closeLightbox.bind(this);
@@ -76,23 +57,43 @@ export default class GlimpseGallery extends Component {
   
   componentWillMount() {
     this.callApi()
-      .then(res => this.setState({ photos: JSON.parse(res.data).media
-        .map((item, index) => <Photo 
-          key={index} src={item.link} 
-          openLightbox={this.openLightbox}   
-          index={index} />) 
+      .then(res => this.setState({ 
+        photos: JSON.parse(res.data).media
+          .map((item, index) => <Photo key={index} 
+                                        src={item.link} 
+                                        openLightbox={this.openLightbox}   
+                                        index={index} />) 
       }))
       .catch(err => {
         console.log(err)
-        console.log("caught an error, server call did not go through")
       } );
   }
 
   callApi = async () => {
-    const response = await fetch('/media/getAllImages');
-    const body = await response.json();
-    if (response.status !== 200) throw Error(body.message);
-    return body;
+    axios.get('https://a.4cdn.org/a/threads.json', {
+                      headers: {
+                        'Access-Control-Allow-Origin': '*',
+                        'crossDomain': true
+                      }
+                      }).then(function (response) {
+                        console.log('response is : ' + response.data);
+                      }).catch(function (error) {
+                        if (error.response) {
+                          console.log(error.response.headers);
+                        } 
+                        else if (error.request) {
+                            console.log(error.request);
+                        } 
+                        else {
+                          console.log(error.message);
+                        }
+                      console.log(error.config);
+                    });
+
+      const response = await fetch('http://52.88.225.198:8000/media/getAllImages');
+      const body = await response.json();
+      if (response.status !== 200) throw Error(body.message);
+      return body;
   };
 
   render() {

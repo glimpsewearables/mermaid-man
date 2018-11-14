@@ -24,7 +24,7 @@ class App extends Component {
     this.state = {
       open: true,
       event: false,
-      login: false,
+      login: true,
     }
 
     this.onOpenChange = this.onOpenChange.bind(this);
@@ -39,7 +39,7 @@ class App extends Component {
       <div className="App">
         { !this.state.login 
         ?
-          <SignUp />
+          <Login />
         : <div> 
         { this.state.event
           ?<div> 
