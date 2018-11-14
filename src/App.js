@@ -7,6 +7,7 @@ import './css/HeaderNav.css';
 import './css/Gallery.css';
 
 import Login from "./components/Login/Login";
+import SignUp from "./components/Login/SignUp";
 
 import Sidebar from './components/Sidebar'
 import HeaderNav from './components/HeaderNav';
@@ -23,7 +24,7 @@ class App extends Component {
     this.state = {
       open: true,
       event: false,
-      login: false,
+      login: true,
     }
 
     this.onOpenChange = this.onOpenChange.bind(this);

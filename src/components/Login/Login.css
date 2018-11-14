@@ -1,0 +1,92 @@
+@media all and (min-width: 480px) {
+    .Login {
+      padding: 60px 0;
+    }
+  
+    .Login form {
+      margin: 0 auto;
+      max-width: 320px;
+    }
+  }
+
+.Login, .SignUp {
+    background-color: #f7f7f7;
+    height: 100%;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;     
+}
+
+.signUpWrapper, .loginWrapper{
+    background-color: white;
+    border: 1px solid lightGrey;
+    width: 375px;
+    position: relative;
+}
+.signUpWrapper{
+    padding: 20px;
+}
+
+.loginWrapper{
+    height: 450PX;
+}
+
+.logoTitleLogin{
+    margin-top: 20;
+    text-align: center;
+    width: 100%;
+}
+.loginWrapper > form {
+    overflow: scroll;
+    margin: auto;
+    padding:0;
+}
+.signInTitle{
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.1em;
+    margin-bottom: 0px;
+}
+
+.formGroup{
+    margin: 10px 0px 20px 0px;
+}
+
+.signUpLink{
+    text-align: center;
+    width: 100%;
+    position: absolute;
+    bottom: 10px;
+}
+
+.formGroup > input {
+    font-size: 1em;
+    width: 95%;
+    padding: 5px;
+}
+
+.formGroup > input, .btnLogin{
+    border-radius: 4px;
+    outline: none;
+}
+
+.formGroup > input{
+    border: 1px solid lightGrey;
+}
+
+.btnLogin:active {
+    color:#f2f2f2;
+
+}
+
+.btnLogin{
+    border: none;
+    background-color: #1BACEB;
+    color: white;
+    font-weight: 500;
+    
+    width: 100%;
+    font-size: 1em;
+    padding: 10px;
+}
