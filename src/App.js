@@ -9,7 +9,7 @@ import './css/Gallery.css';
 import Events from "./components/Events/Events"
 import EventPage from "./components/EventPage/EventPage"
 
-import Login from "./components/Login/Login"
+import DeviceSelect from "./components/Login/DeviceSelect"
 import HeaderNav from "./components/HeaderNav"
 
 
@@ -20,14 +20,19 @@ class App extends Component {
     this.state = {
       open: true,
       events: false,
-      login: true,
+      login: false,
     }
 
     this.onOpenChange = this.onOpenChange.bind(this);
+    this.onDeviceSelect = this.onDeviceSelect.bind(this);
   }
 
   onOpenChange(){
     this.setState({open: !this.state.open})
+  }
+
+  onDeviceSelect(){
+    this.setState({login : !this.state.login})
   }
 
   render() {
@@ -35,7 +40,7 @@ class App extends Component {
       <div className="App">
         { !this.state.login 
         ?
-          <Login />
+          <DeviceSelect onDeviceSelect={this.onDeviceSelect}/>
         : <div> 
           <HeaderNav 
               open={this.state.open}

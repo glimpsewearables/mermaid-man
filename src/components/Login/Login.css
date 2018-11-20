@@ -29,7 +29,7 @@
 }
 
 .loginWrapper{
-    height: 450PX;
+    height: 450px;
 }
 
 .logoTitleLogin{
@@ -55,9 +55,9 @@
 
 .signUpLink{
     text-align: center;
-    width: 100%;
     position: absolute;
     bottom: 10px;
+    width: 85%;
 }
 
 .formGroup > input {
@@ -66,7 +66,7 @@
     padding: 5px;
 }
 
-.formGroup > input, .btnLogin{
+.formGroup > input, .btnLogin, select{
     border-radius: 4px;
     outline: none;
 }
@@ -79,14 +79,20 @@
     color:#f2f2f2;
 
 }
+select, .btnLogin{
+    font-weight: 400;
+    width: 100%;
+    font-size: 1em;
+    padding: 10px;
+}
+
+select{
+    margin-top: 25px;
+}
 
 .btnLogin{
     border: none;
     background-color: #1BACEB;
     color: white;
-    font-weight: 500;
-    
-    width: 100%;
-    font-size: 1em;
-    padding: 10px;
+    font-size: 500;
 }

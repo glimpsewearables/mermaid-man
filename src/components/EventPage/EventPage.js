@@ -22,7 +22,6 @@ class EventPage extends Component {
   render() {
     const images = this.props.objects.filter(el => el.media_type == "image");
     const imgSrc = images.map(el => ({ "src":el.link}) );
-    console.log(imgSrc);
     const photos = images.map((item, index) => <Photo key={index} 
                                                                 cssName="gridMedia"
                                                                 src={item.link} 

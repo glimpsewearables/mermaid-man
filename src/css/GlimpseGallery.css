@@ -70,20 +70,20 @@
     color: white;
 }
 
-video {
-    padding:0;
-    margin: 0;
-    max-width: 100%;
+.videoContent{
+    object-fit: cover !important;
+    height: 100%;
+    width: 100%;
 }
 
+.videoGrid{
+    width: 100%;
+    height: 100%;
+}
 .carousel{
     max-height: 5% !important;
 }
 
-.videoContent{
-    background-color: "black";
-    line-height: auto;
-}
 
 img{
     height: 100%;
@@ -93,10 +93,6 @@ img{
 .noGrid{
     width: 100%;
     height: 100%;
-}
-
-.video{
-    object-fit: cover;
 }
 
 @media screen and (min-width: 1024px) {
@@ -160,9 +156,6 @@ img{
     flex-grow: 1;
     position: relative;
     text-align: left;
-}
-
-.video-react{
 }
 
 .thumbs-wrapper, {
