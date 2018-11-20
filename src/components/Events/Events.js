@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import GlimpseGallery from "../GlimpseGallery";
+import Headernav from "../HeaderNav";
 
 export default class Events extends Component{
   componentWillMount(){
@@ -11,16 +12,16 @@ export default class Events extends Component{
   render() {
     return (
       <div>
-          Welcome to glimpse wearables
-          <></>
-      </div>
-      <div>
-        <GlimpseGallery
-            color={this.props.color}
-            title={this.props.title}
-            date={this.props.date}
-            imgs={}
-        />
+        <div>
+            Welcome to glimpse wearables
+        </div>
+        <div>
+          <GlimpseGallery
+              color={this.props.color}
+              title={this.props.title}
+              date={this.props.date}
+          />
+        </div>
       </div>
     )
   }

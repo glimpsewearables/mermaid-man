@@ -96,29 +96,24 @@ class GlimpseGallery extends Component {
   }; */
 
   render() {
-    const images = this.props.objects.filter(el => el.media_type == "image");
-    const imgSrc = images.map(el => el.link);
-    const photos = images.map((item, index) => <Photo key={index} 
-                                                                cssName="gridMedia"
-                                                                src={item.link} 
-                                                                openLightbox={this.openLightbox}   
-                                                                index={index} />);
+    const { photos, imgSrc, title, date, color} = this.props;
+    const { currentImage, lightboxIsOpen } = this.state;
     return (
       <div className="grid-container container">
         <div className="photos">
-          <TitleCard color={this.props.color}
-                       title={this.props.title}
-                       date={this.props.date}   />
+          <TitleCard color={color}
+                       title={title}
+                       date={date}   />
           {photos}
         </div>
         <Lightbox 
-          onClick={this.openLightbox}
-          images={imgSrc}
-          onClose={this.closeLightbox}
-          onClickPrev={this.gotoPrevious}
-          onClickNext={this.gotoNext}
-          currentImage={this.state.currentImage}
-          isOpen={this.state.lightboxIsOpen}
+          onClick={ this.openLightbox }
+          images={ imgSrc }
+          onClose={ this.closeLightbox }
+          onClickPrev={ this.gotoPrevious }
+          onClickNext={ this.gotoNext }
+          currentImage={ currentImage }
+          isOpen={ lightboxIsOpen }
         />
         
       </div>
@@ -126,9 +121,4 @@ class GlimpseGallery extends Component {
   }
 }
 
-function mapStateToProps(state){
-  return {
-      objects: state.objects,
-  }
-}
-export default connect(mapStateToProps)(GlimpseGallery);
+export default GlimpseGallery;

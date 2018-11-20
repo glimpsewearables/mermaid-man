@@ -15,14 +15,6 @@ if(item.src.split(".")[3] === "mp4"){
 
 */
 
-const photos = [
-  { src: 'https://s3.amazonaws.com/glimpse-q1-demo/img6_lolla.png', width: 1, height: 1 },
-    { src: 'https://s3.amazonaws.com/glimpse-q1-demo/img7_lolla.png', width: 1, height: 1 },
-    { src: 'https://s3.amazonaws.com/glimpse-q1-demo/img8_lolla.png', width: 1, height: 1 },
-  
-];
-
-
 export default class SliderWrapper extends Component {
     constructor(props){
       super(props);
@@ -43,7 +35,8 @@ export default class SliderWrapper extends Component {
   }
 
     render() {
-      var settings = {
+      const { photos } = this.props;
+      const settings = {
         dots: true,
         infinite: false,
         speed: 500,
