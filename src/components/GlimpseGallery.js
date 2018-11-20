@@ -70,10 +70,10 @@ export default class GlimpseGallery extends Component {
   }
 
   callApi = async () => {
-    axios.get('https://a.4cdn.org/a/threads.json', {
+    axios.get('http://52.32.199.147:8000/media/getAllImages', {
                       headers: {
-                        'Access-Control-Allow-Origin': '*',
-                        'crossDomain': true
+                        'Access-Control-Allow-Origin': "*",
+                        'crossDomain': true,
                       }
                       }).then(function (response) {
                         console.log('response is : ' + response.data);
