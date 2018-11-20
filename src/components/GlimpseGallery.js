@@ -1,17 +1,17 @@
 import React, { Component } from 'react'
-import axios from 'axios';
-import Lightbox from '../lightbox/Lightbox';
-import Photo from "./Photo.js";
-import Video from "./Video.js";
-import TitleCard from "./TitleCard";
-import Add from "./Add.js";
+import axios from 'axios'
+import { connect } from 'react-redux'
 
-import AddButton from '../assets/AddButton';
-import '../css/GlimpseGallery.css';
+import Lightbox from '../lightbox/Lightbox'
+import Photo from "./Photo.js"
+import Video from "./Video.js"
+import TitleCard from "./TitleCard"
+import Add from "./Add.js"
 
-const photos = [];
+import AddButton from '../assets/AddButton'
+import '../css/GlimpseGallery.css'
 
-export default class GlimpseGallery extends Component {
+class GlimpseGallery extends Component {
   constructor(props){
     super(props);
 
@@ -29,7 +29,6 @@ export default class GlimpseGallery extends Component {
   }
 
   openLightbox(index) {
-    console.log(index);
     this.setState({
       currentImage: index,
       lightboxIsOpen: true,
@@ -97,24 +96,39 @@ export default class GlimpseGallery extends Component {
   }; */
 
   render() {
+    const images = this.props.objects.filter(el => el.media_type == "image");
+    const imgSrc = images.map(el => el.link);
+    const photos = images.map((item, index) => <Photo key={index} 
+                                                                cssName="gridMedia"
+                                                                src={item.link} 
+                                                                openLightbox={this.openLightbox}   
+                                                                index={index} />);
     return (
       <div className="grid-container container">
         <div className="photos">
           <TitleCard color={this.props.color}
                        title={this.props.title}
                        date={this.props.date}   />
-          {this.state.photos}
+          {photos}
         </div>
         <Lightbox 
           onClick={this.openLightbox}
-          images={photos}
+          images={imgSrc}
           onClose={this.closeLightbox}
           onClickPrev={this.gotoPrevious}
           onClickNext={this.gotoNext}
           currentImage={this.state.currentImage}
           isOpen={this.state.lightboxIsOpen}
         />
+        
       </div>
     )
   }
 }
+
+function mapStateToProps(state){
+  return {
+      objects: state.objects,
+  }
+}
+export default connect(mapStateToProps)(GlimpseGallery);

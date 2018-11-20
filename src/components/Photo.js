@@ -12,9 +12,9 @@ export default class Photo extends Component {
   }
 
   render() {
-    const { src, onClick, name } = this.props;
+    const { src, onClick, cssName } = this.props;
     return (
-      <div className={name}>
+      <div className={cssName}>
         <img src={src} onClick={this.onClick} />
       </div>
     )
