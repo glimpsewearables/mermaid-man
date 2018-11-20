@@ -55,7 +55,7 @@ export default class GlimpseGallery extends Component {
     });
   }
   
-  componentWillMount() {
+  /*componentWillMount() {
     this.callApi()
       .then(res => this.setState({ 
         photos: JSON.parse(res.data).media
@@ -94,7 +94,7 @@ export default class GlimpseGallery extends Component {
       const body = await response.json();
       if (response.status !== 200) throw Error(body.message);
       return body;
-  };
+  }; */
 
   render() {
     return (
