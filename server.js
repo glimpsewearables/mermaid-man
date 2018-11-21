@@ -3,8 +3,12 @@ const bodyParser = require('body-parser');
 const request = require('request');
 const app = express();
 const port = process.env.PORT || 5000;
+const path = require('path');
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, 'client/build')));
+
 
 app.get('/media/getAllImages', (req, res) => {
   request('http://52.88.225.198:8000/api/media', function (error, response, body) {
