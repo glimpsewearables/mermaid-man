@@ -1,10 +1,8 @@
 {
-  "name": "glimpse-web",
-  "version": "1.0.0",
-  "main": "server.js",
-  "license": "ISC",
+  "name": "glimpsewebapp2",
+  "version": "0.1.0",
+  "private": true,
   "dependencies": {
-    "express": "^4.15.3",
     "ajv": "^6.5.3",
     "axios": "^0.18.0",
     "browserify-fs": "^1.0.0",
@@ -34,8 +32,17 @@
     "redux": "^4.0.1"
   },
   "scripts": {
-    "start": "node server.js",
-    "heroku-postbuild": "cd client && yarn && yarn run build"
-  }
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
+    "heroku-postbuild": "npm install && npm run build"
+  },
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).",
+  "main": "src/index.js",
+  "devDependencies": {
+    "concurrently": "^4.0.1"
+  },
+  "author": "Michael",
+  "proxy": "http://localhost:5000/",
+  "license": "ISC"
 }
-
