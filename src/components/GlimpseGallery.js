@@ -29,6 +29,7 @@ class GlimpseGallery extends Component {
   }
 
   openLightbox(index) {
+    console.log(index);
     this.setState({
       currentImage: index,
       lightboxIsOpen: true,
@@ -53,58 +54,24 @@ class GlimpseGallery extends Component {
       currentImage: this.state.currentImage + 1,
     });
   }
-  
-  /*componentWillMount() {
-    this.callApi()
-      .then(res => this.setState({ 
-        photos: JSON.parse(res.data).media
-          .map((item, index) => <Photo key={index} 
-                                        src={item.link} 
-                                        openLightbox={this.openLightbox}   
-                                        index={index} />) 
-      }))
-      .catch(err => {
-        console.log(err)
-      } );
-  }
-
-  callApi = async () => {
-    axios.get('http://52.32.199.147:8000/media/getAllImages', {
-                      headers: {
-                        'Access-Control-Allow-Origin': "*",
-                        'crossDomain': true,
-                      }
-                      }).then(function (response) {
-                        console.log('response is : ' + response.data);
-                      }).catch(function (error) {
-                        if (error.response) {
-                          console.log(error.response.headers);
-                        } 
-                        else if (error.request) {
-                            console.log(error.request);
-                        } 
-                        else {
-                          console.log(error.message);
-                        }
-                      console.log(error.config);
-                    });
-
-      const response = await fetch('http://52.88.225.198:8000/media/getAllImages');
-      const body = await response.json();
-      if (response.status !== 200) throw Error(body.message);
-      return body;
-  }; */
 
   render() {
     const { photos, imgSrc, title, date, color} = this.props;
     const { currentImage, lightboxIsOpen } = this.state;
+    console.log(photos);
+    const photoSlides = photos.map((item, index) => <Photo key={index} 
+                                                                cssName="gridMedia"
+                                                                src={item.link} 
+                                                                openLightbox={this.openLightbox}   
+                                                                index={index} />);
+
     return (
       <div className="grid-container container">
         <div className="photos">
           <TitleCard color={color}
                        title={title}
                        date={date}   />
-          {photos}
+          {photoSlides}
         </div>
         <Lightbox 
           onClick={ this.openLightbox }

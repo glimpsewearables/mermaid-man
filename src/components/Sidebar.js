@@ -18,9 +18,8 @@ class Sidebar extends Component {
   }
 
   handleClick() {
-    this.setState({
-        open: !this.state.open
-    });
+    console.log("this should handle open")
+    this.setState({ open: !this.state.open });
   }
 
   showSettings(e){
@@ -28,17 +27,17 @@ class Sidebar extends Component {
   }
 
   render() {
-    let { open } = this.props;
+    let { onOpenChange } = this.props;
+    let { open } = this.state;
     return (
       <div>
         <div className={open ? "Sidebar " : "Sidebar SidebarOpened SidebarOpenColor" }>
-          {/* Will render only on mobile */}
-            <Account />
+            {/* Will render only on mobile */}
             <div className="sidebarContentWrapper">
-              <div className="hamburgerBttn">
+              <div className="hamburgerBttn" onClick={this.handleClick}>
                   <HamburgerMenu
                     isOpen={!open}
-                    menuClicked={this.props.onOpenChange}
+                    menuClicked={this.handleClick}
                     width={16}
                     height={13}
                     strokeWidth={2}
@@ -49,11 +48,6 @@ class Sidebar extends Component {
                     animation={false}
                   />
               </div>
-              <ul className="sidebarEvents">
-                <li href="/">Event #1</li> 
-                <li href="/">Event #2</li>
-                <li href="/">Event #3</li>
-              </ul>
 
               <div className="settings"
               onClick={this.showSettings}>
@@ -61,8 +55,8 @@ class Sidebar extends Component {
               </div>
             </div>
         </div>
-        {!open ?
-          <div className="overlay">
+        {! open ?
+          <div className="overlay" onClick={onOpenChange}>
           </div>
         : null}
       </div>
