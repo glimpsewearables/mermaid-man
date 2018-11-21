@@ -54,46 +54,27 @@ class GlimpseGallery extends Component {
     });
   }
   
-  /*componentWillMount() {
+  componentWillMount() {
     this.callApi()
       .then(res => this.setState({ 
-        photos: JSON.parse(res.data).media
-          .map((item, index) => <Photo key={index} 
-                                        src={item.link} 
-                                        openLightbox={this.openLightbox}   
-                                        index={index} />) 
+        photos: JSON.parse(res.data).objects.map((item, index) => 
+          <Photo key={index} 
+            src={item.link} 
+            openLightbox={this.openLightbox}   
+            index={index} />) 
       }))
       .catch(err => {
-        console.log(err)
+        console.log("error mapping results from express: " + err)
       } );
   }
 
   callApi = async () => {
-    axios.get('http://52.32.199.147:8000/media/getAllImages', {
-                      headers: {
-                        'Access-Control-Allow-Origin': "*",
-                        'crossDomain': true,
-                      }
-                      }).then(function (response) {
-                        console.log('response is : ' + response.data);
-                      }).catch(function (error) {
-                        if (error.response) {
-                          console.log(error.response.headers);
-                        } 
-                        else if (error.request) {
-                            console.log(error.request);
-                        } 
-                        else {
-                          console.log(error.message);
-                        }
-                      console.log(error.config);
-                    });
-
-      const response = await fetch('http://52.88.225.198:8000/media/getAllImages');
-      const body = await response.json();
-      if (response.status !== 200) throw Error(body.message);
-      return body;
-  }; */
+    const response = await fetch('/media/getAllImages');
+    const body = await response.json();
+    console.log(body);
+    if (response.status !== 200) throw Error(body.message);
+    return body;
+  };
 
   render() {
     const { photos, imgSrc, title, date, color} = this.props;

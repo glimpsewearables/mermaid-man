@@ -7,11 +7,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/media/getAllImages', (req, res) => {
-  request('http://52.32.199.147:8000/media/getAllImages', function (error, response, body) {
+  request('http://52.88.225.198:8000/api/media', function (error, response, body) {
   	if (!error && response.statusCode == 200) {
       res.send({data: body});
     } else {
-      console.log(error);
+      console.log("error calling endpoint from express: " + error);
     }
   })
 });
