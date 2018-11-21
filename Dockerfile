@@ -1,9 +1,11 @@
 FROM node:8-alpine
 
-RUN mkdir -p /usr/src/app
-WORKDIR /usr/src/app
 COPY . .
-RUN npm install
-EXPOSE 3000
+RUN yarn install
+WORKDIR client
+RUN yarn install
+RUN yarn run build
+WORKDIR ..
+EXPOSE 5000
 
-CMD [ "yarn", "dev" ]
+CMD [ "yarn", "start" ]
