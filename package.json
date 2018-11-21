@@ -38,4 +38,3 @@
     "heroku-postbuild": "cd client && yarn && yarn run build"
   }
 }
-
