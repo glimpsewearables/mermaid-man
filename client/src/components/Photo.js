@@ -8,6 +8,7 @@ export default class Photo extends Component {
   }
   
   onClick(){
+    console.log(this.props.index);
     this.props.openLightbox(this.props.index)
   }
 

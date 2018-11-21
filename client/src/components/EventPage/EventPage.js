@@ -22,11 +22,7 @@ class EventPage extends Component {
   render() {
     const images = this.props.objects.filter(el => el.media_type == "image");
     const imgSrc = images.map(el => ({ "src":el.link}) );
-    const photos = images.map((item, index) => <Photo key={index} 
-                                                                cssName="gridMedia"
-                                                                src={item.link} 
-                                                                openLightbox={this.openLightbox}   
-                                                                index={index} />);
+
     return (
       <div>
         <div>
@@ -40,7 +36,8 @@ class EventPage extends Component {
                 onOpenChange={this.onOpenChange}
               />
               <SliderWrapper1 photos={imgSrc.slice(0, 5)}/>
-              <GlimpseGallery color="#222536" title={"Photos Taken With Glimpse"} date={"10/12/18"} photos={photos} srcImgs={imgSrc}/>
+              <GlimpseGallery color="#222536" title={"Photos Taken With Glimpse"} date={"10/12/18"} 
+                        photos={images} srcImgs={imgSrc}/>
             </div>
           </div>
       </div>

@@ -29,6 +29,7 @@ class GlimpseGallery extends Component {
   }
 
   openLightbox(index) {
+    console.log(index);
     this.setState({
       currentImage: index,
       lightboxIsOpen: true,
@@ -79,13 +80,20 @@ class GlimpseGallery extends Component {
   render() {
     const { photos, imgSrc, title, date, color} = this.props;
     const { currentImage, lightboxIsOpen } = this.state;
+    console.log(photos);
+    const photoSlides = photos.map((item, index) => <Photo key={index} 
+                                                                cssName="gridMedia"
+                                                                src={item.link} 
+                                                                openLightbox={this.openLightbox}   
+                                                                index={index} />);
+
     return (
       <div className="grid-container container">
         <div className="photos">
           <TitleCard color={color}
                        title={title}
                        date={date}   />
-          {photos}
+          {photoSlides}
         </div>
         <Lightbox 
           onClick={ this.openLightbox }

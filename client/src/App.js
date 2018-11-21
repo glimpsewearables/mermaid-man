@@ -6,21 +6,16 @@ import './css/Header.css';
 import './css/HeaderNav.css';
 import './css/Gallery.css';
 
-import Events from "./components/Events/Events"
-import EventPage from "./components/EventPage/EventPage"
-
 import DeviceSelect from "./components/Login/DeviceSelect"
-import HeaderNav from "./components/HeaderNav"
+import Main from "./components/Main"
 
 
-class App extends Component {
+export default class App extends Component {
   constructor(props){
     super(props);
 
     this.state = {
-      open: true,
-      events: false,
-      login: false,
+      login: true,
     }
 
     this.onOpenChange = this.onOpenChange.bind(this);
@@ -41,20 +36,9 @@ class App extends Component {
         { !this.state.login 
         ?
           <DeviceSelect onDeviceSelect={this.onDeviceSelect}/>
-        : <div> 
-          <HeaderNav 
-              open={this.state.open}
-              onOpenChange={this.onOpenChange}
-          />
-          { this.state.event
-            ? <Events />
-            : <EventPage />
-          }
-          </div>
+        : <Main />
         }
       </div>
     );
   }
 }
-
-export default App;
