@@ -1,17 +1,17 @@
 import React, { Component } from 'react'
-import axios from 'axios';
-import Lightbox from '../lightbox/Lightbox';
-import Photo from "./Photo.js";
-import Video from "./Video.js";
-import TitleCard from "./TitleCard";
-import Add from "./Add.js";
+import axios from 'axios'
+import { connect } from 'react-redux'
 
-import AddButton from '../assets/AddButton';
-import '../css/GlimpseGallery.css';
+import Lightbox from '../lightbox/Lightbox'
+import Photo from "./Photo.js"
+import Video from "./Video.js"
+import TitleCard from "./TitleCard"
+import Add from "./Add.js"
 
-const photos = [];
+import AddButton from '../assets/AddButton'
+import '../css/GlimpseGallery.css'
 
-export default class GlimpseGallery extends Component {
+class GlimpseGallery extends Component {
   constructor(props){
     super(props);
 
@@ -29,7 +29,6 @@ export default class GlimpseGallery extends Component {
   }
 
   openLightbox(index) {
-    console.log(index);
     this.setState({
       currentImage: index,
       lightboxIsOpen: true,
@@ -55,7 +54,7 @@ export default class GlimpseGallery extends Component {
     });
   }
   
-  componentWillMount() {
+  /*componentWillMount() {
     this.callApi()
       .then(res => this.setState({ 
         photos: JSON.parse(res.data).media
@@ -70,10 +69,10 @@ export default class GlimpseGallery extends Component {
   }
 
   callApi = async () => {
-    axios.get('https://a.4cdn.org/a/threads.json', {
+    axios.get('http://52.32.199.147:8000/media/getAllImages', {
                       headers: {
-                        'Access-Control-Allow-Origin': '*',
-                        'crossDomain': true
+                        'Access-Control-Allow-Origin': "*",
+                        'crossDomain': true,
                       }
                       }).then(function (response) {
                         console.log('response is : ' + response.data);
@@ -94,27 +93,32 @@ export default class GlimpseGallery extends Component {
       const body = await response.json();
       if (response.status !== 200) throw Error(body.message);
       return body;
-  };
+  }; */
 
   render() {
+    const { photos, imgSrc, title, date, color} = this.props;
+    const { currentImage, lightboxIsOpen } = this.state;
     return (
       <div className="grid-container container">
         <div className="photos">
-          <TitleCard color={this.props.color}
-                       title={this.props.title}
-                       date={this.props.date}   />
-          {this.state.photos}
+          <TitleCard color={color}
+                       title={title}
+                       date={date}   />
+          {photos}
         </div>
         <Lightbox 
-          onClick={this.openLightbox}
-          images={photos}
-          onClose={this.closeLightbox}
-          onClickPrev={this.gotoPrevious}
-          onClickNext={this.gotoNext}
-          currentImage={this.state.currentImage}
-          isOpen={this.state.lightboxIsOpen}
+          onClick={ this.openLightbox }
+          images={ imgSrc }
+          onClose={ this.closeLightbox }
+          onClickPrev={ this.gotoPrevious }
+          onClickNext={ this.gotoNext }
+          currentImage={ currentImage }
+          isOpen={ lightboxIsOpen }
         />
+        
       </div>
     )
   }
 }
+
+export default GlimpseGallery;

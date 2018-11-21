@@ -12,8 +12,8 @@ class Video extends Component {
     let { width, height} = this.props.size;
     console.log(height);
     return (
-        <div className="noGrid">
-            <video controls height={200} className="videoContent">
+        <div className="videoGrid">
+            <video controls className="videoContent">
                 <source src="https://s3.amazonaws.com/glimpse-q1-demo/Highlight+Festival+2018++Official+Aftermovie.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
             </video>
