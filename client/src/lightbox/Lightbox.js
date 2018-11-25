@@ -19,7 +19,6 @@ import deepMerge from './utils/deepMerge';
 // consumers sometimes provide incorrect type or casing
 function normalizeSourceSet (data) {
 	const sourceSet = data.srcSet || data.srcset;
-
 	if (Array.isArray(sourceSet)) {
 		return sourceSet.join();
 	}
@@ -258,6 +257,7 @@ class Lightbox extends Component {
 
 		const image = images[currentImage];
 		const sourceSet = normalizeSourceSet(image);
+		console.log(sourceSet);
 		const sizes = sourceSet ? '100vw' : null;
 
 		const thumbnailsSize = showThumbnails ? this.theme.thumbnail.size : 0;
@@ -269,8 +269,8 @@ class Lightbox extends Component {
 				{/*
 					Re-implement when react warning "unknown props"
 					https://fb.me/react-unknown-prop is resolved
-					<Swipeable onSwipedLeft={this.gotoNext} onSwipedRight={this.gotoPrev} />
-				*/}
+				<Swipeable onSwipedLeft={this.gotoNext} onSwipedRight={this.gotoPrev} /> */}
+				
 				<img
 					className={css(this.classes.image, imageLoaded && this.classes.imageLoaded)}
 					onClick={onClickImage}
@@ -284,7 +284,13 @@ class Lightbox extends Component {
 					}}
 				/>
 			</figure>
+			
 		);
+	}
+
+	holder1(){
+				{/* 
+			  */}
 	}
 	renderThumbnails () {
 		const { images, currentImage, onClickThumbnail, showThumbnails, thumbnailOffset } = this.props;
