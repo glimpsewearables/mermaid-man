@@ -29,7 +29,6 @@ class GlimpseGallery extends Component {
   }
 
   openLightbox(index) {
-    console.log(index);
     this.setState({
       currentImage: index,
       lightboxIsOpen: true,
@@ -58,11 +57,7 @@ class GlimpseGallery extends Component {
   componentWillMount() {
     this.callApi()
       .then(res => this.setState({ 
-        photos: JSON.parse(res.data).objects.map((item, index) => 
-          <Photo key={index} 
-            src={item.link} 
-            openLightbox={this.openLightbox}   
-            index={index} />) 
+        photos: JSON.parse(res.data).objects 
       }))
       .catch(err => {
         console.log("error mapping results from express: " + err)
@@ -78,8 +73,9 @@ class GlimpseGallery extends Component {
   };
 
   render() {
-    const { photos, imgSrc, title, date, color} = this.props;
-    const { currentImage, lightboxIsOpen } = this.state;
+    const { photos, title, date, color} = this.props;
+    const { currentImage, lightboxIsOpen, objects } = this.state;
+    const imgSrc = photos.map(el => ({ src:el.link, media: el.media_type}) );
     console.log(photos);
     const photoSlides = photos.map((item, index) => <Photo key={index} 
                                                                 cssName="gridMedia"

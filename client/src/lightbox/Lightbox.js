@@ -19,7 +19,6 @@ import deepMerge from './utils/deepMerge';
 // consumers sometimes provide incorrect type or casing
 function normalizeSourceSet (data) {
 	const sourceSet = data.srcSet || data.srcset;
-
 	if (Array.isArray(sourceSet)) {
 		return sourceSet.join();
 	}
@@ -263,28 +262,44 @@ class Lightbox extends Component {
 		const thumbnailsSize = showThumbnails ? this.theme.thumbnail.size : 0;
 		const heightOffset = `${this.theme.header.height + this.theme.footer.height + thumbnailsSize
 			+ (this.theme.container.gutter.vertical)}px`;
+		if(image.media === "image"){
+			return (
+				<figure className={css(this.classes.figure)}>
+					{/*
+						Re-implement when react warning "unknown props"
+						https://fb.me/react-unknown-prop is resolved
+					<Swipeable onSwipedLeft={this.gotoNext} onSwipedRight={this.gotoPrev} /> */}
+					
+					<img
+						className={css(this.classes.image, imageLoaded && this.classes.imageLoaded)}
+						onClick={onClickImage}
+						sizes={sizes}
+						alt={image.alt}
+						src={image.src}
+						srcSet={sourceSet}
+						style={{
+							cursor: onClickImage ? 'pointer' : 'auto',
+							maxHeight: `calc(100vh - ${heightOffset})`,
+						}}
+					/>
+				</figure>
+				
+			);
+		} else{
+			return (
+				<div class="video-wrapper" className={css(this.classes.videoWrapper)}>
+					<video id="iframe" width="100%" controls  className={css(this.classes.video)}>
+						<source src={image.src} type="video/mp4" />
+						Your browser does not currenttly support our video platform.
+					</video>
+				</div>
+			)
+		}
+	}
 
-		return (
-			<figure className={css(this.classes.figure)}>
-				{/*
-					Re-implement when react warning "unknown props"
-					https://fb.me/react-unknown-prop is resolved
-					<Swipeable onSwipedLeft={this.gotoNext} onSwipedRight={this.gotoPrev} />
-				*/}
-				<img
-					className={css(this.classes.image, imageLoaded && this.classes.imageLoaded)}
-					onClick={onClickImage}
-					sizes={sizes}
-					alt={image.alt}
-					src={image.src}
-					srcSet={sourceSet}
-					style={{
-						cursor: onClickImage ? 'pointer' : 'auto',
-						maxHeight: `calc(100vh - ${heightOffset})`,
-					}}
-				/>
-			</figure>
-		);
+	holder1(){
+				{/* 
+			  */}
 	}
 	renderThumbnails () {
 		const { images, currentImage, onClickThumbnail, showThumbnails, thumbnailOffset } = this.props;

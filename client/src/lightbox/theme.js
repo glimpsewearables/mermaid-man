@@ -1,3 +1,5 @@
+import { nominalTypeHack } from "prop-types";
+
 // ==============================
 // THEME
 // ==============================
@@ -35,6 +37,21 @@ theme.footer = {
 		vertical: 5,
 	},
 };
+
+theme.video_wrapper = {
+        background: 'black',
+        position: 'relative',
+        width: '100%',
+        height: '0',
+        paddingBottom: '56.25%'
+}
+
+theme.video = {
+	top: '0',
+	left: '0',
+	maxWidth: '100%',
+	height: '100%'
+}
 
 // thumbnails
 theme.thumbnail = {
