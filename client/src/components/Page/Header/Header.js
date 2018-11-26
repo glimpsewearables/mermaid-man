@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import bell from '../assets/bell.svg'
-
+import "./Header.css"
 
 class Header extends Component {
   constructor(props){

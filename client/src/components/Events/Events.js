@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import GlimpseGallery from "../GlimpseGallery";
-import Headernav from "../HeaderNav";
+import GlimpseGallery from "../GlimpseGallery/GlimpseGallery";
 
 export default class Events extends Component{
   componentWillMount(){

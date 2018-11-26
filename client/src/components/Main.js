@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 
 import Events from "./Events/Events"
 import EventPage from "./EventPage/EventPage"
-import HeaderNav from "./HeaderNav"
-import Sidebar from "./Sidebar"
+import HeaderNav from "./Page/HeaderNav/HeaderNav"
+import Sidebar from "./Page/Sidebar/Sidebar"
 
 
 export default class Main extends Component {
@@ -19,7 +19,6 @@ export default class Main extends Component {
     }
 
     onOpenChange(){
-        console.log("in main app");
         this.setState({open: !this.state.open})
     }
 

@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import Slider from "react-slick";
 import GridMedia from "./GridMedia";
 
-import "../slick/slick.css";
-import "../slick/slick-theme.css";
+import "../../slick/slick.css";
+import "../../slick/slick-theme.css";
 /*
 
 if(item.src.split(".")[3] === "mp4"){

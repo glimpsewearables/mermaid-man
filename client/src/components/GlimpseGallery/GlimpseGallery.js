@@ -5,10 +5,8 @@ import { connect } from 'react-redux'
 import Lightbox from '../lightbox/Lightbox'
 import GridMedia from "./GridMedia.js"
 import TitleCard from "./TitleCard"
-import Add from "./Add.js"
 
-import AddButton from '../assets/AddButton'
-import '../css/GlimpseGallery.css'
+import './GlimpseGallery.css'
 
 class GlimpseGallery extends Component {
   constructor(props){

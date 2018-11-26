@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
 
-import Sidebar from '../Sidebar'
-import GlimpseGallery from "../GlimpseGallery"
+import GlimpseGallery from "../GlimpseGallery/GlimpseGallery"
 
-import SliderWrapper1 from "../SliderWrapper1"
-import SliderWrapper2 from "../SliderWrapper2"
+import SliderWrapper1 from "../GlimpseGallery/SliderWrapper1"
+import SliderWrapper2 from "../GlimpseGallery/SliderWrapper2"
 
 import { connect } from 'react-redux'
 
@@ -29,10 +28,6 @@ class EventPage extends Component {
                 <h2>Bumpershoot</h2>
                 <h3>10/18/14</h3>
               </div>
-              <Sidebar 
-                open={this.state.open}
-                onOpenChange={this.onOpenChange}
-              />
               <SliderWrapper1 photos={imgSrc.slice(0, 5)}/>
               <GlimpseGallery color="#222536" title={"Photos Taken With Glimpse"} date={"10/12/18"} 
                         photos={images} srcImgs={imgSrc}/>

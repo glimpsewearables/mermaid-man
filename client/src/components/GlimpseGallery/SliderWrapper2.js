@@ -3,8 +3,8 @@ import React, { Component } from 'react';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
 
-import "../slick/slick.css";
-import "../slick/slick-theme.css";
+import "../../slick/slick.css";
+import "../../slick/slick-theme.css";
 /*
 
 if(item.src.split(".")[3] === "mp4"){

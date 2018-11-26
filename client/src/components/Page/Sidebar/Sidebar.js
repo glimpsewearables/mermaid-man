@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 
 import { slide as Menu } from 'react-burger-menu'
 import HamburgerMenu from 'react-hamburger-menu';
-import Account from "./Account";
+import Account from "../Account";
+import './Sidebar.css';
 
-import settingsIcon from "../assets/settings.svg";
+import settingsIcon from "../../../assets/settings.svg";
 
 class Sidebar extends Component {
   constructor(props){

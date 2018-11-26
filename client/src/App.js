@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 
-import './css/App.css';
-import './css/Menu.css';
-import './css/Header.css';
-import './css/HeaderNav.css';
-import './css/Gallery.css';
+import './App.css';
+
 
 import DeviceSelect from "./components/Login/DeviceSelect"
 import Main from "./components/Main"

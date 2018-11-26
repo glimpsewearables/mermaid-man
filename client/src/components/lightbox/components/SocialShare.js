@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import shareIcon from '../../assets/share.svg';
-import downloadIcon from '../../assets/download.svg';
+import shareIcon from '../../../assets/share.svg';
+import downloadIcon from '../../../assets/download.svg';
 import DownloadLink from "react-download-link";
 
 class SocialShare extends Component  {
