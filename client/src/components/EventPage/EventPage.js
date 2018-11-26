@@ -2,11 +2,9 @@ import React, { Component } from 'react'
 
 import Sidebar from '../Sidebar'
 import GlimpseGallery from "../GlimpseGallery"
-import GlimpseGallery2 from "../GlimpseGallery2"
 
 import SliderWrapper1 from "../SliderWrapper1"
 import SliderWrapper2 from "../SliderWrapper2"
-import Photo from "../Photo"
 
 import { connect } from 'react-redux'
 

@@ -84,7 +84,6 @@
     max-height: 5% !important;
 }
 
-
 img{
     height: 100%;
     width: 100%;
@@ -95,16 +94,24 @@ img{
     height: 100%;
 }
 
+.gridVideo{
+    background-color: #333333;
+    display: flex;
+    align-items: center!important;
+    height: 100%;
+}
+
+
 @media screen and (min-width: 1024px) {
  .gridMedia {
         width: calc(100%/4) !important;
-        height: calc(100%/4)!important;
+        /* height: calc(100%/4)!important; */
     }
 }
 
 @media screen and (min-width: 769px) and (max-width: 1024px) {
     .gridMedia{
-        height: calc(100%/4) !important;
+        /* height: calc(100%/4) !important; */
     }
 
     .photos > div {
@@ -115,7 +122,7 @@ img{
 @media screen and (min-width: 481px) and (max-width: 768px) {
   .gridMedia{
     width: calc(100%/2);
-    height: calc(100%/2);
+    /* height: calc(100%/2); */
   }
 
   .photos > div {

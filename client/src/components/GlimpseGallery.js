@@ -3,8 +3,7 @@ import axios from 'axios'
 import { connect } from 'react-redux'
 
 import Lightbox from '../lightbox/Lightbox'
-import Photo from "./Photo.js"
-import Video from "./Video.js"
+import GridMedia from "./GridMedia.js"
 import TitleCard from "./TitleCard"
 import Add from "./Add.js"
 
@@ -77,9 +76,10 @@ class GlimpseGallery extends Component {
     const { currentImage, lightboxIsOpen, objects } = this.state;
     const imgSrc = photos.map(el => ({ src:el.link, media: el.media_type}) );
     console.log(photos);
-    const photoSlides = photos.map((item, index) => <Photo key={index} 
+    const photoSlides = photos.map((item, index) => <GridMedia key={index} 
                                                                 cssName="gridMedia"
                                                                 src={item.link} 
+                                                                media={item.media_type}
                                                                 openLightbox={this.openLightbox}   
                                                                 index={index} />);
 

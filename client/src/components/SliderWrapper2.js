@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
-import Photo from "./Photo";
-import Video from "./Video";
 
 import "../slick/slick.css";
 import "../slick/slick-theme.css";

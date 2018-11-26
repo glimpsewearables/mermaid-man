@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Slider from "react-slick";
-import Photo from "./Photo";
-import Video from "./Video";
+import GridMedia from "./GridMedia";
 
 import "../slick/slick.css";
 import "../slick/slick-theme.css";
@@ -73,11 +72,11 @@ export default class SliderWrapper extends Component {
       return (
         <div className="grid-container">
           <Slider {...settings}>
-              <Video key={100}/>
             { photos.map((item, index) => 
                                         <div className="highlightSlide" key={index} >
-                                              <Photo 
+                                              <GridMedia 
                                                     name={"noGrid"}
+                                                    media={item.media_type}
                                                     src={item.src} 
                                                     openLightbox={this.openLightbox}   
                                                     index={index} />
