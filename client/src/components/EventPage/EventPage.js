@@ -20,7 +20,7 @@ class EventPage extends Component {
   }
 
   render() {
-    const images = this.props.objects.filter(el => el.media_type == "image");
+    const images = this.props.objects;
     const imgSrc = images.map(el => ({ "src":el.link}) );
 
     return (
