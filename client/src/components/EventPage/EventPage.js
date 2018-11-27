@@ -19,7 +19,6 @@ class EventPage extends Component {
   render() {
     const images = this.props.objects;
     const imgSrc = images.map(el => ({ "src":el.link}) );
-
     return (
       <div>
         <div>
@@ -28,7 +27,7 @@ class EventPage extends Component {
                 <h1>Bumpershoot</h1>
                 <h3>10/18/14</h3>
               </div>
-              <SliderWrapper1 photos={imgSrc.slice(0, 5)}/>
+              <SliderWrapper1 photos={images}/>
               <GlimpseGallery color="#222536" title={"CLiP Photos"} date={"10/12/18"} 
                         photos={images} srcImgs={imgSrc}/>
             </div>

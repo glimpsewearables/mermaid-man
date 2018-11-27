@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import ResizeObserver from 'resize-observer-polyfill';
 import Photo, { photoPropType } from './Photo';
 import { computeSizes, computeSizesColumns } from './utils';
+import './Gallery.css'
 
 class Gallery extends React.Component {
   state = {

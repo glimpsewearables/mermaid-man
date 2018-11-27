@@ -33,56 +33,57 @@ export default class SliderWrapper extends Component {
     });
   }
 
-    render() {
-      const { photos } = this.props;
-      const settings = {
-        dots: true,
-        infinite: false,
-        speed: 500,
-        slidesToShow: 3,
-        slidesToScroll: 3,
-        initialSlide: 0,
-        responsive: [
-          {
-            breakpoint: 1024,
-            settings: {
-              slidesToShow: 3,
-              slidesToScroll: 3,
-              infinite: true,
-              dots: true
-            }
-          },
-          {
-            breakpoint: 769,
-            settings: {
-              slidesToShow: 2,
-              slidesToScroll: 2,
-              initialSlide: 2
-            }
-          },
-          {
-            breakpoint: 480,
-            settings: {
-              slidesToShow: 1,
-              slidesToScroll: 1
-            }
+  render() {
+    const { photos } = this.props;
+    const settings = {
+      dots: false,
+      infinite: true,
+      speed: 500,
+      slidesToShow: 2,
+      slidesToScroll: 2,
+      initialSlide: 0,
+      responsive: [
+        {
+          breakpoint: 1024,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 2,
+            infinite: true,
+            dots: true
           }
-        ]
-      };
-      return (
-        <div className="grid-container">
-          <Slider {...settings}>
-            { photos.map((item, index) => 
-                                        <div className="highlightSlide" key={index} >
-                                              <GridMedia 
-                                                    name={"noGrid"}
-                                                    media={item.media_type}
-                                                    src={item.src} 
-                                                    openLightbox={this.openLightbox}   
-                                                    index={index} />
-                                        </div>)}
-          </Slider>
-        </div>
-      );
-    }
+        },
+        {
+          breakpoint: 769,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 2,
+            initialSlide: 2
+          }
+        },
+        {
+          breakpoint: 480,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1
+          }
+        }
+      ]
+    };
+    console.log(photos);
+    return (
+      <div className="grid-container">
+        <Slider {...settings}>
+          { photos.map((item, index) => 
+                                      <div className="highlightSlide" key={index} >
+                                            <GridMedia 
+                                                  name={"noGrid"}
+                                                  media={item.media_type}
+                                                  src={item.link} 
+                                                  openLightbox={this.openLightbox}   
+                                                  index={index} />
+                                      </div>)}
+        </Slider>
+      </div>
+    );
+  }
   }

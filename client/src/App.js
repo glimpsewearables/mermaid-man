@@ -12,7 +12,7 @@ export default class App extends Component {
     super(props);
 
     this.state = {
-      login: true,
+      login: false,
     }
 
     this.onOpenChange = this.onOpenChange.bind(this);

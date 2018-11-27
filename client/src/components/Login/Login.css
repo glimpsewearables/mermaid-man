@@ -5,12 +5,18 @@
   
     .Login form {
       margin: 0 auto;
-      max-width: 320px;
+      max-width: 250px;
+    }
+}
+  @media all and (max-width: 674px) {
+    .wordsToLiveByWrapper{
+        display: none;
     }
   }
 
 .Login, .SignUp {
-    background-color: #f7f7f7;
+    background-color: #F8B800;
+    background-image: linear-gradient(to right, #F8B800, #FCCE00);
     height: 100%;
     width: 100vw;
     display: flex;
@@ -20,8 +26,9 @@
 
 .signUpWrapper, .loginWrapper{
     background-color: white;
-    border: 1px solid lightGrey;
-    width: 375px;
+    border-radius: 4px;
+    box-shadow: 2px 2px 10px grey;
+    width: 325px;
     position: relative;
 }
 .signUpWrapper{
@@ -33,7 +40,7 @@
 }
 
 .logoTitleLogin{
-    margin-top: 20;
+    margin-top: 40px;
     text-align: center;
     width: 100%;
 }
@@ -46,7 +53,7 @@
     text-align: center;
     font-weight: bold;
     font-size: 1.1em;
-    margin-bottom: 0px;
+    margin-bottom: -20px;
 }
 
 .formGroup{
@@ -95,4 +102,33 @@ select{
     background-color: #1BACEB;
     color: white;
     font-size: 500;
+}
+
+.wordsToLiveByWrapper{
+    position: relative;
+    margin: 0;
+    width: 40%;
+    padding: 10%;
+}
+
+.wordsToLiveBy, .eventImage > svg{
+    color: #070250;
+    fill: #070250;
+}
+
+.wordsToLiveBy{
+    margin: 0;
+    font-size: 1.5em;
+    font-weight: 400;
+}
+
+.eventImage{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.eventImage > svg{
+    padding-top: 25px;
+    width: 35%;
 }

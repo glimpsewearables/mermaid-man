@@ -38,7 +38,7 @@ export default class Login extends Component {
       <div className="Login">
         <div className="wordsToLiveByWrapper">
           <div className="wordsToLiveBy">
-            Glimpse sinks you deeper into a experieces. Feel the freedom to live in the moment as you ought'a, while still capturing the good memories you deserve.
+            Glimpse sinks you deeper into a experiences. Feel the freedom to live in the moment as you ought'a, while still capturing the good memories you deserve.
           </div>
         </div>
         <div className="loginWrapper">
