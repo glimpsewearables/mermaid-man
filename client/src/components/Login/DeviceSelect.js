@@ -30,7 +30,7 @@ class Login extends Component {
   onClick(event) {
     sessionStorage.setItem('device', this.state.device);
     event.preventDefault();
-    this.props.onDeviceSelect();
+    this.props.onDeviceSubmit();
     return
   }
 

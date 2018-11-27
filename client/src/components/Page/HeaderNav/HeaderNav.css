@@ -11,8 +11,15 @@
     z-index: 1;
 }
 
+.logoTitle, .logout{
+}
+
 .logoTitle{
     position: relative;
     left: 75px;
     font-size: 18px;
+}
+
+.logout{
+    float: right;
 }

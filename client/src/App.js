@@ -12,19 +12,25 @@ export default class App extends Component {
     super(props);
 
     this.state = {
-      login: false,
+      login: sessionStorage.getItem("login"),
     }
 
     this.onOpenChange = this.onOpenChange.bind(this);
-    this.onDeviceSelect = this.onDeviceSelect.bind(this);
+    this.onDeviceSubmit = this.onDeviceSubmit.bind(this);
   }
 
   onOpenChange(){
     this.setState({open: !this.state.open})
   }
 
-  onDeviceSelect(){
+  onDeviceSubmit(){
+    sessionStorage.setItem("login", true)
     this.setState({login : !this.state.login})
+  }
+
+  onLogout(){
+      sessionStorage.setItem("login", false)
+      this.setState({login: false})
   }
 
   render() {
@@ -32,7 +38,7 @@ export default class App extends Component {
       <div className="App">
         { !this.state.login 
         ?
-          <DeviceSelect onDeviceSelect={this.onDeviceSelect}/>
+          <DeviceSelect onDeviceSubmit={this.onDeviceSubmit}/>
         : <Main />
         }
       </div>

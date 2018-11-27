@@ -22,6 +22,8 @@ export default class Main extends Component {
         this.setState({open: !this.state.open})
     }
 
+
+
     render() {
         let { open, onOpenChange, event } = this.state;
         return (
@@ -29,6 +31,7 @@ export default class Main extends Component {
             <HeaderNav 
                 open={open}
                 onOpenChange={onOpenChange}
+                onLogout={this.props.onLogout}
             />
             <Sidebar open={open}
                         onOpenChange={onOpenChange}/>
