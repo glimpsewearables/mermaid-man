@@ -12,20 +12,25 @@ export default class Main extends Component {
 
         this.state = {
             open: false,
-            events: true,
+            events: sessionStorage.getItem("events") || false,
         }
 
         this.onOpenChange = this.onOpenChange.bind(this);
+        this.onEventSelect = this.onEventSelect.bind(this);
+    }
+
+    onEventSelect(){
+        console.log(this.state.events)
+        sessionStorage.setItem("events", !this.state.events);
+        this.setState({events: !this.state.events});
     }
 
     onOpenChange(){
-        this.setState({open: !this.state.open})
+        this.setState({open: !this.state.open});
     }
 
-
-
     render() {
-        let { open, onOpenChange, event } = this.state;
+        let { open, onOpenChange, events } = this.state;
         return (
         <div> 
             <HeaderNav 
@@ -35,9 +40,9 @@ export default class Main extends Component {
             />
             <Sidebar open={open}
                         onOpenChange={onOpenChange}/>
-            { event
+            { events
               ? <EventPage />
-              : <Events />
+              : <Events onEventSelect={this.onEventSelect}/>
             }
          </div>
         )
