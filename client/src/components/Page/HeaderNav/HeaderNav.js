@@ -9,8 +9,8 @@ export default class HeaderNav extends Component {
         <div className="logoTitle">
                 GlimpseCam
         </div>
-        <div className="logout">
-          logout
+        <div className="logout" onClick={this.props.onLogout}>
+          Logout
         </div>
       </div>
     )

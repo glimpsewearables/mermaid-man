@@ -17,6 +17,7 @@ export default class App extends Component {
 
     this.onOpenChange = this.onOpenChange.bind(this);
     this.onDeviceSubmit = this.onDeviceSubmit.bind(this);
+    this.onLogout = this.onLogout.bind(this)
   }
 
   onOpenChange(){
@@ -39,7 +40,9 @@ export default class App extends Component {
         { !this.state.login 
         ?
           <DeviceSelect onDeviceSubmit={this.onDeviceSubmit}/>
-        : <Main />
+        : <Main 
+            onLogout={this.onLogout}
+          />
         }
       </div>
     );
