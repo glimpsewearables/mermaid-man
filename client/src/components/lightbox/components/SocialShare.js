@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
-import shareIcon from '../../../assets/share.svg';
-import downloadIcon from '../../../assets/download.svg';
+import Share from '../../../assets/Share.js';
+import Download from '../../../assets/Download.js';
 import DownloadLink from "react-download-link";
+
+import { FacebookShareButton, FacebookIcon, 
+		 TwitterShareButton, TwitterIcon, 
+		 EmailShareButton, EmailIcon } from 'react-share';
+
 
 class SocialShare extends Component  {
 	constructor(props){
@@ -19,34 +24,64 @@ class SocialShare extends Component  {
 	}
 
 	onClickShare(){
-		this.setState({isActive: !this.isActive})
+		this.setState({isActive: !this.state.isActive})
 	}
 
 	onClickDownload(file){
 	}
 
 	render(){
-		console.log(this.props.imgUrl);
-		let isActive = this.state;
+		let { isActive } = this.state;
+		console.log(isActive);
+
 		return (
 			<div className="photoTools">
-				<button
-						text="download"
-						type="button"
-						className="downloadBttn"
-						onClick={ () => this.onClickDownload(this.props.imgUrl)}
+				<a		href={this.props.imgUrl} download="Glimpse Photo" target="blank"
+		
 					>
-						<img src={downloadIcon} />
-				</button>
-				{ !this.state.isActive 
-				? 	<button
+						<Download />
+				</a>
+				{ !isActive 
+				? 	<a
 						type="button"
 						className="socialShare"
 						onClick={this.onClickShare}
 					>
-						<img src={shareIcon} />
-					</button>
-				: null }
+						<Share />
+					</a>
+				: <div id="share">
+						<FacebookShareButton 
+							url={this.props.imgUrl}>
+							<FacebookIcon
+							size={32}
+							round />
+						</FacebookShareButton>
+						<TwitterShareButton
+							url={this.props.imgUrl}
+						 >
+						 	<TwitterIcon
+							size={32}
+							round />
+						 </TwitterShareButton>
+						<EmailShareButton 
+							url={this.props.imgUrl}>
+							<EmailIcon
+								size={32}
+								round />
+						</EmailShareButton>
+						{/* TODO: add NPM packaging here 
+						<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous"></link>
+						
+						<a class="facebook" href="https://www.facebook.com/share.php?u={${this.props.imgUrl}}&title={Photo Taken with Glimpse}" target="blank"><i class="fa fa-facebook"></i></a>
+						
+						<a class="twitter" href="https://twitter.com/intent/tweet?status={Photo Taken with Glimpse}+{${this.props.imgUrl}}" target="blank"><i class="fa fa-twitter"></i></a>
+						
+						<a class="mail" href="mailto:?subject=Testing&body=AttachImage" target="blank">
+							<i class="fa fa-envelope"></i>
+						</a>*/}
+						<span className="closeShare" onClick={this.onClickShare}>X</span>
+					</div> 
+				}
 			</div>
 		
 		);

@@ -1,0 +1,72 @@
+.lightboxIcon{
+    padding: 0 10px 0 10px;
+}
+
+.closeShare{
+    font-size: 1.25em;
+    font-weight: 400;
+}
+.photoTools{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* container */
+
+#share {
+    float: right;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#share > * {
+    margin: 0 5px 0 5px;
+}
+/* buttons */
+
+#share a {
+	width: 35px;
+  	height: 35px;
+  	border-radius: 50%;
+  	
+  	color: #fff;
+	opacity: 1;
+    transition: opacity 0.15s linear;
+
+    font-size: 24px;
+    text-decoration: none;
+    
+    float: left;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin: 0 5px 0 5px;
+}
+
+#share a:hover {
+	opacity: 1;
+}
+
+#share{
+    
+}
+/* icons */
+#share i {
+    position: relative;
+}
+
+/* colors */
+
+.facebook {
+ 	background: #3b5998;
+}
+
+.twitter {
+  	background: #55acee;
+}
+
+.mail {
+  	background: orange;
+}

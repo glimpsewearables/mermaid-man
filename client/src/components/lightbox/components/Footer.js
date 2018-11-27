@@ -5,7 +5,7 @@ import defaults from '../theme';
 import deepMerge from '../utils/deepMerge';
 
 import SocialShare from "./SocialShare"
-import share from "../../../assets/share.svg";
+import './FooterCustom.css';
 
 function Footer ({
 	caption,

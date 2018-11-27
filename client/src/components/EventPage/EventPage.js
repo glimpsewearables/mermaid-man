@@ -25,11 +25,11 @@ class EventPage extends Component {
         <div>
             <div className="contentWrapper">
               <div className="eventTitle">
-                <h2>Bumpershoot</h2>
+                <h1>Bumpershoot</h1>
                 <h3>10/18/14</h3>
               </div>
               <SliderWrapper1 photos={imgSrc.slice(0, 5)}/>
-              <GlimpseGallery color="#222536" title={"Photos Taken With Glimpse"} date={"10/12/18"} 
+              <GlimpseGallery color="#222536" title={"CLiP Photos"} date={"10/12/18"} 
                         photos={images} srcImgs={imgSrc}/>
             </div>
           </div>
