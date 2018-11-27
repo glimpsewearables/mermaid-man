@@ -3,7 +3,7 @@
     align-items: center;
     display: flex;
     background-color: white;
-    box-shadow: 0 2px 2px darkGrey;
+    box-shadow: 0 2px 1px lightgrey;
     position: -webkit-sticky; /* Safari */
     position: sticky;
     top:0;

@@ -7,24 +7,6 @@
   font-family:"Nunito Sans", Helvetica, sans-serif;
   height: 100vh;
 }
-
-@media only screen and (min-device-width : 1000px){
-  .eventTitle{
-    padding: 15px;
-  }
-}
-
-.eventTitle{
-  max-width: 1024px;
-  margin: 0px auto;
-}
-
-.eventTitle > *{
-  margin: 0;
-  padding: 0;
-  font-weight: 500;
-}
-
 .Gallery{
   flex:1;
 }

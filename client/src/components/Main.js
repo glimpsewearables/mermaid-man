@@ -12,7 +12,7 @@ export default class Main extends Component {
 
         this.state = {
             open: false,
-            events: false,
+            events: true,
         }
 
         this.onOpenChange = this.onOpenChange.bind(this);
@@ -36,8 +36,8 @@ export default class Main extends Component {
             <Sidebar open={open}
                         onOpenChange={onOpenChange}/>
             { event
-              ? <Events />
-              : <EventPage />
+              ? <EventPage />
+              : <Events />
             }
          </div>
         )

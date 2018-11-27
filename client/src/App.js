@@ -30,7 +30,7 @@ export default class App extends Component {
   }
 
   onLogout(){
-      sessionStorage.setItem("login", false)
+      sessionStorage.clear();
       this.setState({login: false})
   }
 

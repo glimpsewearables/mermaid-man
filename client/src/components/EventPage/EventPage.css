@@ -1,0 +1,39 @@
+
+@media (max-width : 1000px){
+    .eventTitle{
+      padding: 15px;
+    }
+}
+  
+  .eventTitle{
+    max-width: 1024px;
+    margin: 0px auto;
+  }
+  
+  .eventTitle > *{
+    margin: 0;
+    padding: 0;
+    font-weight: 300;
+  }
+  
+  .eventTitleDetails > *{
+    display: inline-block;
+    margin: 0;
+
+  }
+
+  .eventTitleDetails{
+    display: inline-block;
+    display: flex;
+    align-items: center;
+    padding: 0;
+  }
+
+  .dot {
+    border-radius: 50%;
+    display: inline-block;
+    height: 4px;
+    width: 4px;
+    background-color: black;
+    margin: 5px;
+  }

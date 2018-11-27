@@ -1,6 +1,12 @@
 import React, { Component } from 'react'
 import GlimpseGallery from "../GlimpseGallery/GlimpseGallery";
+import './Event.css'
 
+const imgStyle = (url) =>{
+  return  ({ backgroundImage: ['url(',url,  ')'].join(''),
+            backgroundSize: "cover",
+                      })
+}
 export default class Events extends Component{
   componentWillMount(){
     //getPhotos();
@@ -9,17 +15,40 @@ export default class Events extends Component{
 
 
   render() {
+    const welcomeImage = imgStyle('https://invibed.com/wp-content/uploads/2016/01/rsz_millennials_-_music_festival_friends_carrying_one_girl.jpg');
+    const tileImage = imgStyle('https://i.scdn.co/image/c54aeee5871632de61735ae7ed53e07cdb45ef70')
+
     return (
-      <div>
         <div>
-            Welcome to glimpse wearables
+        <div className="welcomeImage" style={welcomeImage}>
+          <div className="eventsWelcome">
+            Dive into the experiences <br />that matter to you
+          </div>
         </div>
-        <div>
-          <GlimpseGallery
-              color={this.props.color}
-              title={this.props.title}
-              date={this.props.date}
-          />
+        <div className="Event">
+          {/* 
+              <GlimpseGallery
+                  color={this.props.color}
+                  title={this.props.title}
+                  date={this.props.date}
+              />
+            */}
+          
+          <div className="eventContainer">
+            <div className="eventTile" style={tileImage} >
+            </div>
+            <div className="eventTileTitle">
+              <h2>Louis the Child</h2>
+              <div className="eventTitleDetails">
+                  <h3>12/1/18 </h3>
+                  <span className="dot"></span>
+
+                  <h3> Seattle, WA</h3>
+              </div>
+            </div>
+            
+        
+          </div>
         </div>
       </div>
     )
