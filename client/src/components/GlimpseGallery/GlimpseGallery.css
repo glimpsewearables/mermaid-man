@@ -23,7 +23,6 @@
 
 .photos {
     display: flex;
-    background-color: darkGrey;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: flex-start;
@@ -154,10 +153,8 @@ img{
     flex-direction: column;
 }
 
-
 .colorSpan{
 }
-  
 
 .cardColor{
     color: white;

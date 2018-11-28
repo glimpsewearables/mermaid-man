@@ -69,7 +69,6 @@ export default class SliderWrapper extends Component {
         }
       ]
     };
-    console.log(photos);
     return (
       <div className="grid-container">
         <Slider {...settings}>

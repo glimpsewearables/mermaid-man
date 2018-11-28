@@ -22,6 +22,7 @@
     "react-download-link": "^2.2.0",
     "react-hamburger-menu": "^1.1.1",
     "react-images": "^0.5.19",
+    "react-lazyload": "^2.3.0",
     "react-photo-gallery": "^6.2.0",
     "react-player": "^1.6.6",
     "react-redux": "^5.1.1",
