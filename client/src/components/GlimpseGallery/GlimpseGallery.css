@@ -21,7 +21,7 @@
     margin: 10px auto 40px auto;
 }
 
-.photos {
+.photos, .highlightSlide {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -31,17 +31,9 @@
     padding: 0;
 }
 
-.photos img, .photos div {
-    float: left;
-    max-width: 100%;
-    max-height: 100%;
-}
-
-.photos div.colorCard{
+.colorCard {
     height: auto !important;
-
 }
-
 .highlightSlide{
     background-color: #f2f2f2;
 }
@@ -62,24 +54,13 @@
 }
 
 .cardTitleEvent{
-    font-size:1.2em;
+    font-size: 3vw;
     color: white;
 }
 
 .cardTitleDate{
     font-size:0.90em;
     color: white;
-}
-
-.videoContent{
-    object-fit: cover !important;
-    height: 100%;
-    width: 100%;
-}
-
-.videoGrid{
-    width: 100%;
-    height: 100%;
 }
 .carousel{
     max-height: 5% !important;
@@ -95,65 +76,93 @@ img{
     height: 100%;
 }
 
-.gridVideo{
-    background-color: #333333;
-    display: flex;
-    align-items: center!important;
-    height: 100%;
+.gridMedia > img, .sliderMedia > img {
+    object-fit: cover;
 }
 
+.video{
+    max-width: 100%;
+}
 
-@media screen and (min-width: 1024px) {
- .gridMedia {
-        width: calc(100%/4) !important;
-        /* height: calc(100%/4)!important; */
+.gridVideo, .sliderVideo{
+    object-fit: fill;
+}
+
+@media screen and (max-width: 1024px) and (min-width: 675px){
+    .cardTitleEvent{
+        font-size: 4vw;
+        color: white;
     }
+}@media screen and (max-width: 675px){
+    .cardTitleEvent{
+        font-size: 5vw;
+        color: white;
+    }
+}
+@media screen and (min-width: 1024px) {
+    .gridMedia, .gridVideo {
+        width: calc(1024px/4) !important;
+        height: calc(1024px/4) !important;
+    } 
+
+    .sliderMedia, .sliderVideo{
+        width: calc(1024px/4) !important;
+        height: calc(1024px/4) !important;
+    }
+
 }
 
 @media screen and (min-width: 769px) and (max-width: 1024px) {
-    .gridMedia{
+    .gridMedia, .gridVideo{
         /* height: calc(100%/4) !important; */
+        width: calc(100vw/4);
+        height: calc(100vw/4);
     }
 
-    .photos > div {
-        width: calc(100%/4) !important;
+    .sliderMedia>img, .sliderVideo{
+        width: calc(100vw/2);
+        height: calc(100vw/2);
     }
 }
 
-@media screen and (min-width: 481px) and (max-width: 768px) {
-  .gridMedia{
-    width: calc(100%/2);
-    /* height: calc(100%/2); */
+@media screen and (min-width: 481px) and (max-width: 769px) {
+  .gridMedia, .gridVideo{
+        width: calc(100vw/3);
+        height: calc(100vw/3);
   }
 
-  .photos > div {
-    width: calc(100%/2) !important;
+  .sliderMedia, .sliderVideo{
+    width: calc(100vw/2);
+    height: calc(100vw/2);
   }
 }
 
 @media screen and (min-width: 321px) and (max-width: 480px) {
-    .gridMedia {
-        width: calc(100%/2);
+    .gridMedia, .gridVideo {
+        width: calc(100vw/3);
+        height: calc(100vw/3);
     }
 
-    .photos > div {
-        width: calc(100%/2) !important;
+    .sliderMedia, .sliderVideo{
+        width: calc(100vw);
+        height: calc(100vw);
     }
 }
 
 @media screen  and (max-width: 320px) {
-    .gridMedia{
-        width: 100%;
-        height: 100%;
+    .gridMedia, .gridVideo{
+        width: 100vw;
+        height: 100vw;
+    }
+
+    .sliderMedia, .sliderVideo{
+        width: 100vw;
+        height: 100vw;
     }
 } 
 
-.photos-div{
-    display: flex;
+.photos-div, video{
     flex-direction: column;
-}
-
-.colorSpan{
 }
 
 .cardColor{

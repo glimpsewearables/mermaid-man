@@ -1,9 +1,10 @@
-import React, { Component } from 'react';
-import Slider from "react-slick";
-import GridMedia from "./GridMedia";
+import React, { Component } from 'react'
+import Slider from "react-slick"
+import GridMedia from "./GridMedia"
+import TitleCard from "./TitleCard"
 
-import "../../slick/slick.css";
-import "../../slick/slick-theme.css";
+import "../../slick/slick.css"
+import "../../slick/slick-theme.css"
 /*
 
 if(item.src.split(".")[3] === "mp4"){
@@ -34,13 +35,13 @@ export default class SliderWrapper extends Component {
   }
 
   render() {
-    const { photos } = this.props;
+    const { photos, color, title } = this.props;
     const settings = {
       dots: false,
       infinite: true,
       speed: 500,
-      slidesToShow: 2,
-      slidesToScroll: 2,
+      slidesToShow: 4,
+      slidesToScroll: 4,
       initialSlide: 0,
       responsive: [
         {
@@ -57,7 +58,7 @@ export default class SliderWrapper extends Component {
           settings: {
             slidesToShow: 2,
             slidesToScroll: 2,
-            initialSlide: 2
+            initialSlide: 0
           }
         },
         {
@@ -72,10 +73,17 @@ export default class SliderWrapper extends Component {
     return (
       <div className="grid-container">
         <Slider {...settings}>
+         {/* <div className="highlightSlide" >
+            <TitleCard 
+              cssName={"sliderMedia"}
+              color={color}
+              title={title}/>
+    </div> */}
           { photos.map((item, index) => 
                                       <div className="highlightSlide" key={index} >
                                             <GridMedia 
-                                                  name={"noGrid"}
+                                                  videoName={"sliderVideo"}
+                                                  cssName={"sliderMedia"}
                                                   media={item.media_type}
                                                   src={item.link} 
                                                   openLightbox={this.openLightbox}   

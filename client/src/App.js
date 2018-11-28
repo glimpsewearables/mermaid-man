@@ -5,7 +5,7 @@ import './App.css';
 
 import DeviceSelect from "./components/Login/DeviceSelect"
 import Main from "./components/Main"
-
+import { runTest } from "./test"
 
 export default class App extends Component {
   constructor(props){

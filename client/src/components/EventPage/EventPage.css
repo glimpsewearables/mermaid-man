@@ -1,39 +1,63 @@
 
 @media (max-width : 1000px){
-    .eventTitle{
+    .pageEventTitle{
       padding: 15px;
     }
 }
-  
-  .eventTitle{
-    max-width: 1024px;
-    margin: 0px auto;
-  }
-  
-  .eventTitle > *{
-    margin: 0;
-    padding: 0;
-    font-weight: 300;
-  }
-  
-  .eventTitleDetails > *{
-    display: inline-block;
-    margin: 0;
 
-  }
+.pageEventTitle{
+  position: relative;
+  top: 20%;
+  padding: 20px;
+}
 
-  .eventTitleDetails{
-    display: inline-block;
-    display: flex;
-    align-items: center;
-    padding: 0;
-  }
+.pageEventTitle > h1{
+  font-size: 37px;
+  font-weight: 400;
+}
 
-  .dot {
-    border-radius: 50%;
-    display: inline-block;
-    height: 4px;
-    width: 4px;
-    background-color: black;
-    margin: 5px;
-  }
+.pageEventDetails > h2{
+  font-size: 18px;
+  font-weight: 400;
+}
+.eventTitle{
+  max-width: 1024px;
+  margin: 0px auto;
+}
+
+.eventTitle > *{
+  margin: 0;
+  padding: 0;
+  font-weight: 300;
+}
+
+.eventTitleDetails > *{
+  display: inline-block;
+  margin: 0;
+
+}
+
+.eventTitleDetails{
+  display: inline-block;
+  display: flex;
+  align-items: center;
+  padding: 0;
+}
+
+.dot {
+  border-radius: 50%;
+  display: inline-block;
+  height: 4px;
+  width: 4px;
+  background-color: white;
+  margin: 5px;
+}
+
+.eventBanner{
+  height: 200px;
+  color: white;
+  background-position:0 35%;
+  display: relative;
+  top: 50%;
+  margin-bottom: 100px;
+}

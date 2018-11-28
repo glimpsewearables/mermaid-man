@@ -7,6 +7,10 @@ import SliderWrapper2 from "../GlimpseGallery/SliderWrapper2"
 import "./EventPage.css"
 import { connect } from 'react-redux'
 
+import Banner from "./Banner"
+
+
+
 class EventPage extends Component {
   constructor(){
       super();
@@ -21,23 +25,23 @@ class EventPage extends Component {
     const imgSrc = images.map(el => ({ "src":el.link}) );
     return (
       <div>
-        <div>
-            <div className="contentWrapper">
-              <div className="eventTitle">
-                <h1>Louis the Child</h1>
-                <div className="eventTitleDetails">
-                  <h3>12/1/18 </h3>
-                  <span className="dot"></span>
+        <Banner 
+          title={"Louis the Child"}
+          date={"12/01/2018"}
+          dot={true}
+          location={"Seattle, WA ~ Wamu Theater"}/>
 
-                  <h3> Seattle, WA</h3>
-                </div>
-                
-              </div>
-              <SliderWrapper1 photos={images}/>
-              <GlimpseGallery color="#222536" title={"CLiP Photos"} date={"10/12/18"} 
-                        photos={images} srcImgs={imgSrc}/>
-            </div>
-          </div>
+        <SliderWrapper1 
+          color="#F8B800" 
+          title={"CLiP Photos".split(" ")}
+          photos={images}/>
+
+        <GlimpseGallery 
+          color="#F8B800" 
+          title={"CLiP Photos".split(" ")}
+          date={"10/12/18"} 
+          photos={images} 
+          srcImgs={imgSrc}/>
       </div>
     )
   }

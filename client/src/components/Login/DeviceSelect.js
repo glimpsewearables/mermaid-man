@@ -2,6 +2,7 @@ import React, { Component } from "react"
 import { connect } from "react-redux"
 import "./Login.css";
 import EventImage from "../../assets/EventImage"
+import TextField from "./TextField"
 
 class Login extends Component {
   constructor(props) {
@@ -50,10 +51,11 @@ class Login extends Component {
                 <p className="signInTitle"> Choose Device</p>
 
                 <div className="formGroup">
-                    <select>
-                        { this.props.tags.map((tag) => <option value="device">{tag}</option>) }
-                    </select>
+                    <TextField value="name" title="User Name"/>
+                    <TextField value="value" title="Email"/>
+                    <TextField value="device" title="Device Id"/>
                 </div>
+                
                 <button type="submit" onClick={this.onClick} className="btnLogin">Select</button>
                 <p className="signUpLink">
                   Have a question? <a href="">email us</a>

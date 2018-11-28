@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import GlimpseGallery from "../GlimpseGallery/GlimpseGallery";
 import './Event.css'
+import '../../assets/welcome-img.jpg'
 
 const imgStyle = (url) =>{
   return  ({ backgroundImage: ['url(',url,  ')'].join(''),

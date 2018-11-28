@@ -64,7 +64,6 @@ class GlimpseGallery extends Component {
   callApi = async () => {
     const response = await fetch('/media/getAllImages');
     const body = await response.json();
-    console.log(body);
     if (response.status !== 200) throw Error(body.message);
     return body;
   };
@@ -73,9 +72,9 @@ class GlimpseGallery extends Component {
     const { photos, title, date, color} = this.props;
     const { currentImage, lightboxIsOpen, objects } = this.state;
     const imgSrc = photos.map(el => ({ src:el.link, media: el.media_type}) );
-    console.log(photos);
-    const photoSlides = photos.map((item, index) => <GridMedia key={index} 
-                                                                cssName="gridMedia"
+    const photoSlides = photos.map((item, index) => <GridMedia key={index}
+                                                                videoName={"gridVideo"}
+                                                                cssName={"gridMedia"}
                                                                 src={item.link} 
                                                                 media={item.media_type}
                                                                 openLightbox={this.openLightbox}   
@@ -84,20 +83,19 @@ class GlimpseGallery extends Component {
     return (
       <div className="grid-container container">
         <div className="photos">
-          <TitleCard color={color}
-                       title={title}
-                       date={date}   />
-          {photoSlides}
+          <TitleCard 
+            color={color}
+            title={title}/>
+          { photoSlides }
         </div>
         <Lightbox 
-          onClick={ this.openLightbox }
-          images={ imgSrc }
-          onClose={ this.closeLightbox }
-          onClickPrev={ this.gotoPrevious }
-          onClickNext={ this.gotoNext }
-          currentImage={ currentImage }
-          isOpen={ lightboxIsOpen }
-        />
+          onClick={this.openLightbox}
+          images={imgSrc}
+          onClose={this.closeLightbox}
+          onClickPrev={this.gotoPrevious}
+          onClickNext={this.gotoNext}
+          currentImage={currentImage}
+          isOpen={lightboxIsOpen} />
         
       </div>
     )

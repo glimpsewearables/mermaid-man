@@ -1,17 +1,18 @@
-import React, { Component } from 'react'
+import React from 'react';
 
-export default class TitleCard extends Component {
-  render() {
-    let style = { "backgroundColor":this.props.color };
-    const { title, date } = this.props;
-    console.log(title);
-    return (
-      <div className="cardColor" style={style}>
+const TitleCard = (props) => {
+  const { title, date, color, cssName } = props;
+  let style = { "backgroundColor": color };
+  let cssNameDefault = cssName ? 'cardColor ' + cssName : 'cardColor';
+  return (
+      <div className={cssNameDefault} style={style}>
         <div className="colorSpan">
           <span className="cardTitleEvent">{title}</span><br/>
           <span className="cardTitleDate">{date}</span>
         </div>
       </div>
-    )
-  }
-}
+  );
+};
+
+export default TitleCard;
+
