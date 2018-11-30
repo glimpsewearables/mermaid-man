@@ -1,18 +1,33 @@
-@media all and (min-width: 480px) {
-    .Login {
-      padding: 60px 0;
-    }
-  
-    .Login form {
-      margin: 0 auto;
-      max-width: 250px;
-    }
-}
-  @media all and (max-width: 674px) {
+@media all and (max-width: 674px) {
     .wordsToLiveByWrapper{
         display: none;
     }
-  }
+}
+
+@media all and (max-width: 400px){
+    .signUpWrapper, .loginWrapper{
+        box-shadow: 2px 2px 10px grey;
+        width: 100vw !important;
+        height: 100vh !important;
+        position: relative;
+        padding: 40px;
+    }
+
+    .Login{
+        width: 100vw;
+        height: 100vh;
+    }
+}
+
+.Login {
+    padding: 60px 0;
+}
+
+.Login form {
+    margin: 0 auto;
+    max-width: 250px;
+}
+
 
 .Login, .SignUp {
     background-color: #F8B800;
@@ -31,6 +46,7 @@
     width: 325px;
     position: relative;
 }
+
 .signUpWrapper{
     padding: 20px;
 }
