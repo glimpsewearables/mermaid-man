@@ -104,7 +104,7 @@ class Login extends Component {
         <div className="loginWrapper">
             <h1 className="logoTitleLogin">CLiP</h1>
             <form action="/action_page.php" className="button">
-                <p className="signInTitle"> Choose Device</p>
+                <p className="signInTitle"> Sign In</p>
 
                 <div className="formGroup">
                     <TextField value={name} title="User Name" onChange={this.handleChangeFor("name")}/>

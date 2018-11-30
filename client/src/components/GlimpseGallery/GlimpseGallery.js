@@ -50,23 +50,6 @@ class GlimpseGallery extends Component {
       currentImage: this.state.currentImage + 1,
     });
   }
-  
-  componentWillMount() {
-    this.callApi()
-      .then(res => this.setState({ 
-        photos: JSON.parse(res.data).objects 
-      }))
-      .catch(err => {
-        console.log("error mapping results from express: " + err)
-      } );
-  }
-
-  callApi = async () => {
-    const response = await fetch('/media/getAllImages');
-    const body = await response.json();
-    if (response.status !== 200) throw Error(body.message);
-    return body;
-  };
 
   render() {
     const { title, date, color} = this.props;

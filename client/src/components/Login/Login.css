@@ -6,7 +6,7 @@
 
 @media all and (max-width: 400px){
     .signUpWrapper, .loginWrapper{
-        box-shadow: 2px 2px 10px grey;
+        box-shadow: none;
         width: 100vw !important;
         height: 100vh !important;
         position: relative;
@@ -17,7 +17,32 @@
         width: 100vw;
         height: 100vh;
     }
+
+    .crownMobile {
+        display:block !important;
+        margin: auto
+    }
+
+    .eventImage{
+       display: flex;
+       justify-content: center;
+    }
+
+    .signUpLink{
+        width: auto;
+    }
 }
+
+@media all and (min-width: 400px){
+    .loginWrapper, .signUpWrapper{
+        box-shadow: 2px 2px 10px grey;
+    }
+
+    .crownMobile {
+        display:none !important;
+    }
+}
+
 
 .Login {
     padding: 60px 0;
@@ -25,9 +50,9 @@
 
 .Login form {
     margin: 0 auto;
-    max-width: 250px;
+    max-width: 275px;
 }
-
+ 
 
 .Login, .SignUp {
     background-color: #F8B800;
@@ -41,8 +66,7 @@
 
 .signUpWrapper, .loginWrapper{
     background-color: white;
-    border-radius: 4px;
-    box-shadow: 2px 2px 10px grey;
+    border-radius: 3px;
     width: 325px;
     position: relative;
 }
@@ -67,13 +91,13 @@
 }
 .signInTitle{
     text-align: center;
-    font-weight: bold;
+    font-weight: 500;
     font-size: 1.1em;
     margin-bottom: -10px;
 }
 
 .formGroup{
-    margin: 10px 0px 20px 0px;
+    margin: 20px 0px 20px 0px;
 }
 
 .signUpLink{
@@ -85,9 +109,19 @@
 
 input {
     font-size: 1em;
-    width: 90%;
+    width: 100%;
     padding: 2px;
     margin-bottom: 10px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid #f2f2f2;
+}
+
+input:focus{
+    outline-width: 0;
+    border-bottom: 2px solid #070250;
+    margin-bottom: 9px;
 }
 
 .formGroup > input, .btnLogin, select{
@@ -95,9 +129,6 @@ input {
     outline: none;
 }
 
-.formGroup > input{
-    border: 1px solid lightGrey;
-}
 
 .btnLogin:active {
     color:#f2f2f2;
