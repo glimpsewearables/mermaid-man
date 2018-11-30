@@ -1,16 +1,12 @@
 import React, { Component } from 'react'
-
-import GlimpseGallery from "../GlimpseGallery/GlimpseGallery"
-
-import SliderWrapper1 from "../GlimpseGallery/SliderWrapper1"
-import SliderWrapper2 from "../GlimpseGallery/SliderWrapper2"
-import "./EventPage.css"
 import { connect } from 'react-redux'
 
+import GlimpseGallery from "../GlimpseGallery/GlimpseGallery"
+import SliderWrapper1 from "../GlimpseGallery/SliderWrapper1"
 import Banner from "./Banner"
 import Filters from "./Filters"
 
-
+import "./EventPage.css"
 
 class EventPage extends Component {
   constructor(){
@@ -18,14 +14,14 @@ class EventPage extends Component {
 
       this.state = {
         open: true,
-        media: []
+        media: [],
       }
 
       this.filterBy = this.filterBy.bind(this);
   }
 
   componentWillMount() {
-    fetch('http://52.32.199.147:8000/media/getAllImages', {
+    fetch('/media/getAllImages', {
       method: 'GET',
       headers: {'Content-Type':'application/json','Access-Control-Allow-Origin': '*',},
     }).then(res => res.json())
@@ -39,14 +35,21 @@ class EventPage extends Component {
     );
   }
 
-  filterBy(events){
-    console.log(events.target);
-    return
+  filterBy(filterName){
+    let filters  = { ...this.state.filters }
+    for(var i = 0; i < filters.length; i++){
+      if(filters[i].name == filterName){
+        filters.active = true;
+      } else{
+        filters.active = false;
+      }
+    }
+    this.setState({filters:filters});
   }
 
   render() {
-    const media = this.state.media;
-    console.log(media);
+    const { filters } = this.state;
+    const media = this.props.objects;
     const imgSrc = media.map(el => ({ "src":el.link}) );
     return (
       <div>
@@ -55,22 +58,33 @@ class EventPage extends Component {
           date={"12/01/2018"}
           dot={true}
           location={"Seattle, WA ~ Wamu Theater"}/>
-   {/**
-        <Filters 
-          onClick={this.filterBy}
-        />*/}
       
+      {/* Filters still being build
+       <Filters
+          onClick={this.filterBy}
+      /> 
+      */}
+      
+       {/* Option A: Curated carousel   */}
         <SliderWrapper1 
           color="#F8B800" 
           title={"CLiP Photos".split(" ")}
           photos={media}/>
+
+       {/* Option B: Gallery part 2 */}
+       <GlimpseGallery 
+          color="#070250" 
+          title={"Highlights".split(" ")}
+          photos={media.splice(1,4)} 
+          srcImgs={imgSrc.splice(1,4)}/> 
 
         <GlimpseGallery 
           color="#F8B800" 
           title={"CLiP Photos".split(" ")}
           date={"10/12/18"} 
           photos={media} 
-        srcImgs={imgSrc}/> 
+          srcImgs={imgSrc}/> 
+
       </div>
     )
   }

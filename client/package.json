@@ -20,6 +20,7 @@
     "react-burgers": "^1.0.4",
     "react-dom": "^16.4.2",
     "react-download-link": "^2.2.0",
+    "react-ga": "^2.5.6",
     "react-hamburger-menu": "^1.1.1",
     "react-images": "^0.5.19",
     "react-lazyload": "^2.3.0",
@@ -44,6 +45,6 @@
     "concurrently": "^4.0.1"
   },
   "author": "Michael",
-  "proxy": "http://52.32.199.147:8000",
+  "proxy": "http://localhost:5000",
   "license": "ISC"
 }

@@ -6,7 +6,10 @@
   flex-direction:column;  
   font-family:"Roboto", Helvetica, sans-serif;
   height: 100vh;
+  overflow-y:auto; 
+  overflow-x:hidden; 
 }
+
 .Gallery{
   flex:1;
 }

@@ -1,11 +1,17 @@
 import React, { Component } from 'react';
 
-import './App.css';
-
+// For js testing
+// import { runTest } from "./test"
 
 import DeviceSelect from "./components/Login/DeviceSelect"
 import Main from "./components/Main"
-import { runTest } from "./test"
+import './App.css';
+
+// google analytics
+import ReactGA from 'react-ga';
+ReactGA.initialize('UA-130211300-1');
+ReactGA.pageview(window.location.pathname + window.location.search);
+
 
 export default class App extends Component {
   constructor(props){
@@ -13,7 +19,7 @@ export default class App extends Component {
 
     this.state = {
       //login: sessionStorage.getItem("login"),
-      login: false,
+      login: true,
       error: null
     }
 
@@ -58,6 +64,7 @@ export default class App extends Component {
     let { login, error } = this.state;
     return (
       <div className="App">
+
         { !login 
         ?
           <DeviceSelect onDeviceSubmit={this.onDeviceSubmit}

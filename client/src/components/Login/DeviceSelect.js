@@ -43,6 +43,7 @@ class Login extends Component {
   }
 
   componentWillMount(){
+    // get all users... in case we need to validate in the future
     fetch('/api/user/', {
         method: 'GET',
         headers: {'Content-Type':'application/json','Access-Control-Allow-Origin': '*',},
@@ -55,6 +56,7 @@ class Login extends Component {
         }
       );
 
+      //get devices so we know if what is entered is a valid device.
       fetch('/api/device/', {
         method: 'GET',
         headers: {'Content-Type':'application/json','Access-Control-Allow-Origin': '*',},

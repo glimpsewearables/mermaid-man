@@ -7,7 +7,7 @@
 
 .pageEventTitle{
   position: relative;
-  top: 20%;
+  top: 15%;
   padding: 20px;
 }
 
@@ -17,7 +17,7 @@
 }
 
 .pageEventDetails > h2{
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 400;
 }
 .eventTitle{
@@ -54,21 +54,27 @@
 }
 
 .eventBanner{
-  height: 200px;
+  height: 150px;
   color: white;
+  background-color: black;
+  opacity: 0.85;
   background-position:0 35%;
   display: relative;
-  top: 50%;
-  margin-bottom: 100px;
+  top: 30%;
+  margin-bottom: 60px;
 }
 
 
 /****** Filters ********/
+.Filters{
+  z-index:3;
+  position: relative;
+}
 .filter{
   width: fit-content;
-  background-color: grey;
   color: white;
-  font-size: 1.2em;
+  font-size: 1.1em;
   border-radius: 18px;
   padding: 4px 10px 4px 10px;
+  margin: 10px;
 }

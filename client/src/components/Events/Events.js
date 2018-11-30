@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import GlimpseGallery from "../GlimpseGallery/GlimpseGallery";
-import './Event.css'
+import './Events.css'
 import '../../assets/welcome-img.jpg'
 
 const imgStyle = (url) =>{

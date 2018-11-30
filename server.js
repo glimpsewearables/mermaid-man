@@ -20,6 +20,39 @@ app.get('/media/getAllImages', (req, res) => {
   })
 });
 
+//called from login/DeviceSelect component
+app.get('/api/user/', (req, res) => {
+  request('http://52.88.225.198:8000/api/user', function (error, response, body) {
+  	if (!error && response.statusCode == 200) {
+      res.send({data: body});
+    } else {
+      console.log("error calling endpoint from express: " + error);
+    }
+  })
+});
+
+//called from login/DeviceSelect component
+app.get('/api/device/', (req, res) => {
+  request('http://52.88.225.198:8000/api/device', function (error, response, body) {
+  	if (!error && response.statusCode == 200) {
+      res.send({data: body});
+    } else {
+      console.log("error calling endpoint from express: " + error);
+    }
+  })
+});
+
+//called from App.js
+app.post('/api/device/', (req, res) => {
+  request('http://52.88.225.198:8000/api/device', function (error, response, body) {
+  	if (!error && response.statusCode == 200) {
+      res.send({data: body});
+    } else {
+      console.log("error calling endpoint from express: " + error);
+    }
+  })
+});
+
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
