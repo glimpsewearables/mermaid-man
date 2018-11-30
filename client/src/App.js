@@ -13,20 +13,22 @@ export default class App extends Component {
 
     this.state = {
       login: sessionStorage.getItem("login"),
+      error: null
     }
 
     this.onOpenChange = this.onOpenChange.bind(this);
     this.onDeviceSubmit = this.onDeviceSubmit.bind(this);
     this.onLogout = this.onLogout.bind(this)
+    this.login = this.login.bind(this);
   }
 
   onOpenChange(){
     this.setState({open: !this.state.open})
   }
 
-  onDeviceSubmit(){
-    sessionStorage.setItem("login", true)
-    this.setState({login : !this.state.login})
+  onDeviceSubmit(user){
+    console.log(user);
+    this.login(user);
   }
 
   onLogout(){
@@ -34,12 +36,32 @@ export default class App extends Component {
       this.setState({login: false})
   }
 
+  login(user){
+    var params = { "last_name": "LouisTest 11.29.18", "password": "LouisTest 11.29.18", "phone": "LouisTest 11.29.18" }
+    fetch('/api/user/', {
+        method: 'POST',
+        headers: {'Content-Type':'application/json','Access-Control-Allow-Origin': '*',},
+        body: JSON.stringify({...params,
+                  "email": user.email,
+                  "first_name": user.email}),
+      }).then( () => {
+        sessionStorage.setItem("login", true)
+        this.setState({login: true, setDevice: user.device})
+      }).catch((error) => {
+          console.log(error)
+        }
+      );
+  }
+
   render() {
+    let { login, error } = this.state;
     return (
       <div className="App">
-        { !this.state.login 
+        { !login 
         ?
-          <DeviceSelect onDeviceSubmit={this.onDeviceSubmit}/>
+          <DeviceSelect onDeviceSubmit={this.onDeviceSubmit}
+            error={error}
+          />
         : <Main 
             onLogout={this.onLogout}
           />

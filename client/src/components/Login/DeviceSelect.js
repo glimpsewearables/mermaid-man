@@ -4,38 +4,94 @@ import "./Login.css";
 import EventImage from "../../assets/EventImage"
 import TextField from "./TextField"
 
+function isValidUser(user, currUsers, devices){
+  if( filterDeviceId(user.device, devices).length < 1 ){
+    return "Invalid deviceID, please contact Glimpse member for assistance."
+  }if( isNameTaken(user.name, currUsers).length >= 1 ){
+    return "Name already used,"
+  }if(!validateEmail(user.email)){
+    return "Type a valid email address (e.g. example@gmail.com)"
+  }
+  return true
+}
+
+function isNameTaken(userName, users){
+  return users.filter( el => el.first_name == userName)
+}
+
+function filterDeviceId(id, devices){
+  return devices.filter( el => Number(el.device_number) == id )
+}
+
+function validateEmail(email, ) {
+  var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(String(email).toLowerCase());
+}
+
 class Login extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      device: null,
-      password: ""
+      user: { name:'', device:'', email:''},
+      currUsers: null,
+      devices:null
     };
-
-    this.onClick = this.onClick.bind(this);
+    
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChangeFor = this.handleChangeFor.bind(this);
   }
 
-  validateForm() {
-    return this.state.email.length > 0 && this.state.password.length > 0;
-  }
+  componentWillMount(){
+    fetch('/api/user/', {
+        method: 'GET',
+        headers: {'Content-Type':'application/json','Access-Control-Allow-Origin': '*',},
+      }).then(res => res.json())
+      .then(
+        (res) => {
+          this.setState({currUsers: res.objects})
+        },(error) => {
+          console.log(error)
+        }
+      );
 
-  handleChange = event => {
-    this.setState({[event.target.id]: event.target.value});
+      fetch('/api/device/', {
+        method: 'GET',
+        headers: {'Content-Type':'application/json','Access-Control-Allow-Origin': '*',},
+      }).then(res => res.json())
+      .then(
+        (res) => {
+          this.setState({devices: res.objects})
+        },(error) => {
+          console.log(error)
+        }
+      );
   }
 
   handleSubmit = event => {
     event.preventDefault();
+    console.log(isValidUser(this.state.user, this.state.currUsers, this.state.devices))
+    let isValid = isValidUser(this.state.user, this.state.currUsers, this.state.devices);
+    if(isValid){
+      // TODO: what will happen if use is the same?
+      this.props.onDeviceSubmit(this.state.user);
+    } else {
+      this.setState({error:isValid })
+    }
   }
-  
-  onClick(event) {
-    sessionStorage.setItem('device', this.state.device);
-    event.preventDefault();
-    this.props.onDeviceSubmit();
-    return
+
+  handleChangeFor= (propertyName) => (event) => {
+    let { user } = this.state;
+    user = {
+      ...user,
+      [propertyName]:event.target.value
+    };
+    this.setState({user});
   }
 
   render() {
+    console.log(this.state.currUsers);
+    const { name, email, device } = this.state.user; 
     return (
       <div className="Login">
         <div className="wordsToLiveByWrapper">
@@ -51,12 +107,12 @@ class Login extends Component {
                 <p className="signInTitle"> Choose Device</p>
 
                 <div className="formGroup">
-                    <TextField value="name" title="User Name"/>
-                    <TextField value="value" title="Email"/>
-                    <TextField value="device" title="Device Id"/>
+                    <TextField value={name} title="User Name" onChange={this.handleChangeFor("name")}/>
+                    <TextField value={email} title="Email" onChange={this.handleChangeFor("email")}/>
+                    <TextField value={device} title="Device Id" onChange={this.handleChangeFor("device")}/>
                 </div>
                 
-                <button type="submit" onClick={this.onClick} className="btnLogin">Select</button>
+                <button type="submit" onClick={this.handleSubmit} className="btnLogin">Select</button>
                 <p className="signUpLink">
                   Have a question? <a href="">email us</a>
                 </p>

@@ -1,16 +1,19 @@
-import React from 'react';
+import React, { Component } from 'react'
 
-const TextField = (props) => {
+export default class TextField extends Component {
+  render() {
+    let { title, value, onChange } = this.props;
+
     return (
         <div>
-            <label >{props.title}:</label> <br />
-            <input
-                type="text"
-                value={props.name}
-                onChange={props.onChange}
-            />
-        </div>
-    );
-};
-
-export default TextField;
+        <label >{ title }:</label> <br />
+        <input
+            name={value}
+            type="text"
+            value={value}
+            onChange={onChange}
+        />
+    </div>
+    )
+  }
+}

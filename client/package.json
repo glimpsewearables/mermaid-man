@@ -44,6 +44,6 @@
     "concurrently": "^4.0.1"
   },
   "author": "Michael",
-  "proxy": "http://localhost:5000/",
+  "proxy": "http://52.32.199.147:8000",
   "license": "ISC"
 }
