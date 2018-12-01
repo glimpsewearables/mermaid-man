@@ -22,7 +22,7 @@ class EventPage extends Component {
 
   // get content for a specific user retrieved via sessionstorage
   componentWillMount() {
-    const url = '/api/media/';
+    const url = '/media/getAllUserMedia/';
     // console.log(url);
     fetch(url, {
       method: 'GET',
