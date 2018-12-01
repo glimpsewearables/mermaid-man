@@ -44,7 +44,7 @@ export default class App extends Component {
   }
 
   login(user){
-    var params = { "last_name": "LouisTest 11.29.18", "password": "LouisTest 11.29.18", "phone": "LouisTest 11.29.18" }
+    /* var params = { "last_name": "LouisTest 11.29.18", "password": "LouisTest 11.29.18", "phone": "LouisTest 11.29.18" }
     fetch('/api/user/', {
             method: 'POST',
             headers: {'Content-Type':'application/json','Access-Control-Allow-Origin': '*',},
@@ -57,7 +57,7 @@ export default class App extends Component {
       }).catch((error) => {
           console.log(error)
         }
-      );
+      ); */ 
   }
 
   render() {

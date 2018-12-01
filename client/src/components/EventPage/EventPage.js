@@ -33,7 +33,7 @@ class EventPage extends Component {
       (res) => {
         let media = JSON.parse(res.data).media;
         let next = JSON.parse(res.data).meta.next;
-        this.setState({media: res.media, next: res.meta})
+        this.setState({media: media, next: next})
       },(error) => {
         console.log(error)
       }
