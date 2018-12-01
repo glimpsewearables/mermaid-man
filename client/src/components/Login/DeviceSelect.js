@@ -6,9 +6,9 @@ import TextField from "./TextField"
 
 function isValidUser(user, currUsers = [], devices = []){
   // debugging
-  console.log(currUsers, devices)
+  console.log(findDeviceId(user.device, devices))
 
-  if( findDeviceId(user.device, devices).length < 1 ){
+  if( findDeviceId(user.device, devices).length == 0 ){
     return "Invalid deviceID, please contact Glimpse member for assistance."
   }if( isNameTaken(user.name, currUsers).length >= 1 ){
     return "Name already used,"
@@ -55,7 +55,7 @@ class Login extends Component {
       }).then(res => res.json())
       .then(
         (res) => {
-          console.log(res);
+          console.log( JSON.parse(res.data).objects);
           this.setState({currUsers: JSON.parse(res.data).objects})
         },(error) => {
           console.log(error)

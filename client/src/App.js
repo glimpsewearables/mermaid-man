@@ -18,7 +18,7 @@ export default class App extends Component {
     super(props);
 
     this.state = {
-      login: sessionStorage.getItem("login"),
+      login: false,
       //login: true,
       error: null
     }

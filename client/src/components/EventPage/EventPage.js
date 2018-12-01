@@ -27,10 +27,12 @@ class EventPage extends Component {
     fetch(url, {
       method: 'GET',
       headers: {'Content-Type':'application/json','Access-Control-Allow-Origin': '*',},
-      user_id: sessionStorage.getItem("device")
+      body: sessionStorage.getItem("device")
     }).then(res => res.json())
     .then(
       (res) => {
+        let media = JSON.parse(res.data).media;
+        let next = JSON.parse(res.data).meta.next;
         this.setState({media: res.media, next: res.meta})
       },(error) => {
         console.log(error)
@@ -39,8 +41,7 @@ class EventPage extends Component {
   }
 
   render() {
-    const { filters } = this.state;
-    const media = this.props.objects;
+    const media = this.state.objects;
     const imgSrc = media.map(el => ({ "src":el.link}) );
     return (
       <div>
