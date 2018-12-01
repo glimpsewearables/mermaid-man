@@ -34,7 +34,7 @@ export default class App extends Component {
   }
 
   onDeviceSubmit(user){
-    console.log(user);
+    sessionStorage.setItem("device", user.device);
     this.login(user);
   }
 
@@ -46,11 +46,11 @@ export default class App extends Component {
   login(user){
     var params = { "last_name": "LouisTest 11.29.18", "password": "LouisTest 11.29.18", "phone": "LouisTest 11.29.18" }
     fetch('/api/user/', {
-        method: 'POST',
-        headers: {'Content-Type':'application/json','Access-Control-Allow-Origin': '*',},
-        body: JSON.stringify({...params,
-                  "email": user.email,
-                  "first_name": user.email}),
+            method: 'POST',
+            headers: {'Content-Type':'application/json','Access-Control-Allow-Origin': '*',},
+            body: JSON.stringify({...params,
+                                      "email": user.email,
+                                      "first_name": user.email}),
       }).then( () => {
         sessionStorage.setItem("login", true)
         this.setState({login: true, setDevice: user.device})
@@ -64,7 +64,6 @@ export default class App extends Component {
     let { login, error } = this.state;
     return (
       <div className="App">
-
         { !login 
         ?
           <DeviceSelect onDeviceSubmit={this.onDeviceSubmit}

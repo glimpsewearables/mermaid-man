@@ -5,11 +5,11 @@ import EventImage from "../../assets/EventImage"
 import TextField from "./TextField"
 
 function isValidUser(user, currUsers, devices){
-  if( filterDeviceId(user.device, devices).length < 1 ){
+  if( findDeviceId(user.device, devices).length < 1 ){
     return "Invalid deviceID, please contact Glimpse member for assistance."
   }if( isNameTaken(user.name, currUsers).length >= 1 ){
     return "Name already used,"
-  }if(!validateEmail(user.email)){
+  }if(!isValidEmail(user.email)){
     return "Type a valid email address (e.g. example@gmail.com)"
   }
   return true
@@ -19,11 +19,12 @@ function isNameTaken(userName, users){
   return users.filter( el => el.first_name == userName)
 }
 
-function filterDeviceId(id, devices){
+// helper function to validate DeviceId
+function findDeviceId(id, devices){
   return devices.filter( el => Number(el.device_number) == id )
 }
 
-function validateEmail(email, ) {
+function isValidEmail(email, ) {
   var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   return re.test(String(email).toLowerCase());
 }
@@ -56,7 +57,7 @@ class Login extends Component {
         }
       );
 
-      //get devices so we know if what is entered is a valid device.
+      //get devices so we know to validate device input from user
       fetch('/api/device/', {
         method: 'GET',
         headers: {'Content-Type':'application/json','Access-Control-Allow-Origin': '*',},
@@ -70,19 +71,18 @@ class Login extends Component {
       );
   }
 
+  // Validate user content
   handleSubmit = event => {
     event.preventDefault();
-    console.log(isValidUser(this.state.user, this.state.currUsers, this.state.devices))
     let isValid = isValidUser(this.state.user, this.state.currUsers, this.state.devices);
     if(isValid){
-      // TODO: what will happen if use is the same?
       this.props.onDeviceSubmit(this.state.user);
     } else {
       this.setState({error:isValid })
     }
   }
 
-  handleChangeFor= (propertyName) => (event) => {
+  handleChangeFor = (propertyName) => (event) => {
     let { user } = this.state;
     user = {
       ...user,
@@ -96,6 +96,7 @@ class Login extends Component {
     const { name, email, device } = this.state.user; 
     return (
       <div className="Login">
+
         <div className="wordsToLiveByWrapper">
           <div className="wordsToLiveBy">
             <b>Welcome to the unveiling of the first CLiP wearable at Louis the Child.</b> 
@@ -103,17 +104,16 @@ class Login extends Component {
           </div>
           <EventImage name="eventImage" />
         </div>
+
         <div className="loginWrapper">
             <h1 className="logoTitleLogin">CLiP</h1>
             <form action="/action_page.php" className="button">
                 <p className="signInTitle"> Sign In</p>
-
                 <div className="formGroup">
                     <TextField value={name} title="User Name" onChange={this.handleChangeFor("name")}/>
                     <TextField value={email} title="Email" onChange={this.handleChangeFor("email")}/>
                     <TextField value={device} title="Device Id" onChange={this.handleChangeFor("device")}/>
                 </div>
-                
                 <button type="submit" onClick={this.handleSubmit} className="btnLogin">Select</button>
                 <p className="signUpLink">
                   Have a question? <a href="">email us</a>

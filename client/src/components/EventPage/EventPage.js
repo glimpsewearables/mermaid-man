@@ -20,31 +20,21 @@ class EventPage extends Component {
       this.filterBy = this.filterBy.bind(this);
   }
 
+  // get content for a specific user retrieved via sessionstorage
   componentWillMount() {
-    fetch('/media/getAllImages', {
+    const url = '/api/media/' + sessionStorage.getItem("device");
+    // console.log(url);
+    fetch(url, {
       method: 'GET',
       headers: {'Content-Type':'application/json','Access-Control-Allow-Origin': '*',},
     }).then(res => res.json())
     .then(
       (res) => {
-        console.log(res.media)
-        this.setState({media: res.media})
+        this.setState({media: res.media, next: res.meta})
       },(error) => {
         console.log(error)
       }
     );
-  }
-
-  filterBy(filterName){
-    let filters  = { ...this.state.filters }
-    for(var i = 0; i < filters.length; i++){
-      if(filters[i].name == filterName){
-        filters.active = true;
-      } else{
-        filters.active = false;
-      }
-    }
-    this.setState({filters:filters});
   }
 
   render() {
@@ -59,7 +49,7 @@ class EventPage extends Component {
           dot={true}
           location={"Seattle, WA ~ Wamu Theater"}/>
       
-      {/* Filters still being build
+      {/* Experimental component
        <Filters
           onClick={this.filterBy}
       /> 
@@ -71,7 +61,7 @@ class EventPage extends Component {
           title={"CLiP Photos".split(" ")}
           photos={media}/>
 
-       {/* Option B: Gallery part 2 */}
+       {/* Option B: Currated Gallery   */}
        <GlimpseGallery 
           color="#070250" 
           title={"Highlights".split(" ")}
@@ -88,8 +78,22 @@ class EventPage extends Component {
       </div>
     )
   }
+
+  // Experimental component ignore for Louis
+  filterBy(filterName){
+    let filters  = { ...this.state.filters }
+    for(var i = 0; i < filters.length; i++){
+      if(filters[i].name == filterName){
+        filters.active = true;
+      } else{
+        filters.active = false;
+      }
+    }
+    this.setState({filters:filters});
+  }
 }
 
+// Redux
 function mapStateToProps(state){
     return {
         objects: state.objects,
