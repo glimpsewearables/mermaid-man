@@ -8,7 +8,7 @@ function isValidUser(user, currUsers = [], devices = []){
   // debugging
   console.log(currUsers, devices)
 
-  if( findDeviceId(user.device, devices).length < 1 ){git
+  if( findDeviceId(user.device, devices).length < 1 ){
     return "Invalid deviceID, please contact Glimpse member for assistance."
   }if( isNameTaken(user.name, currUsers).length >= 1 ){
     return "Name already used,"
