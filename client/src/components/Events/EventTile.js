@@ -8,7 +8,7 @@ const createBackground = (url) =>{
 
 export default class EventTile extends Component {
   render() {
-    const { imgUrl, onClick } = this.props;
+    const { imgUrl, onClick, title, date, location } = this.props;
     const imgStyle = createBackground(imgUrl);
     console.log(onClick);
     return (
@@ -17,12 +17,12 @@ export default class EventTile extends Component {
                 <div className="eventTile" style={imgStyle} >
                 </div>
                 <div className="eventTileTitle">
-                <h2>Louis the Child</h2>
+                <h2>{ title }</h2>
                     <div className="eventTitleDetails">
-                        <h3>12/1/18 </h3>
+                        <h3>{ date }</h3>
                         <span className="dot"></span>
 
-                        <h3> Seattle, WA</h3>
+                        <h3> { location }</h3>
                     </div>
                 </div>
             </div>
