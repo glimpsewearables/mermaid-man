@@ -120,7 +120,7 @@ input {
 
 input:focus{
     outline-width: 0;
-    border-bottom: 2px solid #070250;
+    border-bottom: 2px solid #188fff;
     margin-bottom: 9px;
 }
 
@@ -147,7 +147,7 @@ select{
 
 .btnLogin{
     border: none;
-    background-color: #1BACEB;
+    background-color: #188fff;
     color: white;
     font-size: 500;
 }

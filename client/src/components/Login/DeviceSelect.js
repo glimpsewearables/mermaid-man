@@ -4,7 +4,10 @@ import "./Login.css";
 import EventImage from "../../assets/EventImage"
 import TextField from "./TextField"
 
-function isValidUser(user, currUsers, devices){
+function isValidUser(user, currUsers = [], devices = []){
+  // debugging
+  console.log(currUsers, devices)
+
   if( findDeviceId(user.device, devices).length < 1 ){
     return "Invalid deviceID, please contact Glimpse member for assistance."
   }if( isNameTaken(user.name, currUsers).length >= 1 ){
@@ -36,7 +39,8 @@ class Login extends Component {
     this.state = {
       user: { name:'', device:'', email:''},
       currUsers: null,
-      devices:null
+      devices:null,
+      errorMsg: ''
     };
     
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -78,7 +82,7 @@ class Login extends Component {
     if(isValid){
       this.props.onDeviceSubmit(this.state.user);
     } else {
-      this.setState({error:isValid })
+      this.setState({errorMsg:isValid })
     }
   }
 
@@ -93,7 +97,7 @@ class Login extends Component {
 
   render() {
     console.log(this.state.currUsers);
-    const { name, email, device } = this.state.user; 
+    const { name, email, device, errorMsg } = this.state.user; 
     return (
       <div className="Login">
 
@@ -109,6 +113,11 @@ class Login extends Component {
             <h1 className="logoTitleLogin">CLiP</h1>
             <form action="/action_page.php" className="button">
                 <p className="signInTitle"> Sign In</p>
+                {typeof(errorMsg) === 'string'
+                ? <p>
+                    {errorMsg}
+                </p>
+                : null }
                 <div className="formGroup">
                     <TextField value={name} title="User Name" onChange={this.handleChangeFor("name")}/>
                     <TextField value={email} title="Email" onChange={this.handleChangeFor("email")}/>
