@@ -2,6 +2,12 @@
   "name": "glimpsewebapp2",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": ">=11.3.0"
+  },
+  "resolutions": {
+    "**/event-stream": "^4.0.1"
+  },
   "dependencies": {
     "ajv": "^6.5.3",
     "axios": "^0.18.0",
