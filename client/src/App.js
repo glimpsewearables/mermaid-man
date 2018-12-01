@@ -18,8 +18,8 @@ export default class App extends Component {
     super(props);
 
     this.state = {
-      login: sessionStorage.getItem("login"),
-      //login: true,
+      //login: sessionStorage.getItem("login"),
+      login: true,
       error: null
     }
 
