@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "main": "server.js",
   "license": "ISC",
+  "engines": {
+    "node": ">=11.3.0"
+  },
   "dependencies": {
     "@fortawesome/fontawesome": "^1.1.8",
     "ajv": "^6.5.3",
