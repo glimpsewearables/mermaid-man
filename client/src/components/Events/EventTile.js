@@ -8,11 +8,12 @@ const createBackground = (url) =>{
 
 export default class EventTile extends Component {
   render() {
-    const { imgUrl, onEventSelect } = this.props;
+    const { imgUrl, onClick } = this.props;
     const imgStyle = createBackground(imgUrl);
+    console.log(onClick);
     return (
         <div>
-            <div className="eventContainer" onClick={onEventSelect}>
+            <div className="eventContainer" onClick={onClick}>
                 <div className="eventTile" style={imgStyle} >
                 </div>
                 <div className="eventTileTitle">
