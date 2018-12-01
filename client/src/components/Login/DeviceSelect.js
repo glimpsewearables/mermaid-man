@@ -55,6 +55,7 @@ class Login extends Component {
       }).then(res => res.json())
       .then(
         (res) => {
+          console.log(res);
           this.setState({currUsers: res.objects})
         },(error) => {
           console.log(error)
