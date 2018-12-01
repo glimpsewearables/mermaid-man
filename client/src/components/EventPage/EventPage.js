@@ -22,11 +22,12 @@ class EventPage extends Component {
 
   // get content for a specific user retrieved via sessionstorage
   componentWillMount() {
-    const url = '/api/media/' + sessionStorage.getItem("device");
+    const url = '/api/media/';
     // console.log(url);
     fetch(url, {
       method: 'GET',
       headers: {'Content-Type':'application/json','Access-Control-Allow-Origin': '*',},
+      user_id: sessionStorage.getItem("device")
     }).then(res => res.json())
     .then(
       (res) => {

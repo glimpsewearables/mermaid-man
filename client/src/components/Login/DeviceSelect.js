@@ -56,7 +56,7 @@ class Login extends Component {
       .then(
         (res) => {
           console.log(res);
-          this.setState({currUsers: res.objects})
+          this.setState({currUsers: JSON.parse(res.data).objects})
         },(error) => {
           console.log(error)
         }
@@ -69,7 +69,7 @@ class Login extends Component {
       }).then(res => res.json())
       .then(
         (res) => {
-          this.setState({devices: res.objects})
+          this.setState({devices: JSON.parse(res.data).objects})
         },(error) => {
           console.log(error)
         }
