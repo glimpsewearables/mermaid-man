@@ -73,14 +73,7 @@ class GlimpseGallery extends Component {
             title={title}/>
           { photoSlides }
         </div>
-        <Lightbox 
-          onClick={this.openLightbox}
-          images={imgSrc}
-          onClose={this.closeLightbox}
-          onClickPrev={this.gotoPrevious}
-          onClickNext={this.gotoNext}
-          currentImage={currentImage}
-          isOpen={lightboxIsOpen} />
+        
       </div>
     )
   }
