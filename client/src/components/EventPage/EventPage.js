@@ -23,7 +23,7 @@ class EventPage extends Component {
 
   // get content for a specific user retrieved via sessionstorage
   componentWillMount() {
-    const url = '/media/getAllUserMedia/' + sessionStorage.getItem("device");
+    const url = '/media/getAllUserMedia/1';
     // console.log(url);
     fetch(url, {
       method: 'GET',
@@ -49,10 +49,10 @@ class EventPage extends Component {
     return (
       <div>
         <Banner 
-          title={"Louis the Child"}
+          title={"Capitol Records"}
           date={"12/01/2018"}
           dot={true}
-          location={"Seattle, WA ~ Wamu Theater"}/>
+          location={"Los Angeles, WA"}/>
       
       {/* Experimental component
        <Filters
