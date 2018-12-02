@@ -15,6 +15,7 @@ class EventPage extends Component {
       this.state = {
         open: true,
         media: [],
+        objects: [],
       }
 
       this.filterBy = this.filterBy.bind(this);
@@ -42,6 +43,7 @@ class EventPage extends Component {
 
   render() {
     const media = this.state.objects;
+    console.log(media);
     const imgSrc = media.map(el => ({ "src":el.link}) );
     return (
       <div>

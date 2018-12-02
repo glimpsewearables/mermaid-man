@@ -1,16 +1,21 @@
 import React, { Component } from 'react'
 
-const createBackground = (url) =>{
-    return  ({ backgroundImage: ['url(',url,  ')'].join(''),
-              backgroundSize: "cover",
-                        })
-  }
-
 export default class EventTile extends Component {
+    constructor(props){
+        super(props)
+
+        this.createBackground = this.createBackground.bind(this)
+    }
+    createBackground = (url) =>{
+        return  ({ backgroundImage: ['url(',url,  ')'].join(''),
+                  backgroundSize: "cover",
+                            })
+      }
+    
   render() {
     const { imgUrl, onClick, title, date, location } = this.props;
-    const imgStyle = createBackground(imgUrl);
-    console.log(onClick);
+    const imgStyle = this.createBackground(imgUrl);
+    console.log(imgUrl, title);
     return (
         <div>
             <div className="eventContainer" onClick={onClick}>

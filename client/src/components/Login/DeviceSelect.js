@@ -6,7 +6,7 @@ import TextField from "./TextField"
 
 function isValidUser(user, currUsers = [], devices = []){
   // debugging
-  console.log(findDeviceId(user.device, devices))
+  console.log(findDeviceId(user.device, currUsers))
 
   if( findDeviceId(user.device, devices).length == 0 ){
     return "Invalid deviceID, please contact Glimpse member for assistance."
@@ -79,12 +79,16 @@ class Login extends Component {
   // Validate user content
   handleSubmit = event => {
     event.preventDefault();
-    let isValid = isValidUser(this.state.user, this.state.currUsers, this.state.devices);
-    if(isValid){
+    this.props.onDeviceSubmit(this.state.user);
+
+    //let isValid = isValidUser(this.state.user, this.state.currUsers, this.state.devices);
+    console.log(true);
+    /*
+    if(true){
       this.props.onDeviceSubmit(this.state.user);
     } else {
       this.setState({errorMsg:isValid })
-    }
+    } */
   }
 
   handleChangeFor = (propertyName) => (event) => {
