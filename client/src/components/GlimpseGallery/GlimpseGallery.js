@@ -53,15 +53,15 @@ class GlimpseGallery extends Component {
   }
 
   render() {
-    const { photos, title, date, color} = this.props;
-    const { currentImage, lightboxIsOpen, objects } = this.state;
+    const { title, date, color} = this.props;
+    const { currentImage, lightboxIsOpen, photos} = this.state;
     const imgSrc = photos.map(el => ({ src:el.link, media: el.media_type}) );
     const photoSlides = photos.map((item, index) => <GridMedia key={index}
                                                                 videoName={"gridVideo"}
                                                                 cssName={"gridMedia"}
                                                                 src={item.link} 
                                                                 media={item.media_type}
-                                                                openLightbox={this.openLightbox}   
+                                                                onClick={this.openLightbox}   
                                                                 index={index} />);
 
     return (
@@ -80,7 +80,6 @@ class GlimpseGallery extends Component {
           onClickNext={this.gotoNext}
           currentImage={currentImage}
           isOpen={lightboxIsOpen} />
-        
       </div>
     )
   }
