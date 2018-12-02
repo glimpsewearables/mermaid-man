@@ -10,8 +10,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'client/build')));
 
 
-app.get('/media/getAllImages', (req, res) => {
-  request('http://52.88.225.198:8000/api/media', function (error, response, body) {
+app.get('/media/getAllUserMedia', (req, res) => {
+  url = 'http://52.88.225.198:8000/media/getAllUserMedia/' + req.body;
+  console.log(url);
+  request(url, function (error, response, body) {
   	if (!error && response.statusCode == 200) {
       res.send({data: body});
     } else {
