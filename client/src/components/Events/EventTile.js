@@ -17,18 +17,16 @@ export default class EventTile extends Component {
     const imgStyle = this.createBackground(imgUrl);
     console.log(imgUrl, title);
     return (
-        <div>
-            <div className="eventContainer" onClick={onClick}>
-                <div className="eventTile" style={imgStyle} >
-                </div>
-                <div className="eventTileTitle">
-                <h2>{ title }</h2>
-                    <div className="eventTitleDetails">
-                        <h3>{ date }</h3>
-                        <span className="dot"></span>
+        <div className="eventContainer" onClick={onClick}>
+            <div className="eventTile" style={imgStyle} >
+            </div>
+            <div className="eventTileTitle">
+            <h2>{ title }</h2>
+                <div className="eventTitleDetails">
+                    <h3>{ date }</h3>
+                    <span className="dot"></span>
 
-                        <h3> { location }</h3>
-                    </div>
+                    <h3> { location }</h3>
                 </div>
             </div>
         </div>

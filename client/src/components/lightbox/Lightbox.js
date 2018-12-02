@@ -285,7 +285,6 @@ class Lightbox extends Component {
 				
 			);
 		} else{
-			console.log(image.src)
 			return (
 				<div class="video-wrapper" className={css(this.classes.videoWrapper)}>
 					<video id="iframe" width="100%" controls  className={css(this.classes.video)}>
