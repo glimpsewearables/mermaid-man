@@ -26,7 +26,7 @@ class GlimpseGallery extends Component {
   }
 
   openLightbox(index) {
-    console.log("onclicked")
+    console.log(index);
     this.setState({
       currentImage: index,
       lightboxIsOpen: true,

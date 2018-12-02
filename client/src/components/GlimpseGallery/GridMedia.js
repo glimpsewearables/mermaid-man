@@ -10,22 +10,22 @@ export default class Photo extends Component {
   
   onClick(){
     console.log(this.props.index);
-    this.props.openLightbox(this.props.index)
+    this.props.onClick(this.props.index)
   }
 
   render() {
-    const { src, onClick, cssName, media, videoName, index } = this.props;
+    const { src,  cssName, media, videoName, index } = this.props;
     if(media === "image"){
       return (
         <div className={cssName}>
           <LazyLoad height={100}>
-            <img src={src} onClick={onClick(index)} />
+            <img src={src} onClick={this.onClick} />
           </LazyLoad>
         </div>
       )
     } else {
       return(
-        <div className={cssName} onClick={() => onClick(index) }>
+        <div className={cssName} onClick={this.onClick}>
           <video className={videoName} id="iframe" width="100%" controls >
             <source src={src} type="video/mp4" />
             Your browser does not currenttly support our video platform.

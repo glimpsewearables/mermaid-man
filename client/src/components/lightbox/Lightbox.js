@@ -257,8 +257,8 @@ class Lightbox extends Component {
 		const image = images[currentImage];
 		//const sourceSet = normalizeSourceSet(image);
 		const sourceSet = false;
-		//const sizes = sourceSet ? '100vw' : null;
-		const sizes = sourceSet;
+		const sizes = sourceSet ? '100vw' : null;
+
 		const thumbnailsSize = showThumbnails ? this.theme.thumbnail.size : 0;
 		const heightOffset = `${this.theme.header.height + this.theme.footer.height + thumbnailsSize
 			+ (this.theme.container.gutter.vertical)}px`;
@@ -286,7 +286,7 @@ class Lightbox extends Component {
 			);
 		} else{
 			return (
-				<div class="video-wrapper" className={css(this.classes.videoWrapper)}>
+				<div class="video-wrapper" className={css(this.classes.videoWrapper)} key={image.index}>
 					<video id="iframe" width="100%" controls  className={css(this.classes.video)}>
 						<source src={image.src} type="video/mp4" />
 						Your browser does not currenttly support our video platform.
@@ -296,10 +296,6 @@ class Lightbox extends Component {
 		}
 	}
 
-	holder1(){
-				{/* 
-			  */}
-	}
 	renderThumbnails () {
 		const { images, currentImage, onClickThumbnail, showThumbnails, thumbnailOffset } = this.props;
 
