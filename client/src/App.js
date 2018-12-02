@@ -46,7 +46,7 @@ export default class App extends Component {
 
   login(user){
     this.setState({login: true, setDevice: user.device})
-
+    sessionStorage.setItem("device", user.device)
     /* var params = { "last_name": "LouisTest 11.29.18", "password": "LouisTest 11.29.18", "phone": "LouisTest 11.29.18" }
     fetch('/api/user/', {
             method: 'POST',
