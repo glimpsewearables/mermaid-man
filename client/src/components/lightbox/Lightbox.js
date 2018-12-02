@@ -257,8 +257,8 @@ class Lightbox extends Component {
 		const image = images[currentImage];
 		//const sourceSet = normalizeSourceSet(image);
 		const sourceSet = false;
-		const sizes = sourceSet ? '100vw' : null;
-		console.log(currentImage)
+		//const sizes = sourceSet ? '100vw' : null;
+		const sizes = sourceSet;
 		const thumbnailsSize = showThumbnails ? this.theme.thumbnail.size : 0;
 		const heightOffset = `${this.theme.header.height + this.theme.footer.height + thumbnailsSize
 			+ (this.theme.container.gutter.vertical)}px`;
@@ -285,6 +285,7 @@ class Lightbox extends Component {
 				
 			);
 		} else{
+			console.log(image.src)
 			return (
 				<div class="video-wrapper" className={css(this.classes.videoWrapper)}>
 					<video id="iframe" width="100%" controls  className={css(this.classes.video)}>
