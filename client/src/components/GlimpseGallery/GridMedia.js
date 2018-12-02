@@ -15,7 +15,6 @@ export default class Photo extends Component {
 
   render() {
     const { src, onClick, cssName, media, videoName } = this.props;
-    console.log(onClick);
     if(media === "image"){
       return (
         <div className={cssName}>

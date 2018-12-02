@@ -45,7 +45,6 @@ class EventPage extends Component {
   render() {
     const media = this.state.media;
     const imgSrc = media.map(el => ({ "src":el.link}) );
-    console.log("imgs", imgSrc);
     return (
       <div>
         <Banner 
