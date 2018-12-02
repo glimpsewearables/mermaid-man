@@ -113,14 +113,14 @@ class Lightbox extends Component {
 	preloadImageData (data, onload) {
 		if (!data) return;
 		const img = new Image();
-		const sourceSet = normalizeSourceSet(data);
-
+		//const sourceSet = normalizeSourceSet(data);
+		//const sourceSet = data;
 		// TODO: add error handling for missing images
 		img.onerror = onload;
 		img.onload = onload;
 		img.src = data.src;
 
-		if (sourceSet) img.srcset = sourceSet;
+		//if (sourceSet) img.srcset = sourceSet;
 
 		return img;
 	}
@@ -252,13 +252,13 @@ class Lightbox extends Component {
 		} = this.props;
 
 		const { imageLoaded } = this.state;
-
 		if (!images || !images.length) return null;
 
 		const image = images[currentImage];
-		const sourceSet = normalizeSourceSet(image);
+		//const sourceSet = normalizeSourceSet(image);
+		const sourceSet = false;
 		const sizes = sourceSet ? '100vw' : null;
-
+		console.log(currentImage)
 		const thumbnailsSize = showThumbnails ? this.theme.thumbnail.size : 0;
 		const heightOffset = `${this.theme.header.height + this.theme.footer.height + thumbnailsSize
 			+ (this.theme.container.gutter.vertical)}px`;
@@ -276,7 +276,6 @@ class Lightbox extends Component {
 						sizes={sizes}
 						alt={image.alt}
 						src={image.src}
-						srcSet={sourceSet}
 						style={{
 							cursor: onClickImage ? 'pointer' : 'auto',
 							maxHeight: `calc(100vh - ${heightOffset})`,
