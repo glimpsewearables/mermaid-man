@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'client/build')));
 
 
-app.get('/media/getAllUserMedia/:useId', (req, res) => {
+app.get('/media/getAllUserMedia/:userId', (req, res) => {
   url = 'http://52.88.225.198:8000/media/getAllUserMedia/' + req.params.userId;
   console.log(url);
   request(url, function (error, response, body) {
