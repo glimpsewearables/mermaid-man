@@ -26,7 +26,7 @@ export default class Photo extends Component {
     } else {
       return(
         <div className={cssName}>
-          <video className={videoName} id="iframe" width="100%" onClick={onClick}>
+          <video className={videoName} id="iframe" width="100%" onClick={onClick} controls>
             <source src={src} type="video/mp4" />
             Your browser does not currenttly support our video platform.
           </video>

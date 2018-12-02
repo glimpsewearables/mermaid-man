@@ -31,10 +31,11 @@ class EventPage extends Component {
     }).then( res => res.json() )
     .then(
       (res) => {
-        console.log(res)
-        console.log('entered response')
+        let d = JSON.parse(res.data).raw_media.media;
+        console.log(d)
+        //console.log('entered response')
         //console.log("fetch media:" , res);
-        //this.setState({media: res.raw_media_media})
+        this.setState({media: d})
       },(error) => {
         console.log(error)
       }
@@ -42,9 +43,9 @@ class EventPage extends Component {
   }
 
   render() {
-    const media = this.state.objects;
-    console.log("media:", media);
+    const media = this.state.media;
     const imgSrc = media.map(el => ({ "src":el.link}) );
+    console.log("imgs", imgSrc);
     return (
       <div>
         <Banner 
@@ -59,26 +60,25 @@ class EventPage extends Component {
       /> 
       */}
       
-       {/* Option A: Curated carousel   */}
+       {/* Option A: Curated carousel 
         <SliderWrapper1 
           color="#F8B800" 
           title={"CLiP Photos".split(" ")}
-          photos={media}/>
+          photos={media} />  */}
 
-       {/* Option B: Currated Gallery   */}
+       {/* Option B: Currated Gallery  
        <GlimpseGallery 
           color="#070250" 
           title={"Highlights".split(" ")}
           photos={media.splice(1,4)} 
-          srcImgs={imgSrc.splice(1,4)}/> 
+          srcImgs={imgSrc.splice(1,4)} />  */}
 
         <GlimpseGallery 
           color="#F8B800" 
           title={"CLiP Photos".split(" ")}
           date={"10/12/18"} 
           photos={media} 
-          srcImgs={imgSrc}/> 
-
+          srcImgs={imgSrc} /> 
       </div>
     )
   }
