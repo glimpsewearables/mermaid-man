@@ -5,15 +5,6 @@ import TitleCard from "./TitleCard"
 
 import "../../slick/slick.css"
 import "../../slick/slick-theme.css"
-/*
-
-if(item.src.split(".")[3] === "mp4"){
-                            console.log("caught video");
-                            console.log(index);
-                            <Video src={item.src} />
-                          } else{
-
-*/
 
 export default class SliderWrapper extends Component {
     constructor(props){
@@ -73,22 +64,21 @@ export default class SliderWrapper extends Component {
     return (
       <div className="grid-container">
         <Slider {...settings}>
-         {/* <div className="highlightSlide" >
+          {/* <div className="highlightSlide" >
             <TitleCard 
               cssName={"sliderMedia"}
               color={color}
               title={title}/>
-    </div> */}
-          { photos.map((item, index) => 
-                                      <div className="highlightSlide" key={index} >
-                                            <GridMedia 
-                                                  videoName={"sliderVideo"}
-                                                  cssName={"sliderMedia"}
-                                                  media={item.media_type}
-                                                  src={item.link} 
-                                                  openLightbox={this.openLightbox}   
-                                                  index={index} />
-                                      </div>)}
+          </div> */}
+          { photos.map((item, index) => <div className="highlightSlide" key={index} >
+                <GridMedia 
+                      videoName={"sliderVideo"}
+                      cssName={"sliderMedia"}
+                      media={item.media_type}
+                      src={item.link} 
+                      openLightbox={this.openLightbox}   
+                      index={index} />
+          </div>)}
         </Slider>
       </div>
     );

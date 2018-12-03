@@ -5,9 +5,8 @@ import EventImage from "../../assets/EventImage"
 import TextField from "./TextField"
 
 function isValidUser(user, currUsers = [], devices = []){
-  // debugging
-  console.log(findDeviceId(user.device, currUsers))
-
+  console.log(currUsers, devices);
+  
   if( findDeviceId(user.device, devices).length == 0 ){
     return "Invalid deviceID, please contact Glimpse member for assistance."
   }if( isNameTaken(user.name, currUsers).length >= 1 ){

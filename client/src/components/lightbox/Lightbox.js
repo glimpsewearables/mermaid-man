@@ -264,8 +264,8 @@ class Lightbox extends Component {
 			+ (this.theme.container.gutter.vertical)}px`;
 		if(image.media === "image"){
 			return (
-				<figure className={css(this.classes.figure)}>
-					{/*
+				<figure className={css(this.classes.figure)} key={image.index}>
+					{/* 
 						Re-implement when react warning "unknown props"
 						https://fb.me/react-unknown-prop is resolved
 					<Swipeable onSwipedLeft={this.gotoNext} onSwipedRight={this.gotoPrev} /> */}

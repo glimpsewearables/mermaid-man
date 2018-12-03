@@ -1,6 +1,4 @@
 import React, { Component } from 'react'
-import axios from 'axios'
-import { connect } from 'react-redux'
 
 import Lightbox from '../lightbox/Lightbox'
 import GridMedia from "./GridMedia.js"
@@ -26,7 +24,6 @@ class GlimpseGallery extends Component {
   }
 
   openLightbox(index) {
-    console.log(index);
     this.setState({
       currentImage: index,
       lightboxIsOpen: true,
@@ -69,6 +66,7 @@ class GlimpseGallery extends Component {
           <TitleCard 
             color={color}
             title={title}/>
+
           { photoSlides }
         </div>
         <Lightbox 
