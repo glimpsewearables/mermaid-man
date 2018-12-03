@@ -9,7 +9,7 @@ const imgStyle = (url) =>{
 export default class Banner extends Component {
   render() {
     let { title, date , location, dot } = this.props;
-    const backgroundImg = "https://edm.com/.image/ar_16:9%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cg_faces:center%2Cq_auto:good%2Cw_768/MTU2MTc5NzMwODA5MjM0NzAx/betternot_bts-45-2.jpg"
+    const backgroundImg = "https://www.discoverlosangeles.com/sites/default/files/styles/article_image/public/media/Activities/Points%20of%20Interest/capitol-records-building.jpg"
     const style = imgStyle(backgroundImg);
 
     return (

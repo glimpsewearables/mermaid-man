@@ -4,8 +4,11 @@ import "./Login.css";
 import EventImage from "../../assets/EventImage"
 import TextField from "./TextField"
 
-function isValidUser(user, currUsers, devices){
-  if( findDeviceId(user.device, devices).length < 1 ){
+function isValidUser(user, currUsers = [], devices = []){
+  // debugging
+  console.log(findDeviceId(user.device, currUsers))
+
+  if( findDeviceId(user.device, devices).length == 0 ){
     return "Invalid deviceID, please contact Glimpse member for assistance."
   }if( isNameTaken(user.name, currUsers).length >= 1 ){
     return "Name already used,"
@@ -36,7 +39,8 @@ class Login extends Component {
     this.state = {
       user: { name:'', device:'', email:''},
       currUsers: null,
-      devices:null
+      devices:null,
+      errorMsg: ''
     };
     
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -51,7 +55,8 @@ class Login extends Component {
       }).then(res => res.json())
       .then(
         (res) => {
-          this.setState({currUsers: res.objects})
+          console.log( JSON.parse(res.data).objects);
+          this.setState({currUsers: JSON.parse(res.data).objects})
         },(error) => {
           console.log(error)
         }
@@ -64,7 +69,7 @@ class Login extends Component {
       }).then(res => res.json())
       .then(
         (res) => {
-          this.setState({devices: res.objects})
+          this.setState({devices: JSON.parse(res.data).objects})
         },(error) => {
           console.log(error)
         }
@@ -74,12 +79,16 @@ class Login extends Component {
   // Validate user content
   handleSubmit = event => {
     event.preventDefault();
-    let isValid = isValidUser(this.state.user, this.state.currUsers, this.state.devices);
-    if(isValid){
+    this.props.onDeviceSubmit(this.state.user);
+
+    //let isValid = isValidUser(this.state.user, this.state.currUsers, this.state.devices);
+    console.log(true);
+    /*
+    if(true){
       this.props.onDeviceSubmit(this.state.user);
     } else {
-      this.setState({error:isValid })
-    }
+      this.setState({errorMsg:isValid })
+    } */
   }
 
   handleChangeFor = (propertyName) => (event) => {
@@ -93,7 +102,7 @@ class Login extends Component {
 
   render() {
     console.log(this.state.currUsers);
-    const { name, email, device } = this.state.user; 
+    const { name, email, device, errorMsg } = this.state.user; 
     return (
       <div className="Login">
 
@@ -109,6 +118,11 @@ class Login extends Component {
             <h1 className="logoTitleLogin">CLiP</h1>
             <form action="/action_page.php" className="button">
                 <p className="signInTitle"> Sign In</p>
+                {typeof(errorMsg) === 'string'
+                ? <p>
+                    {errorMsg}
+                </p>
+                : null }
                 <div className="formGroup">
                     <TextField value={name} title="User Name" onChange={this.handleChangeFor("name")}/>
                     <TextField value={email} title="Email" onChange={this.handleChangeFor("email")}/>

@@ -26,6 +26,7 @@ class GlimpseGallery extends Component {
   }
 
   openLightbox(index) {
+    console.log(index);
     this.setState({
       currentImage: index,
       lightboxIsOpen: true,
@@ -52,15 +53,14 @@ class GlimpseGallery extends Component {
   }
 
   render() {
-    const { photos, title, date, color} = this.props;
-    const { currentImage, lightboxIsOpen, objects } = this.state;
-    const imgSrc = photos.map(el => ({ src:el.link, media: el.media_type}) );
+    const { title, date, color, photos, srcImgs} = this.props;
+    const { currentImage, lightboxIsOpen} = this.state;
     const photoSlides = photos.map((item, index) => <GridMedia key={index}
                                                                 videoName={"gridVideo"}
                                                                 cssName={"gridMedia"}
                                                                 src={item.link} 
                                                                 media={item.media_type}
-                                                                openLightbox={this.openLightbox}   
+                                                                onClick={this.openLightbox}   
                                                                 index={index} />);
 
     return (
@@ -73,13 +73,12 @@ class GlimpseGallery extends Component {
         </div>
         <Lightbox 
           onClick={this.openLightbox}
-          images={imgSrc}
+          images={srcImgs}
           onClose={this.closeLightbox}
           onClickPrev={this.gotoPrevious}
           onClickNext={this.gotoNext}
           currentImage={currentImage}
           isOpen={lightboxIsOpen} />
-        
       </div>
     )
   }

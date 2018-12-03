@@ -113,14 +113,14 @@ class Lightbox extends Component {
 	preloadImageData (data, onload) {
 		if (!data) return;
 		const img = new Image();
-		const sourceSet = normalizeSourceSet(data);
-
+		//const sourceSet = normalizeSourceSet(data);
+		//const sourceSet = data;
 		// TODO: add error handling for missing images
 		img.onerror = onload;
 		img.onload = onload;
 		img.src = data.src;
 
-		if (sourceSet) img.srcset = sourceSet;
+		//if (sourceSet) img.srcset = sourceSet;
 
 		return img;
 	}
@@ -252,11 +252,11 @@ class Lightbox extends Component {
 		} = this.props;
 
 		const { imageLoaded } = this.state;
-
 		if (!images || !images.length) return null;
 
 		const image = images[currentImage];
-		const sourceSet = normalizeSourceSet(image);
+		//const sourceSet = normalizeSourceSet(image);
+		const sourceSet = false;
 		const sizes = sourceSet ? '100vw' : null;
 
 		const thumbnailsSize = showThumbnails ? this.theme.thumbnail.size : 0;
@@ -276,7 +276,6 @@ class Lightbox extends Component {
 						sizes={sizes}
 						alt={image.alt}
 						src={image.src}
-						srcSet={sourceSet}
 						style={{
 							cursor: onClickImage ? 'pointer' : 'auto',
 							maxHeight: `calc(100vh - ${heightOffset})`,
@@ -287,7 +286,7 @@ class Lightbox extends Component {
 			);
 		} else{
 			return (
-				<div class="video-wrapper" className={css(this.classes.videoWrapper)}>
+				<div class="video-wrapper" className={css(this.classes.videoWrapper)} key={image.index}>
 					<video id="iframe" width="100%" controls  className={css(this.classes.video)}>
 						<source src={image.src} type="video/mp4" />
 						Your browser does not currenttly support our video platform.
@@ -297,10 +296,6 @@ class Lightbox extends Component {
 		}
 	}
 
-	holder1(){
-				{/* 
-			  */}
-	}
 	renderThumbnails () {
 		const { images, currentImage, onClickThumbnail, showThumbnails, thumbnailOffset } = this.props;
 

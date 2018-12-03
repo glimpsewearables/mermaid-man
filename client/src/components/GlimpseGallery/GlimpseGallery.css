@@ -93,7 +93,9 @@ img{
         font-size: 4vw;
         color: white;
     }
-}@media screen and (max-width: 675px){
+}
+
+@media screen and (max-width: 675px){
     .cardTitleEvent{
         font-size: 5vw;
         color: white;
@@ -110,6 +112,9 @@ img{
         height: calc(1024px/4) !important;
     }
 
+    .eventContainer{
+        width: calc(1024px/2) !important;
+    }
 }
 
 @media screen and (min-width: 769px) and (max-width: 1024px) {
@@ -123,6 +128,10 @@ img{
         width: calc(100vw/2);
         height: calc(100vw/2);
     }
+
+    .eventContainer{
+        width: calc(100vw/3) !important;
+    }
 }
 
 @media screen and (min-width: 481px) and (max-width: 769px) {
@@ -135,6 +144,10 @@ img{
     width: calc(100vw/2);
     height: calc(100vw/2);
   }
+
+    .eventContainer{
+        width: calc(100vw/2) !important;
+    }
 }
 
 @media screen and (min-width: 321px) and (max-width: 480px) {
@@ -146,6 +159,10 @@ img{
     .sliderMedia, .sliderVideo{
         width: calc(100vw);
         height: calc(100vw);
+    }
+
+    .eventContainer{
+        width: calc(100vw) !important;
     }
 }
 
