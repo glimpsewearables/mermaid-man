@@ -9,11 +9,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'client/build')));
 
-
-app.get('/media/getAllUserMedia/:userId', (req, res) => {
-  url = 'http://52.88.225.198:8000/media/getAllUserMedia/' + req.params.userId;
-  console.log(url);
-  request(url, function (error, response, body) {
+// Todo: this should take in a user id? 
+app.get('/media/media', (req, res) => {
+  request('http://52.88.225.198:8000/api/media', function (error, response, body) {
   	if (!error && response.statusCode == 200) {
       res.send({data: body});
     } else {
