@@ -38,6 +38,11 @@
     cursor: hand;
 }
 
+/* custom styling */ 
+.slick-track{
+    width: 100% !important;
+}
+
 .slick-slider .slick-track,
 .slick-slider .slick-list
 {

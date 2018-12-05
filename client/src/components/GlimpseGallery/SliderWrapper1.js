@@ -5,6 +5,7 @@ import TitleCard from "./TitleCard"
 
 import "../../slick/slick.css"
 import "../../slick/slick-theme.css"
+import Lightbox from "../lightbox/Lightbox"
 /*
 
 if(item.src.split(".")[3] === "mp4"){
@@ -24,18 +25,42 @@ export default class SliderWrapper extends Component {
         lightBoxIsOpen: false
       }
 
+      this.closeLightbox = this.closeLightbox.bind(this);
       this.openLightbox = this.openLightbox.bind(this);
+      this.gotoNext = this.gotoNext.bind(this);
+      this.gotoPrevious = this.gotoPrevious.bind(this);
     }
 
-  openLightbox(index) {
-    this.setState({
+    openLightbox(index) {
+      console.log(index);
+      this.setState({
         currentImage: index,
         lightboxIsOpen: true,
-    });
-  }
+      });
+    }
+  
+    closeLightbox() {
+      this.setState({
+        currentImage: 0,
+        lightboxIsOpen: false,
+      });
+    }
+  
+    gotoPrevious() {
+      this.setState({
+        currentImage: this.state.currentImage - 1,
+      });
+    }
+  
+    gotoNext() {
+      this.setState({
+        currentImage: this.state.currentImage + 1,
+      });
+    }
 
   render() {
-    const { photos, color, title } = this.props;
+    const { photos, color, title, srcImgs } = this.props;
+    const { currentImage, lightboxIsOpen } = this.state;
     const settings = {
       dots: false,
       infinite: true,
@@ -78,18 +103,26 @@ export default class SliderWrapper extends Component {
               cssName={"sliderMedia"}
               color={color}
               title={title}/>
-    </div> */}
+         </div> */}
           { photos.map((item, index) => 
                                       <div className="highlightSlide" key={index} >
                                             <GridMedia 
                                                   videoName={"sliderVideo"}
                                                   cssName={"sliderMedia"}
-                                                  media={item.media_type}
                                                   src={item.link} 
-                                                  openLightbox={this.openLightbox}   
+                                                  media={item.media_type}
+                                                  onClick={this.openLightbox}   
                                                   index={index} />
                                       </div>)}
         </Slider>
+        <Lightbox 
+          images={srcImgs}
+          onClick={this.openLightbox}
+          onClose={this.closeLightbox}
+          onClickPrev={this.gotoPrevious}
+          onClickNext={this.gotoNext}
+          currentImage={currentImage}
+          isOpen={lightboxIsOpen} />
       </div>
     );
   }
