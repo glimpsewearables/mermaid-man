@@ -5,8 +5,6 @@ import EventImage from "../../assets/EventImage"
 import TextField from "./TextField"
 
 function isValidUser(user, currUsers = [], devices = []){
-  console.log(currUsers, devices);
-  
   if( findDeviceId(user.device, devices).length == 0 ){
     return "Invalid deviceID, please contact Glimpse member for assistance."
   }if( isNameTaken(user.name, currUsers).length >= 1 ){
@@ -48,18 +46,18 @@ class Login extends Component {
 
   componentWillMount(){
     // get all users... in case we need to validate in the future
-    fetch('/api/user/', {
-        method: 'GET',
-        headers: {'Content-Type':'application/json','Access-Control-Allow-Origin': '*',},
-      }).then(res => res.json())
-      .then(
-        (res) => {
-          console.log( JSON.parse(res.data).objects);
-          this.setState({currUsers: JSON.parse(res.data).objects})
-        },(error) => {
-          console.log(error)
-        }
-      );
+    // fetch('/api/user/', {
+    //     method: 'GET',
+    //     headers: {'Content-Type':'application/json','Access-Control-Allow-Origin': '*',},
+    //   }).then(res => res.json())
+    //   .then(
+    //     (res) => {
+    //       console.log( JSON.parse(res.data).objects);
+    //       this.setState({currUsers: JSON.parse(res.data).objects})
+    //     },(error) => {
+    //       console.log(error)
+    //     }
+    //   );
 
       //get devices so we know to validate device input from user
       fetch('/api/device/', {
@@ -78,16 +76,14 @@ class Login extends Component {
   // Validate user content
   handleSubmit = event => {
     event.preventDefault();
-    this.props.onDeviceSubmit(this.state.user);
 
-    //let isValid = isValidUser(this.state.user, this.state.currUsers, this.state.devices);
-    console.log(true);
-    /*
-    if(true){
+    let isValid = findDeviceId(this.state.user.device, this.state.devices).length != 0;
+    
+    if(isValid){
       this.props.onDeviceSubmit(this.state.user);
     } else {
-      this.setState({errorMsg:isValid })
-    } */
+      this.setState({errorMsg: "Invalid deviceID, please contact Glimpse member for assistance." })
+    }
   }
 
   handleChangeFor = (propertyName) => (event) => {
@@ -101,7 +97,7 @@ class Login extends Component {
 
   render() {
     console.log(this.state.currUsers);
-    const { name, email, device, errorMsg } = this.state.user; 
+    const { name, email, device } = this.state.user;
     return (
       <div className="Login">
 
@@ -117,17 +113,15 @@ class Login extends Component {
             <h1 className="logoTitleLogin">CLiP</h1>
             <form action="/action_page.php" className="button">
                 <p className="signInTitle"> Sign In</p>
-                {typeof(errorMsg) === 'string'
-                ? <p>
-                    {errorMsg}
-                </p>
-                : null }
                 <div className="formGroup">
-                    <TextField value={name} title="User Name" onChange={this.handleChangeFor("name")}/>
-                    <TextField value={email} title="Email" onChange={this.handleChangeFor("email")}/>
                     <TextField value={device} title="Device Id" onChange={this.handleChangeFor("device")}/>
-                </div>
+                </div>          
                 <button type="submit" onClick={this.handleSubmit} className="btnLogin">Select</button>
+                {this.state.errorMsg !== ''
+                ? <p className="errorMsg">
+                    {this.state.errorMsg}
+                  </p>
+                : null }
                 <p className="signUpLink">
                   Have a question? <a href="">email us</a>
                 </p>
@@ -136,7 +130,9 @@ class Login extends Component {
         </div>
 
       </div>
-    );
+    ); 
+    // <TextField value={name} title="User Name" onChange={this.handleChangeFor("name")}/>
+    // <TextField value={email} title="Email" onChange={this.handleChangeFor("email")}/>             
   }
 }
 
