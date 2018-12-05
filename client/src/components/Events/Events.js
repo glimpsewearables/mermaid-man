@@ -3,7 +3,6 @@ import GlimpseGallery from "../GlimpseGallery/GlimpseGallery";
 import EventTile from "./EventTile";
 
 import './Events.css'
-import '../../assets/welcome-img.jpg'
 
 const imgStyle = (url) =>{
   return  ({ backgroundImage: ['url(',url,  ')'].join(''),
