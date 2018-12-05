@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 import GlimpseGallery from "../GlimpseGallery/GlimpseGallery"
-import SliderWrapper1 from "../GlimpseGallery/SliderWrapper1"
+// /import SliderWrapper1 from "../GlimpseGallery/SliderWrapper1"
 import Banner from "./Banner"
 import Filters from "./Filters"
 
@@ -61,13 +61,13 @@ class EventPage extends Component {
       /> 
       */}
       
-       {/* Option A: Curated carousel */}
+       {/* Option A: Curated carousel
         <SliderWrapper1 
           color="#F8B800" 
           title={"CLiP Photos".split(" ")}
           photos={highlights}
           onClick={null}
-          srcImgs={highlightSrc} />
+          srcImgs={highlightSrc} />  */}
 
        {/* Option B: Currated Gallery  
        <GlimpseGallery 
