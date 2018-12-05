@@ -170,6 +170,10 @@ select{
     font-weight: 400;
 }
 
+.errorMsg {
+    color: #f24646;
+}
+
 .eventImage{
     width: 100%;
     display: flex;
