@@ -14,7 +14,8 @@ class GlimpseGallery extends Component {
         currentImage:0,
         userImgs:{},
         userVideos:{},
-        photos:[]
+        photos:[],
+        lightboxIsOpen: false,
     };
 
     this.closeLightbox = this.closeLightbox.bind(this);
@@ -57,7 +58,7 @@ class GlimpseGallery extends Component {
                                                                 cssName={"gridMedia"}
                                                                 src={item.link} 
                                                                 media={item.media_type}
-                                                                onClick={this.openLightbox}   
+                                                                onClick={this.openLightbox}
                                                                 index={index} />);
 
     return (
@@ -70,8 +71,8 @@ class GlimpseGallery extends Component {
           { photoSlides }
         </div>
         <Lightbox 
-          onClick={this.openLightbox}
           images={srcImgs}
+          onClick={this.openLightbox}
           onClose={this.closeLightbox}
           onClickPrev={this.gotoPrevious}
           onClickNext={this.gotoNext}

@@ -9,17 +9,17 @@ export default class Photo extends Component {
   }
   
   onClick(){
-    console.log(this.props.index);
-    this.props.onClick(this.props.index)
+    console.log(this.props.index, this.props.currImg, this.props.open);
+    this.props.onClick(this.props.index, this.props.currImg, this.props.open)
   }
 
   render() {
     const { src,  cssName, media, videoName, index } = this.props;
     if(media === "image"){
       return (
-        <div className={cssName}>
+        <div className={cssName} onClick={this.onClick}>
           <LazyLoad height={100}>
-            <img src={src} onClick={this.onClick} />
+            <img src={src}  />
           </LazyLoad>
         </div>
       )
