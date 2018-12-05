@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
 
-import Events from "./Events/Events"
-import EventPage from "./EventPage/EventPage"
 import HeaderNav from "./Page/HeaderNav/HeaderNav"
 import Sidebar from "./Page/Sidebar/Sidebar"
 
@@ -16,13 +14,6 @@ export default class Main extends Component {
         }
 
         this.onOpenChange = this.onOpenChange.bind(this);
-        this.onEventSelect = this.onEventSelect.bind(this);
-    }
-
-    onEventSelect(){
-        console.log(this.state.events)
-        sessionStorage.setItem("events", !this.state.events);
-        this.setState({events: !this.state.events});
     }
 
     onOpenChange(){
@@ -30,7 +21,7 @@ export default class Main extends Component {
     }
 
     render() {
-        let { open, onOpenChange, events } = this.state;
+        let { open, onOpenChange } = this.state;
         return (
         <div> 
             <HeaderNav 
@@ -40,10 +31,6 @@ export default class Main extends Component {
             />
             <Sidebar open={open}
                         onOpenChange={onOpenChange}/>
-            { events
-              ? <EventPage />
-              : <Events onEventSelect={this.onEventSelect}/>
-            }
          </div>
         )
     }

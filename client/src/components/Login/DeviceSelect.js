@@ -4,6 +4,8 @@ import "./Login.css";
 import EventImage from "../../assets/EventImage"
 import TextField from "./TextField"
 
+import { withRouter } from 'react-router-dom'
+
 function isValidUser(user, currUsers = [], devices = []){
   console.log(currUsers, devices);
   
@@ -78,10 +80,11 @@ class Login extends Component {
   // Validate user content
   handleSubmit = event => {
     event.preventDefault();
-    this.props.onDeviceSubmit(this.state.user);
+    const { history } = this.props;
+    history.push("/events");
+    //this.props.onDeviceSubmit(this.state.user);
 
     //let isValid = isValidUser(this.state.user, this.state.currUsers, this.state.devices);
-    console.log(true);
     /*
     if(true){
       this.props.onDeviceSubmit(this.state.user);
@@ -147,4 +150,6 @@ function mapStateToProps(state){
   }
 }
 
-export default  connect(mapStateToProps)(Login);
+const deviceLogin = withRouter(Login);
+
+export default connect(mapStateToProps)(deviceLogin);
