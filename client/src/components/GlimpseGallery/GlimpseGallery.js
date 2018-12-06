@@ -22,6 +22,7 @@ class GlimpseGallery extends Component {
     this.openLightbox = this.openLightbox.bind(this);
     this.gotoNext = this.gotoNext.bind(this);
     this.gotoPrevious = this.gotoPrevious.bind(this);
+    this.createPhotos = this.createPhotos.bind(this);
   }
 
   openLightbox(index) {
@@ -50,34 +51,50 @@ class GlimpseGallery extends Component {
     });
   }
 
-  render() {
-    const { title, date, color, photos, srcImgs} = this.props;
-    const { currentImage, lightboxIsOpen} = this.state;
-    const photoSlides = photos.map((item, index) => <GridMedia key={index}
+  createPhotos(){
+    const { photos } = this.props;
+    let gridContent = photos.map((item, index) => <GridMedia key={index}
                                                                 videoName={"gridVideo"}
                                                                 cssName={"gridMedia"}
                                                                 src={item.link} 
                                                                 media={item.media_type}
                                                                 onClick={this.openLightbox}
                                                                 index={index} />);
+    
+    while(gridContent.length < 3 ){
+      let filler = <div className="fillerDiv gridMedia"><div className="fillerColor"></div></div>;
+      gridContent.push(filler);
+    }
 
+    return gridContent;
+  }
+
+  render() {
+    const { title, date, color, photos, srcImgs} = this.props;
+    const { currentImage, lightboxIsOpen} = this.state;
+
+    let gridContent = this.createPhotos()
+    gridContent = [];
     return (
       <div className="grid-container container">
-        <div className="photos">
-          <TitleCard 
-            color={color}
-            title={title}/>
+       { gridContent == true
+       ? <div> <div className="photos">
+            <TitleCard 
+              color={color}
+              title={title}/>
 
-          { photoSlides }
-        </div>
-        <Lightbox 
-          images={srcImgs}
-          onClick={this.openLightbox}
-          onClose={this.closeLightbox}
-          onClickPrev={this.gotoPrevious}
-          onClickNext={this.gotoNext}
-          currentImage={currentImage}
-          isOpen={lightboxIsOpen} />
+            { gridContent }
+          </div>
+          <Lightbox 
+            images={srcImgs}
+            onClick={this.openLightbox}
+            onClose={this.closeLightbox}
+            onClickPrev={this.gotoPrevious}
+            onClickNext={this.gotoNext}
+            currentImage={currentImage}
+            isOpen={lightboxIsOpen} /> </div>
+       : <div className="glimpseGalleryError"> Connect device to singal to view content </div>}
+       
       </div>
     )
   }

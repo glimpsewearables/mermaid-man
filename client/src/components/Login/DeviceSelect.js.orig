@@ -4,6 +4,8 @@ import "./Login.css";
 import EventImage from "../../assets/EventImage"
 import TextField from "./TextField"
 
+import { withRouter } from 'react-router-dom'
+
 function isValidUser(user, currUsers = [], devices = []){
   if( findDeviceId(user.device, devices).length == 0 ){
     return "Invalid deviceID, please contact Glimpse member for assistance."
@@ -76,10 +78,20 @@ class Login extends Component {
   // Validate user content
   handleSubmit = event => {
     event.preventDefault();
+<<<<<<< HEAD
+    const { history } = this.props;
+    history.push("/events");
+    //this.props.onDeviceSubmit(this.state.user);
 
-    //let isValid = findDeviceId(this.state.user.device, this.state.devices).length != 0;
-    let isValid = true;
+    //let isValid = isValidUser(this.state.user, this.state.currUsers, this.state.devices);
+    /*
+    if(true){
+=======
+
+    let isValid = findDeviceId(this.state.user.device, this.state.devices).length != 0;
+    
     if(isValid){
+>>>>>>> 0df9025eed3eb294c719e6e00d37b395593767c3
       this.props.onDeviceSubmit(this.state.user);
     } else {
       this.setState({errorMsg: "Invalid deviceID, please contact Glimpse member for assistance." })
@@ -143,4 +155,6 @@ function mapStateToProps(state){
   }
 }
 
-export default  connect(mapStateToProps)(Login);
+const deviceLogin = withRouter(Login);
+
+export default connect(mapStateToProps)(deviceLogin);
