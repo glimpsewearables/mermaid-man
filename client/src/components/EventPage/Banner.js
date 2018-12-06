@@ -9,7 +9,7 @@ const imgStyle = (url) =>{
 export default class Banner extends Component {
   render() {
     let { title, date , location, dot } = this.props;
-    const backgroundImg = "https://www.discoverlosangeles.com/sites/default/files/styles/article_image/public/media/Activities/Points%20of%20Interest/capitol-records-building.jpg"
+    const backgroundImg = "https://s3-us-west-2.amazonaws.com/users-edited-content/seattle.jpg"
     const style = imgStyle(backgroundImg);
 
     return (

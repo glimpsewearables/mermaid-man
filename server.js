@@ -14,10 +14,21 @@ app.get('/media/getAllUserMedia/:userId', (req, res) => {
   url = 'http://52.88.225.198:8000/media/getAllUserMedia/' + req.params.userId;
   request(url, function (error, response, body) {
   	if (!error && response.statusCode == 200) {
-      console.log(body);
       res.send({data: body});
     } else {
-      console.log("error calling endpoint from express: " + error);
+      console.log("error calling getAllUserMedia from express: " + error);
+    }
+  })
+});
+
+app.get('/media/getAllVideosUserEvent/:userId/:eventId', (req, res) => {
+  url = 'http://52.88.225.198:8000/media/getAllVideosUserEvent/' 
+                + req.params.userId + '/0';
+  request(url, function (error, response, body) {
+    if (!error && response.statusCode == 200) {
+      res.send({data: body});
+    } else {
+      console.log("error calling getAllVideosUserEvent from express: " + error);
     }
   })
 });
@@ -28,7 +39,7 @@ app.get('/api/user/', (req, res) => {
   	if (!error && response.statusCode == 200) {
       res.send({data: body});
     } else {
-      console.log("error calling endpoint from express: " + error);
+      console.log("error calling /api/user/ from express: " + error);
     }
   })
 });
@@ -39,7 +50,7 @@ app.get('/api/device/', (req, res) => {
   	if (!error && response.statusCode == 200) {
       res.send({data: body});
     } else {
-      console.log("error calling endpoint from express: " + error);
+      console.log("error calling /api/device/ from express: " + error);
     }
   })
 });
