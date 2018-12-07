@@ -17,15 +17,22 @@ export default class Main extends Component {
 
         this.onOpenChange = this.onOpenChange.bind(this);
         this.onEventSelect = this.onEventSelect.bind(this);
+        this.onHome = this.onHome.bind(this);
     }
 
-    onEventSelect(){
-        console.log(this.state.events)
+    onEventSelect(id) {
         sessionStorage.setItem("events", !this.state.events);
+        sessionStorage.setItem("event", id);
         this.setState({events: !this.state.events});
+        this.setState({event: id});
     }
 
-    onOpenChange(){
+    onHome(){
+        sessionStorage.setItem("events", false);
+        this.setState({events: false});
+    }
+
+    onOpenChange() {
         this.setState({open: !this.state.open});
     }
 
@@ -36,10 +43,11 @@ export default class Main extends Component {
             <HeaderNav 
                 open={open}
                 onOpenChange={onOpenChange}
+                onHome={this.onHome}
                 onLogout={this.props.onLogout}
             />
             <Sidebar open={open}
-                        onOpenChange={onOpenChange}/>
+                     onOpenChange={onOpenChange}/>
             { events
               ? <EventPage />
               : <Events onEventSelect={this.onEventSelect}/>

@@ -13,11 +13,11 @@ export default class EventTile extends Component {
       }
     
   render() {
-    const { imgUrl, onClick, title, date, location } = this.props;
+    const { imgUrl, onClick, title, date, location, id } = this.props;
     const imgStyle = this.createBackground(imgUrl);
     console.log(imgUrl, title);
     return (
-        <div className="eventContainer" onClick={onClick}>
+        <div className="eventContainer" onClick={() => onClick(id)}>
             <div className="eventTile" style={imgStyle} >
             </div>
             <div className="eventTileTitle">

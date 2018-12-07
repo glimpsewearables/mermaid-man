@@ -53,20 +53,23 @@ class GlimpseGallery extends Component {
   render() {
     const { title, date, color, photos, srcImgs, srcGifs} = this.props;
     const { currentImage, lightboxIsOpen} = this.state;
-    const photoSlides = photos.map((item, index) => <GridMedia key={index}
-                                                                videoName={"gridVideo"}
-                                                                cssName={"gridMedia"}
-                                                                src={item.gif_link}
-                                                                onClick={this.openLightbox}
-                                                                index={index} />);
+    const photoSlides = photos.map((item, index) => 
+      <GridMedia key={index}
+        videoName={"gridVideo"}
+        cssName={"gridMedia"}
+        gifSrc={item.gif_link}
+        videoSrc={item.link}
+        onClick={this.openLightbox}
+        index={index} 
+      />
+    );
 
     return (
       <div className="grid-container container">
         <div className="photos">
           <TitleCard 
             color={color}
-            title={title}/>
-
+            title={title} />
           { photoSlides }
         </div>
         <Lightbox 

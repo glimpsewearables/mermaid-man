@@ -21,6 +21,12 @@
     font-weight: 400;
 }
 
+.logoTitle:hover{
+    cursor: pointer;
+    opacity:1;
+    transition: 0.3s;
+}
+
 .logout{
     font-weight: 400;
     position: absolute;
@@ -32,5 +38,4 @@
     cursor: pointer;
     opacity:1;
     transition: 0.3s;
-
 }

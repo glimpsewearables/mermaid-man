@@ -6,8 +6,8 @@ export default class HeaderNav extends Component {
   render() {
     return (
       <div className="headerNav">
-        <div className="logoTitle">
-                GlimpseCam
+        <div className="logoTitle" onClick={this.props.onHome}>
+          GlimpseCam
         </div>
         <div className="logout" onClick={this.props.onLogout}>
           Logout

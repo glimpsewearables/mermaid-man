@@ -23,7 +23,7 @@ app.get('/media/getAllUserMedia/:userId', (req, res) => {
 
 app.get('/media/getAllVideosUserEvent/:userId/:eventId', (req, res) => {
   url = 'http://52.88.225.198:8000/media/getAllVideosUserEvent/' 
-                + req.params.userId + '/0';
+                + req.params.userId + '/' + req.params.eventId;
   request(url, function (error, response, body) {
     if (!error && response.statusCode == 200) {
       res.send({data: body});

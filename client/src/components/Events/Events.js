@@ -45,20 +45,21 @@ export default class Events extends Component{
             onClick={this.props.onEventSelect}
             imgUrl={"https://pbs.twimg.com/profile_images/645928617143332864/q-Me9MKS_400x400.jpg"}
           />
-
-           <EventTile 
-             title="Louis The Child"
-             location="Seattle, WA"
-             date="12/1/18"
-             id="0"
-             onClick={this.props.onEventSelect}
-             imgUrl={"https://i.scdn.co/image/c54aeee5871632de61735ae7ed53e07cdb45ef70"}
-          />
           */}
+          <EventTile 
+            title="Louis The Child"
+            location="Seattle, WA"
+            date="12/1/18"
+            id="2"
+            onClick={this.props.onEventSelect}
+            imgUrl={"https://i.scdn.co/image/c54aeee5871632de61735ae7ed53e07cdb45ef70"}
+          />
+          
           <EventTile 
              title="Miscellaneous"
              location="Seattle, WA"
              date="12/5/18"
+             id="0"
              onClick={this.props.onEventSelect}
              imgUrl={"https://s3-us-west-2.amazonaws.com/users-edited-content/DSC_0098.JPG"}
           />

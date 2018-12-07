@@ -24,7 +24,8 @@ class EventPage extends Component {
   componentWillMount() {
 
       // get content for a specific user retrieved via sessionstorage
-    const url = '/media/getAllVideosUserEvent/' + sessionStorage.getItem("device") + '/0';
+    const url = '/media/getAllVideosUserEvent/' + sessionStorage.getItem("device") 
+    + '/' + sessionStorage.getItem("event");
     fetch(url, {
       method: 'GET',
       headers: {'Content-Type':'application/json','Access-Control-Allow-Origin': '*',},

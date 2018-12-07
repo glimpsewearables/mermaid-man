@@ -14,24 +14,27 @@ export default class Photo extends Component {
   }
 
   render() {
-    const { src,  cssName, videoName, index } = this.props;
-    //if(media === "image"){
+    const { gifSrc, videoSrc, cssName, videoName, index } = this.props;
+    if(gifSrc === "") {
+      return(
+        <div className={cssName} onClick={this.onClick}>
+          <video className={videoName} id="iframe" width="100%" controls >
+            <source src={videoSrc} type="video/mp4" />
+            Your browser does not currenttly support our video platform.
+          </video>
+        </div>
+      )    
+    } else {
       return (
         <div className={cssName} onClick={this.onClick}>
-          <LazyLoad height={100}>
-            <img src={src}  />
-          </LazyLoad>
+          <img src={gifSrc}  />
         </div>
       )
-    // } else {
-    //   return(
-    //     <div className={cssName} onClick={this.onClick}>
-    //       <video className={videoName} id="iframe" width="100%" controls >
-    //         <source src={src} type="video/mp4" />
-    //         Your browser does not currenttly support our video platform.
-    //       </video>
-    //     </div>
-    //   )
+    }
+    // <LazyLoad height={100}> 
+    //</LazyLoad>
+    //} else {
+    //   
     // }
     
   }
