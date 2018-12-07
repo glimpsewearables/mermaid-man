@@ -71,13 +71,20 @@ img{
     width: 100%;
 }
 
-.noGrid{
+.noGrid, .fillerColo{
     width: 100%;
     height: 100%;
 }
 
 .gridMedia > img, .sliderMedia > img {
     object-fit: cover;
+}
+
+.glimpseGalleryError{
+    width: 100%;
+    text-align: center;
+    font-size: 1.2em;
+    font-style: italic;
 }
 
 .video{
