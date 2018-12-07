@@ -46,6 +46,8 @@ class EventPage extends Component {
     // const media = initialState.objects;
     const media = this.state.media;
     const imgSrc = media.map( (el, index) => ({ "src":el.link, 'media':el.media_type, index: index}) );
+    const gifSrc = media.map( (el, index) => ({ "src":el.gif_link, index: index}) );
+    console.log(gifSrc);
     const highlights = media.slice(1,3);
     const highlightSrc = imgSrc.slice(1,3);
     return (
@@ -79,9 +81,10 @@ class EventPage extends Component {
 
         <GlimpseGallery 
           color="#F8B800" 
-          title={"Videos"}
+          title={"Your Videos"}
           date={this.props.date} 
           photos={media} 
+          srcGifs={gifSrc}
           srcImgs={imgSrc} 
         /> 
       </div>

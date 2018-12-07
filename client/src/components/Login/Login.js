@@ -42,7 +42,7 @@ export default class Login extends Component {
           </div>
         </div>
         <div className="loginWrapper">
-            <h1 className="logoTitleLogin">CLiMP</h1>
+            <h1 className="logoTitleLogin">CLiP</h1>
             <form action="/action_page.php" className="button">
                 <p className="signInTitle"> Sign In</p>
                 <div className="formGroup">
