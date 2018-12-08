@@ -10,6 +10,7 @@
     "axios": "^0.18.0",
     "browserify-fs": "^1.0.0",
     "build": "^0.1.4",
+    "cross-fetch": "^2.2.3",
     "download": "^7.1.0",
     "file-system": "^2.2.2",
     "fs": "0.0.1-security",
@@ -35,7 +36,8 @@
     "react-share": "^2.4.0",
     "react-sizeme": "^2.5.2",
     "react-slick": "^0.23.2",
-    "redux": "^4.0.1"
+    "redux": "^4.0.1",
+    "redux-thunk": "^2.3.0"
   },
   "scripts": {
     "start": "react-scripts start",

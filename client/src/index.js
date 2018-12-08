@@ -12,12 +12,12 @@ import DeviceSelect from './components/Login/DeviceSelect'
 
 import { Provider } from 'react-redux'
 
-import store from "./store/index";
+import configureStore from "./store/configureStore";
 
 import registerServiceWorker from './registerServiceWorker';
 
+let store = configureStore();
 window.store = store;
-
 
 ReactDOM.render(
                 <Provider store={store}>
