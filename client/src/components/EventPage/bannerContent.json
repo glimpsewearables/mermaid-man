@@ -4,20 +4,20 @@
             {
                 "event":"LouistheChild",
                 "name": "Louis the Child",
-                "date":"12/1/18",
+                "date": "Dec 1st, 2018",
                 "location":"Seattle, WA ~ WAMU Theater",
                 "banner": "https://edm.com/.image/ar_16:9%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cg_faces:center%2Cq_auto:good%2Cw_768/MTU2MTc5NzMwODA5MjM0NzAx/betternot_bts-45-2.jpg"
             },
             {
                 "event":"CapitolRecords",
                 "name": "Capitol Records",
-                "date":"12/1/18",
+                "date": "Dec 1st, 2018",
                 "location":"Los Angeles, CA ~ Capitol Records",
                 "banner":"https://www.discoverlosangeles.com/sites/default/files/styles/article_image/public/media/Activities/Points%20of%20Interest/capitol-records-building.jpg"
             },{
                 "event":"Miscellaneous",
                 "name": "Miscellaneous",
-                "date":"12/5/18",
+                "date": "Dec 5th, 2018",
                 "location":"Seattle, WA ~ The Streets!!!",
                 "banner":"https://s3-us-west-2.amazonaws.com/users-edited-content/seattle.jpg"
 

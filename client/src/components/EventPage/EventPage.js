@@ -1,13 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-
+import {withRouter} from 'react-router-dom';
+import { fetchAllVideosUsermedia } from '../../ReduxActions/MediaActions'
 import GlimpseGallery from "../GlimpseGallery/GlimpseGallery"
 // /import SliderWrapper1 from "../GlimpseGallery/SliderWrapper1"
 import Banner from "./Banner"
 import Filters from "./Filters"
 import bannerContent from "./bannerContent"
-
-
 import "./EventPage.css"
 
 class EventPage extends Component {
@@ -24,21 +23,10 @@ class EventPage extends Component {
   }
 
   componentWillMount() {
-
-      // get content for a specific user retrieved via sessionstorage
-    const url = '/media/getAllVideosUserEvent/' + sessionStorage.getItem("device") + '/0';
-    fetch(url, {
-      method: 'GET',
-      headers: {'Content-Type':'application/json','Access-Control-Allow-Origin': '*',},
-    }).then( res => res.json() )
-    .then(
-      (res) => {
-        let d = JSON.parse(res.data).user_event_videos.media;
-        this.setState({media: d})
-      },(error) => {
-        console.log(error)
-      }
-    ); 
+    let { eventInfo, device, fetchAllVideosUsermedia, location } = this.props;
+    let eventId = eventInfo[getAlias(location.pathname)].id;
+    let deviceID = device[0].id;
+    fetchAllVideosUsermedia(deviceID, eventId)
   }
 
   render() {
@@ -53,18 +41,20 @@ class EventPage extends Component {
     //api response
     //const initialState = {"meta": {"limit": 20, "next": "/api/media/?limit=20&offset=20", "offset": 0, "previous": null, "total_count": 30}, "objects": [{"created_at": "2018-11-14T05:01:59.587660", "downloaded": 0, "id": 1, "link": "https://s3.amazonaws.com/pi-4/5_user5_video_2018-07-28_18.46.00.mp4", "media_type": "video", "ranking": 1, "raw_or_edited": "raw", "resource_uri": "/api/media/1/", "updated_at": "2018-11-14T05:01:59.587714"}, {"created_at": "2018-11-14T05:01:59.597152", "downloaded": 0, "id": 2, "link": "https://s3.amazonaws.com/pi-4/DSC_0008.JPG", "media_type": "image", "ranking": 1, "raw_or_edited": "raw", "resource_uri": "/api/media/2/", "updated_at": "2018-11-14T05:01:59.597205"},{"created_at": "2018-11-14T05:01:59.612603", "downloaded": 0, "id": 4, "link": "https://s3.amazonaws.com/pi-4/DSC_0013.JPG", "media_type": "image", "ranking": 1, "raw_or_edited": "raw", "resource_uri": "/api/media/4/", "updated_at": "2018-11-14T05:01:59.612660"}, {"created_at": "2018-11-14T05:01:59.635617", "downloaded": 0, "id": 6, "link": "https://s3.amazonaws.com/pi-4/DSC_0017.JPG", "media_type": "image", "ranking": 1, "raw_or_edited": "raw", "resource_uri": "/api/media/6/", "updated_at": "2018-11-14T05:01:59.635680"}, {"created_at": "2018-11-14T05:01:59.646962", "downloaded": 0, "id": 7, "link": "https://s3.amazonaws.com/pi-4/DSC_0018.JPG", "media_type": "image", "ranking": 1, "raw_or_edited": "raw", "resource_uri": "/api/media/7/", "updated_at": "2018-11-14T05:01:59.647009"}, {"created_at": "2018-11-14T05:01:59.658972", "downloaded": 0, "id": 8, "link": "https://s3.amazonaws.com/pi-4/DSC_0020.JPG", "media_type": "image", "ranking": 1, "raw_or_edited": "raw", "resource_uri": "/api/media/8/", "updated_at": "2018-11-14T05:01:59.659023"}, {"created_at": "2018-11-14T05:01:59.668903", "downloaded": 0, "id": 9, "link": "https://s3.amazonaws.com/pi-4/DSC_0022.JPG", "media_type": "image", "ranking": 1, "raw_or_edited": "raw", "resource_uri": "/api/media/9/", "updated_at": "2018-11-14T05:01:59.668951"}, {"created_at": "2018-11-14T05:01:59.686855", "downloaded": 0, "id": 10, "link": "https://s3.amazonaws.com/pi-4/DSC_0053.JPG", "media_type": "image", "ranking": 1, "raw_or_edited": "raw", "resource_uri": "/api/media/10/", "updated_at": "2018-11-14T05:01:59.686998"}, {"created_at": "2018-11-14T05:01:59.704821", "downloaded": 0, "id": 11, "link": "https://s3.amazonaws.com/pi-4/DSC_0056.JPG", "media_type": "image", "ranking": 1, "raw_or_edited": "raw", "resource_uri": "/api/media/11/", "updated_at": "2018-11-14T05:01:59.704894"}, {"created_at": "2018-11-14T05:01:59.736563", "downloaded": 0, "id": 12, "link": "https://s3.amazonaws.com/pi-4/DSC_0060.JPG", "media_type": "image", "ranking": 1, "raw_or_edited": "raw", "resource_uri": "/api/media/12/", "updated_at": "2018-11-14T05:01:59.736746"}, {"created_at": "2018-11-14T05:01:59.761501", "downloaded": 0, "id": 13, "link": "https://s3.amazonaws.com/pi-4/DSC_0061.JPG", "media_type": "image", "ranking": 1, "raw_or_edited": "raw", "resource_uri": "/api/media/13/", "updated_at": "2018-11-14T05:01:59.761559"}, {"created_at": "2018-11-14T05:01:59.772745", "downloaded": 0, "id": 14, "link": "https://s3.amazonaws.com/pi-4/DSC_0062.JPG", "media_type": "image", "ranking": 1, "raw_or_edited": "raw", "resource_uri": "/api/media/14/", "updated_at": "2018-11-14T05:01:59.772801"}, {"created_at": "2018-11-14T05:01:59.796478", "downloaded": 0, "id": 15, "link": "https://s3.amazonaws.com/pi-4/DSC_0063.JPG", "media_type": "image", "ranking": 1, "raw_or_edited": "raw", "resource_uri": "/api/media/15/", "updated_at": "2018-11-14T05:01:59.796547"}, {"created_at": "2018-11-14T05:01:59.819862", "downloaded": 0, "id": 16, "link": "https://s3.amazonaws.com/pi-4/DSC_0064.JPG", "media_type": "image", "ranking": 1, "raw_or_edited": "raw", "resource_uri": "/api/media/16/", "updated_at": "2018-11-14T05:01:59.819908"}, {"created_at": "2018-11-14T05:01:59.838424", "downloaded": 0, "id": 17, "link": "https://s3.amazonaws.com/pi-4/DSC_0065.JPG", "media_type": "image", "ranking": 1, "raw_or_edited": "raw", "resource_uri": "/api/media/17/", "updated_at": "2018-11-14T05:01:59.838487"}, {"created_at": "2018-11-14T05:01:59.846000", "downloaded": 0, "id": 18, "link": "https://s3.amazonaws.com/pi-4/DSC_0066.JPG", "media_type": "image", "ranking": 1, "raw_or_edited": "raw", "resource_uri": "/api/media/18/", "updated_at": "2018-11-14T05:01:59.846035"}, {"created_at": "2018-11-14T05:01:59.857091", "downloaded": 0, "id": 19, "link": "https://s3.amazonaws.com/pi-4/DSC_0067.JPG", "media_type": "image", "ranking": 1, "raw_or_edited": "raw", "resource_uri": "/api/media/19/", "updated_at": "2018-11-14T05:01:59.857155"}, {"created_at": "2018-11-14T05:01:59.872450", "downloaded": 0, "id": 20, "link": "https://s3.amazonaws.com/pi-4/DSC_0068.JPG", "media_type": "image", "ranking": 1, "raw_or_edited": "raw", "resource_uri": "/api/media/20/", "updated_at": "2018-11-14T05:01:59.872544"}]};
     // const media = initialState.objects;
-    
-    const media = this.state.media;
+    let { media, device, eventInfo } = this.props;
+    //console.log(media);
     const imgSrc = media.map( (el, index) => ({ "src":el.link, 'media':el.media_type, index: index}) );
     const highlights = media.slice(1,3);
     const highlightSrc = imgSrc.slice(1,3);
+    const event = getEvent(this.props.location.pathname);
     return (
       <div>
         <Banner 
-          title={"Miscellaneous"}
-          date={"December 5, 2018"}
+          title={event.name}
+          date={event.date}
           dot={true}
-          location={"Seattle, WA"}/>
+          location={event.location}
+          banner={event.banner}/>
       
       {/* Experimental component
        <Filters
@@ -112,11 +102,30 @@ class EventPage extends Component {
   }
 }
 
-// Redux
+const getAlias = (path) => {
+  let url = path.split('/');
+  let alias = url[url.length - 1];
+  return alias
+}
+
+const getEvent = (path) =>{
+  const alias = getAlias(path);
+  return bannerContent.objects.filter( el => el.event === alias)[0]
+}
+
 function mapStateToProps(state){
     return {
-        objects: state.objects,
+        device: state.sendDevices.devices,
+        eventInfo: state.sendEvents.events,
+        media: state.sendMedia.media
     }
 }
 
-export default connect(mapStateToProps)(EventPage);
+function mapDispatchToProps(dispatch){
+  return {
+    fetchAllVideosUsermedia: (device, event) => dispatch(fetchAllVideosUsermedia(device, event))
+  }
+}
+
+EventPage = withRouter(EventPage)
+export default connect(mapStateToProps, mapDispatchToProps)(EventPage);

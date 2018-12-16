@@ -52,7 +52,7 @@ class GlimpseGallery extends Component {
   }
 
   createPhotos(){
-    const { photos } = this.props;
+    let { photos } = this.props;
     let gridContent = photos.map((item, index) => <GridMedia key={index}
                                                                 videoName={"gridVideo"}
                                                                 cssName={"gridMedia"}
@@ -60,9 +60,10 @@ class GlimpseGallery extends Component {
                                                                 media={item.media_type}
                                                                 onClick={this.openLightbox}
                                                                 index={index} />);
-    
+    let key = 0;
     while(gridContent.length < 3 ){
-      let filler = <div className="fillerDiv gridMedia"><div className="fillerColor"></div></div>;
+      key += 1;
+      let filler = <div className="fillerDiv gridMedia" key={key}><div className="fillerColor"></div></div>;
       gridContent.push(filler);
     }
 
@@ -74,10 +75,9 @@ class GlimpseGallery extends Component {
     const { currentImage, lightboxIsOpen} = this.state;
 
     let gridContent = this.createPhotos()
-    gridContent = [];
     return (
       <div className="grid-container container">
-       { gridContent == true
+       { gridContent !== []
        ? <div> <div className="photos">
             <TitleCard 
               color={color}

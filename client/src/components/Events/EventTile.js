@@ -6,8 +6,9 @@ class EventTileWithRouter extends Component {
         super(props)
 
         this.createBackground = this.createBackground.bind(this)
-        this.onClick = this.onClick.bind(this)
+        this.handleClick = this.handleClick.bind(this);
     }
+    
     createBackground = (url) =>{
         return  ({ 
                     backgroundImage: ['url(',url,  ')'].join(''),
@@ -15,17 +16,15 @@ class EventTileWithRouter extends Component {
                 })
     }
 
-    onClick(){
-        let { history } = this.props;
-        history.push(this.props.loc);
+    handleClick(){
+        this.props.onClick(this.props.urlName);
     }
 
     render() {
-        const { imgUrl, onClick, title, date, place } = this.props;
+        const { imgUrl, title, date, place } = this.props;
         const imgStyle = this.createBackground(imgUrl);
-        console.log(imgUrl, title);
         return (
-            <div className="eventContainer" onClick={this.onClick}>
+            <div className="eventContainer" onClick={this.handleClick}>
                 <div className="eventTile" style={imgStyle} >
                 </div>
                 <div className="eventTileTitle">

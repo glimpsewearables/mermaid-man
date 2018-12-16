@@ -17,7 +17,7 @@ export default class Photo extends Component {
     const { src,  cssName, media, videoName, index } = this.props;
     if(media === "image"){
       return (
-        <div className={cssName} onClick={this.onClick}>
+        <div className={cssName} onClick={this.onClick} key={index}>
           <LazyLoad height={100}>
             <img src={src}  />
           </LazyLoad>
@@ -25,7 +25,7 @@ export default class Photo extends Component {
       )
     } else {
       return(
-        <div className={cssName} onClick={this.onClick}>
+        <div className={cssName} onClick={this.onClick} key={index}>
           <video className={videoName} id="iframe" width="100%" controls >
             <source src={src} type="video/mp4" />
             Your browser does not currenttly support our video platform.

@@ -1,21 +1,22 @@
 import React, { Component } from "react"
 import { connect } from "react-redux"
+import { getAllDevices } from '../../ReduxActions/DeviceActions'
+import { withRouter, Redirect, } from 'react-router-dom'
+
 import "./Login.css";
 import EventImage from "../../assets/EventImage"
 import TextField from "./TextField"
 
-import { withRouter } from 'react-router-dom'
-
-function isValidUser(user, currUsers = [], devices = []){
-  if( findDeviceId(user.device, devices).length == 0 ){
+/* function isValidUser(user, currUsers = [], devices = []){
+  if( findDeviceId(user.device, devices).length === 0 ){
     return "Invalid deviceID, please contact Glimpse member for assistance."
-  }if( isNameTaken(user.name, currUsers).length >= 1 ){
+  }if( isNameTaken(user.name, currUsers).length >== 1 ){
     return "Name already used,"
   }if(!isValidEmail(user.email)){
     return "Type a valid email address (e.g. example@gmail.com)"
   }
   return true
-}
+} 
 
 function isNameTaken(userName, users){
   return users.filter( el => el.first_name == userName)
@@ -29,7 +30,7 @@ function findDeviceId(id, devices){
 function isValidEmail(email, ) {
   var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   return re.test(String(email).toLowerCase());
-}
+}*/
 
 class Login extends Component {
   constructor(props) {
@@ -37,73 +38,37 @@ class Login extends Component {
 
     this.state = {
       user: { name:'', device:'', email:''},
-      currUsers: null,
-      devices:null,
-      errorMsg: ''
+      deviceId: null,
+      hasError: false,
+      submit: true,
+      device: null,
     };
     
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChangeFor = this.handleChangeFor.bind(this);
   }
 
-  componentWillMount(){
-    // get all users... in case we need to validate in the future
-    // fetch('/api/user/', {
-    //     method: 'GET',
-    //     headers: {'Content-Type':'application/json','Access-Control-Allow-Origin': '*',},
-    //   }).then(res => res.json())
-    //   .then(
-    //     (res) => {
-    //       console.log( JSON.parse(res.data).objects);
-    //       this.setState({currUsers: JSON.parse(res.data).objects})
-    //     },(error) => {
-    //       console.log(error)
-    //     }
-    //   );
-
-      //get devices so we know to validate device input from user
-      fetch('/api/device/', {
-        method: 'GET',
-        headers: {'Content-Type':'application/json','Access-Control-Allow-Origin': '*',},
-      }).then(res => res.json())
-      .then(
-        (res) => {
-          this.setState({devices: JSON.parse(res.data).objects})
-        },(error) => {
-          console.log(error)
-        }
-      );
-  }
-
   // Validate user content
   handleSubmit = event => {
     event.preventDefault();
-    const { history } = this.props;
-    history.push("/events");
-    //this.props.onDeviceSubmit(this.state.user);
-    //
-    //let isValid = isValidUser(this.state.user, this.state.currUsers, this.state.devices);
-    let isValid = true;
-    if(isValid){
-      this.props.onDeviceSubmit(this.state.user);
-    } else {
-      this.setState({errorMsg: "Invalid deviceID, please contact Glimpse member for assistance." })
-    }
+    this.props.getAllDevices(this.state.user.device)
+    this.setState({submit: true})
   }
 
   handleChangeFor = (propertyName) => (event) => {
     let { user } = this.state;
-
-    user = {
-            ...user,
-            [propertyName]:event.target.value
-           };
+    user = { ...user,
+             [propertyName]:event.target.value
+            };
     this.setState({user});
   }
 
   render(){
-    console.log(this.state.currUsers);
-    const { name, email, device } = this.state.user;
+    const { hasError, user } = this.state;
+    const { device } = this.props;
+    if( device !== undefined && device.length === 1){
+      return ( <Redirect to="/events" /> )
+    }
     return (
       <div className="Login">
 
@@ -120,12 +85,12 @@ class Login extends Component {
             <form action="/action_page.php" className="button">
                 <p className="signInTitle"> Sign In</p>
                 <div className="formGroup">
-                    <TextField value={device} title="Device Id" onChange={this.handleChangeFor("device")}/>
+                    <TextField value={user.deviceId} title="Device Id" onChange={this.handleChangeFor("device")}/>
                 </div>          
                 <button type="submit" onClick={this.handleSubmit} className="btnLogin">Select</button>
-                {this.state.errorMsg !== ''
+                {hasError
                 ? <p className="errorMsg">
-                    {this.state.errorMsg}
+                    Invalid deviceID, please contact Glimpse member for assistance.
                   </p>
                 : null }
                 <p className="signUpLink">
@@ -134,7 +99,6 @@ class Login extends Component {
             </form>
             
         </div>
-
       </div>
     )
   }
@@ -145,11 +109,17 @@ class Login extends Component {
 
 function mapStateToProps(state){
   return {
-      //tags:state.tags
-      tags: ["All Images"]
+    isLoading: state.deviceIsLoading.isLoading,
+    hasError: state.deviceHasError.hasError,
+    device: state.sendDevices.devices
   }
 }
 
-const deviceLogin = withRouter(Login);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getAllDevices: (deviceId) => dispatch(getAllDevices(deviceId))
+  };
+};
 
-export default connect(mapStateToProps)(deviceLogin);
+const DeviceLogin = withRouter(Login);
+export default connect(mapStateToProps, mapDispatchToProps)(DeviceLogin);
