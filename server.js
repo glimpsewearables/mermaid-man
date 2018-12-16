@@ -9,7 +9,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'client/build')));
 
-
 app.get('/media/getAllUserMedia/:userId', (req, res) => {
   url = 'http://52.88.225.198:8000/media/getAllUserMedia/' + req.params.userId;
   request(url, function (error, response, body) {
@@ -22,8 +21,8 @@ app.get('/media/getAllUserMedia/:userId', (req, res) => {
 });
 
 app.get('/media/getAllVideosUserEvent/:userId/:eventId', (req, res) => {
-  url = 'http://52.88.225.198:8000/media/getAllVideosUserEvent/' 
-                + req.params.userId + '/0';
+  url = 'http://52.88.225.198:8000/media/getAllVideosUserEvent/' + req.params.userId 
+                + '/' + req.params.eventId;
   request(url, function (error, response, body) {
     if (!error && response.statusCode == 200) {
       res.send({data: body});
@@ -34,8 +33,8 @@ app.get('/media/getAllVideosUserEvent/:userId/:eventId', (req, res) => {
 });
 
 //called from login/DeviceSelect component
-app.get('/api/user/', (req, res) => {
-  request('http://52.88.225.198:8000/api/user', function (error, response, body) {
+app.get('/api/event/', (req, res) => {
+  request('http://52.88.225.198:8000/api/event', function (error, response, body) {
   	if (!error && response.statusCode == 200) {
       res.send({data: body});
     } else {
@@ -45,23 +44,14 @@ app.get('/api/user/', (req, res) => {
 });
 
 //called from login/DeviceSelect component
-app.get('/api/device/', (req, res) => {
-  request('http://52.88.225.198:8000/api/device', function (error, response, body) {
+app.get('/api/device/:id', (req, res) => {
+  console.log("device calls")
+  let url = 'http://52.88.225.198:8000/api/device/' + req.params.id
+  request(url, function (error, response, body) {
   	if (!error && response.statusCode == 200) {
       res.send({data: body});
     } else {
       console.log("error calling /api/device/ from express: " + error);
-    }
-  })
-});
-
-//called from App.js
-app.post('/api/device/', (req, res) => {
-  request('http://52.88.225.198:8000/api/device', function (error, response, body) {
-  	if (!error && response.statusCode == 200) {
-      res.send({data: body});
-    } else {
-      console.log("error calling endpoint from express: " + error);
     }
   })
 });

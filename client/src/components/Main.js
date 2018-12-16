@@ -1,12 +1,11 @@
 import React, { Component } from 'react'
 
-import Events from "./Events/Events"
-import EventPage from "./EventPage/EventPage"
 import HeaderNav from "./Page/HeaderNav/HeaderNav"
 import Sidebar from "./Page/Sidebar/Sidebar"
+import { connect } from "react-redux"
+import { withRouter, Redirect } from 'react-router'
 
-
-export default class Main extends Component {
+class Main extends Component {
     constructor(props){
         super(props);
 
@@ -16,13 +15,6 @@ export default class Main extends Component {
         }
 
         this.onOpenChange = this.onOpenChange.bind(this);
-        this.onEventSelect = this.onEventSelect.bind(this);
-    }
-
-    onEventSelect(){
-        console.log(this.state.events)
-        sessionStorage.setItem("events", !this.state.events);
-        this.setState({events: !this.state.events});
     }
 
     onOpenChange(){
@@ -30,21 +22,30 @@ export default class Main extends Component {
     }
 
     render() {
-        let { open, onOpenChange, events } = this.state;
+        let { open, onOpenChange } = this.state;
+        if(this.props.devices === undefined || this.props.devices.length === 0){
+            return ( <Redirect to="/login"/>)
+        }
         return (
-        <div> 
-            <HeaderNav 
-                open={open}
-                onOpenChange={onOpenChange}
-                onLogout={this.props.onLogout}
-            />
-            <Sidebar open={open}
-                        onOpenChange={onOpenChange}/>
-            { events
-              ? <EventPage />
-              : <Events onEventSelect={this.onEventSelect}/>
-            }
-         </div>
+            <div> 
+                <HeaderNav 
+                    open={open}
+                    onOpenChange={onOpenChange}
+                    onLogout={this.props.onLogout}
+                />
+                <Sidebar open={open}
+                            onOpenChange={onOpenChange}/>
+            </div>
         )
     }
 }
+
+const mapStateToProps = (store) =>{
+    return {
+      events : store.sendEvents,
+      devices : store.sendDevices.devices
+    }
+}
+
+Main = withRouter(Main)
+export default connect(mapStateToProps)(Main);

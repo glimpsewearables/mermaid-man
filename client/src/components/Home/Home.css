@@ -1,0 +1,125 @@
+.containerSpacer{
+    margin-top: 150px;
+}
+
+.homeHeader{
+    position: relative;
+    /* background-color: rgba(0,0,0,.20); */
+    z-index:1;
+    padding: 15px;
+}
+
+.homeHeaderWrapper{
+    margin: 0 auto 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.homeHeaderTitle{
+    font-size: 1.2em;
+    color: white;
+}
+
+.homeHeaderButton{
+    border-radius: 2px;
+    right: 20px;
+    padding: 4px;
+    font-weight: 400;
+    background-color: white;
+    display: inline-block;
+    right: 0;
+}
+
+.homeHeaderLoginButton > a > button{
+    color: black;
+    font-weight: 500;
+}
+
+/* header*/
+
+.homePageLanding {
+    z-index:-1;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%; 
+    overflow: hidden;
+  }
+
+.homePageLanding video {
+    /* Make video to at least 100% wide and tall */
+    min-width: 100%; 
+    min-height: 100%; 
+    width: auto;
+    height: auto;
+    
+    /* Center the video */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+  }
+
+
+  .overlayHome {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 95vh;
+    text-align: center;
+    background-color: transparent;
+    opacity: 0.95;
+  }
+
+  .heroTitle{
+      color: white;
+      font-size: 8vh;
+      font-weight: 400;
+      text-align:left;
+      opacity: 1.0
+  }
+
+  .pick3{
+    min-height: 65vh;
+    display: flex;
+    justify-content: center;
+  }
+
+  .home3Grid{
+    padding: 20px;
+  }
+
+  .pick3Img{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+  }
+
+
+.pick3Img > *{
+    width: 100px !important;
+    height: 100px !important;
+}
+
+.home3Grid > h2{
+    text-align: center;
+}
+
+
+@media screen and (max-width: 375px) {
+    .pick3Img > *{
+        width: 50px;
+        height: 50px;
+    }
+}
+
+/* Footer */
+.Footer{
+    height: 200px;
+    line-height: 200px;
+    background-color:#001a33;
+}

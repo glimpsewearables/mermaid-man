@@ -3,8 +3,8 @@ import Slider from "react-slick"
 import GridMedia from "./GridMedia"
 import TitleCard from "./TitleCard"
 
-import "../../slick/slick.css"
-import "../../slick/slick-theme.css"
+import "./carousell/slick.css"
+import "./carousell/slick-theme.css"
 import Lightbox from "../lightbox/Lightbox"
 
 

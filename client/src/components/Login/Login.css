@@ -42,10 +42,7 @@
         display:none !important;
     }
 }
-
-
 .Login {
-    padding: 60px 0;
 }
 
 .Login form {
@@ -53,11 +50,10 @@
     max-width: 275px;
 }
  
-
 .Login, .SignUp {
     background-color: #F8B800;
     background-image: linear-gradient(to right, #F8B800, #FCCE00);
-    height: 100%;
+    height: 100vh;
     width: 100vw;
     display: flex;
     align-items: center;
