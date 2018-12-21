@@ -59,7 +59,7 @@ export default class Events extends Component{
              title="Miscellaneous"
              location="Seattle, WA"
              date="12/5/18"
-             id="0"
+             id="1"
              onClick={this.props.onEventSelect}
              imgUrl={"https://s3-us-west-2.amazonaws.com/users-edited-content/DSC_0098.JPG"}
           />
