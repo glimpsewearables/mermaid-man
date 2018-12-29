@@ -93,7 +93,7 @@ class GlimpseGallery extends Component {
             onClickNext={this.gotoNext}
             currentImage={currentImage}
             isOpen={lightboxIsOpen} /> </div>
-       : <div className="glimpseGalleryError"> Connect device to singal to view content </div>}
+       : <div className="glimpseGalleryError"> Connect device to signal to view content </div>}
        
       </div>
     )

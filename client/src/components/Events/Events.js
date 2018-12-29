@@ -73,6 +73,7 @@ class Events extends Component{
               onClick={(id) => this.eventSelect(id)}
               imgUrl={"https://s3-us-west-2.amazonaws.com/users-edited-content/DSC_0098.JPG"}
             />
+
         </div>
       </div>
     )
