@@ -60,10 +60,10 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
-  }
+}
 
 
-  .overlayHome {
+.overlayHome {
     position: relative;
     display: flex;
     align-items: center;
@@ -73,32 +73,37 @@
     text-align: center;
     background-color: transparent;
     opacity: 0.95;
-  }
+}
 
-  .heroTitle{
-      color: white;
-      font-size: 8vh;
-      font-weight: 400;
-      text-align:left;
-      opacity: 1.0
-  }
+.heroTitle{
+    color: white;
+    font-size: 8vh;
+    font-weight: 400;
+    text-align:left;
+    opacity: 1.0
+}
 
-  .pick3{
+.pick3{
     min-height: 65vh;
     display: flex;
     justify-content: center;
-  }
+}
 
-  .home3Grid{
+.home3Grid{
     padding: 20px;
-  }
+}
 
-  .pick3Img{
+.pick3Img{
         width: 100%;
         display: flex;
         justify-content: center;
   }
 
+
+.pick3Img > *, .home3Grid > h2{
+    fill: #323232;
+    color: #323232;
+}
 
 .pick3Img > *{
     width: 100px !important;
@@ -106,6 +111,7 @@
 }
 
 .home3Grid > h2{
+    padding: 15px;
     text-align: center;
 }
 

@@ -13,34 +13,6 @@ import World from "../../assets/World"
 import Footer from './Footer'
 
 class Home extends Component {
-  constructor(){
-    super()
-    this.run = this.run.bind(this)
-    this.run();
-  }
-
-  run(){
-    /*
-    const root = document.createElement('div');
-    document.body.appendChild(root);
-
-    const scrollAnimation = { scrollTop: window.innerHeight };
-    const scrollTop = 0;
-
-    const tween = TweenLite.to(scrollAnimation, 2, {
-        scrollTop: scrollTop,
-        ease: Power2.easeInOut,
-        onUpdate: () => {
-            window.scrollTo(0, scrollAnimation.scrollTop);
-        }
-    });
-
-    window.addEventListener('mousewheel', function mouseHandler() {
-        tween.kill();
-        window.removeEventListener('mousewheel', mouseHandler, false);
-    }, false);
-    */
-  }
   render() {
     if(this.props.logout){
       return <Redirect to="/login" />
@@ -80,30 +52,37 @@ class Home extends Component {
           <div className="containerSpacer">
             <div className="pick3">
               <div className="home3Grid">
-                <h2>Bring GlimpseCam</h2>
                 <div className="pick3Img">
                   <Camera />
                 </div>
+                <h2>Bring GlimpseCam</h2>
                 <div>
                   
                 </div>
               </div>
               <div className="home3Grid">
-                <h2>Live in The Moment</h2>
                 <div className="pick3Img">
                   <Glasses />
                 </div>
+                <h2>Live in The Moment</h2>
                 <div>
                 </div>
               </div>
               <div className="home3Grid">
-                <h2>Capture  Your Experience</h2>
                   <div className="pick3Img">
                     <World />
                   </div>
+                  <h2>Capture Your Experience</h2>
+
                 <div>
                 </div>
               </div>
+            </div>
+          </div>
+
+          <div className="containerSpace">
+            <div>
+              
             </div>
           </div>
           <Footer />
