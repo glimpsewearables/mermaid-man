@@ -100,6 +100,10 @@ img{
         font-size: 4vw;
         color: white;
     }
+
+    .home3Grid{
+        calc:(100vw/3);
+    }
 }
 
 @media screen and (max-width: 675px){
@@ -121,6 +125,10 @@ img{
 
     .eventContainer{
         width: calc(1024px/2) !important;
+    }
+
+    .home3Grid{
+        width: calc(1024px/3) !important;
     }
 }
 

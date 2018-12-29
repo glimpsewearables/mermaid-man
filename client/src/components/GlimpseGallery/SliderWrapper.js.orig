@@ -1,0 +1,145 @@
+import React, { Component } from 'react'
+import Slider from "react-slick"
+import GridMedia from "./GridMedia"
+import TitleCard from "./TitleCard"
+
+import "../../slick/slick.css"
+import "../../slick/slick-theme.css"
+<<<<<<< HEAD:client/src/components/GlimpseGallery/SliderWrapper.js
+=======
+import Lightbox from "../lightbox/Lightbox"
+/*
+
+if(item.src.split(".")[3] === "mp4"){
+                            console.log("caught video");
+                            console.log(index);
+                            <Video src={item.src} />
+                          } else{
+
+*/
+>>>>>>> f6e2c4349cb95b8f600c0c8f275f78b0595a0ca8:client/src/components/GlimpseGallery/SliderWrapper1.js
+
+export default class SliderWrapper extends Component {
+    constructor(props){
+      super(props);
+
+      this.state = {
+        currentImage:0,
+        lightBoxIsOpen: false
+      }
+
+      this.closeLightbox = this.closeLightbox.bind(this);
+      this.openLightbox = this.openLightbox.bind(this);
+      this.gotoNext = this.gotoNext.bind(this);
+      this.gotoPrevious = this.gotoPrevious.bind(this);
+    }
+
+    openLightbox(index) {
+      console.log(index);
+      this.setState({
+        currentImage: index,
+        lightboxIsOpen: true,
+      });
+    }
+  
+    closeLightbox() {
+      this.setState({
+        currentImage: 0,
+        lightboxIsOpen: false,
+      });
+    }
+  
+    gotoPrevious() {
+      this.setState({
+        currentImage: this.state.currentImage - 1,
+      });
+    }
+  
+    gotoNext() {
+      this.setState({
+        currentImage: this.state.currentImage + 1,
+      });
+    }
+
+  render() {
+    const { photos, color, title, srcImgs } = this.props;
+    const { currentImage, lightboxIsOpen } = this.state;
+    const settings = {
+      dots: false,
+      infinite: true,
+      speed: 500,
+      slidesToShow: 4,
+      slidesToScroll: 4,
+      initialSlide: 0,
+      responsive: [
+        {
+          breakpoint: 1024,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 2,
+            infinite: true,
+            dots: true
+          }
+        },
+        {
+          breakpoint: 769,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 2,
+            initialSlide: 0
+          }
+        },
+        {
+          breakpoint: 480,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1
+          }
+        }
+      ]
+    };
+    return (
+      <div className="grid-container">
+        <Slider {...settings}>
+          {/* <div className="highlightSlide" >
+            <TitleCard 
+              cssName={"sliderMedia"}
+              color={color}
+              title={title}/>
+<<<<<<< HEAD:client/src/components/GlimpseGallery/SliderWrapper.js
+          </div> */}
+          { photos.map((item, index) => <div className="highlightSlide" key={index} >
+                <GridMedia 
+                      videoName={"sliderVideo"}
+                      cssName={"sliderMedia"}
+                      media={item.media_type}
+                      src={item.link} 
+                      openLightbox={this.openLightbox}   
+                      index={index} />
+          </div>)}
+=======
+         </div> */}
+          { photos.map((item, index) => 
+                                      <div className="highlightSlide" key={index} >
+                                            <GridMedia 
+                                                  videoName={"sliderVideo"}
+                                                  cssName={"sliderMedia"}
+                                                  src={item.link} 
+                                                  media={item.media_type}
+                                                  onClick={this.openLightbox}   
+                                                  index={index} />
+                                      </div>)}
+>>>>>>> f6e2c4349cb95b8f600c0c8f275f78b0595a0ca8:client/src/components/GlimpseGallery/SliderWrapper1.js
+        </Slider>
+        <Lightbox 
+          images={srcImgs}
+          onClick={this.openLightbox}
+          onClose={this.closeLightbox}
+          onClickPrev={this.gotoPrevious}
+          onClickNext={this.gotoNext}
+          currentImage={currentImage}
+          isOpen={lightboxIsOpen} />
+      </div>
+    );
+  }
+  }

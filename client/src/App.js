@@ -1,32 +1,30 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Route, Switch, withRouter} from "react-router-dom";
 
 // For js testing
 // import { runTest } from "./test"
 
-import DeviceSelect from "./components/Login/DeviceSelect"
-import Main from "./components/Main"
+import Home from './components/Home/Home'
+import Main from './components/Main'
+import Events from './components/Events/Events'
+import EventPage from './components/EventPage/EventPage'
+import DeviceSelect from './components/Login/DeviceSelect'
+
 import './App.css';
 
-// google analytics
-import ReactGA from 'react-ga';
-ReactGA.initialize('UA-130211300-1');
-ReactGA.pageview(window.location.pathname + window.location.search);
 
-
-export default class App extends Component {
+class App extends Component {
   constructor(props){
     super(props);
 
     this.state = {
       //login: sessionStorage.getItem("login") || false,
       login: false,
-      error: null
+      error: null,
     }
 
     this.onOpenChange = this.onOpenChange.bind(this);
     this.onDeviceSubmit = this.onDeviceSubmit.bind(this);
-    this.onLogout = this.onLogout.bind(this)
-    this.login = this.login.bind(this);
   }
 
   onOpenChange(){
@@ -34,48 +32,32 @@ export default class App extends Component {
   }
 
   onDeviceSubmit(user){
-    console.log("entereerrr");
     sessionStorage.setItem("device", user.device);
     this.login(user);
-  }
-
-  onLogout(){
-      sessionStorage.clear();
-      this.setState({login: false})
-  }
-
-  login(user){
-    this.setState({login: true, setDevice: user.device})
-    sessionStorage.setItem("device", user.device)
-    // fetch('/api/user/', {
-    //         method: 'GET',
-    //         headers: {'Content-Type':'application/json','Access-Control-Allow-Origin': '*',},
-    //         body: JSON.stringify({...params,
-    //                                   "email": user.email,
-    //                                   "first_name": user.email}),
-    //   }).then( () => {
-    //     sessionStorage.setItem("login", true)
-    //     this.setState({login: true, setDevice: user.device})
-    //   }).catch((error) => {
-    //       console.log(error)
-    //     }
-    //   );
   }
 
   render() {
     let { login, error } = this.state;
     return (
       <div className="App">
-        { !login 
-        ?
-          <DeviceSelect onDeviceSubmit={this.onDeviceSubmit}
-            error={error}
-          />
-        : <Main 
-            onLogout={this.onLogout}
-          />
-        }
+            {/* one option is to render the App component as container. 
+            <Router>
+                <div>
+                    <Switch>
+                        <Route exact path="/" component={Home} />
+                        <Route path="/login" component={DeviceSelect}/>
+                        <Route path="/" component={Main} />
+                    </Switch>
+                    <Switch>
+                        <Route exact path="/wine" component={Events}/>
+                        <Route path="wine/:eventpage" component={EventPage}/>
+                    </Switch>
+                </div>
+            </Router> */}
       </div>
     );
   }
 }
+
+const DeviceLogin = withRouter(App);
+export default App;
