@@ -22,22 +22,28 @@
 }
 
 .homeHeaderButton{
-    border-radius: 2px;
+    border-radius: 3px;
+    border: 2px solid white;
+    font-size: 12px;
     right: 20px;
-    padding: 4px;
-    font-weight: 400;
-    background-color: white;
-    display: inline-block;
+    font-weight: 500;
+    /* background-color: white; */
     right: 0;
+    text-decoration: none;
+    padding: 5px 12px 5px 12px;
+    -webkit-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+    color: white;
+    text-decoration: none;
+
+
 }
 
-.homeHeaderLoginButton > a > button{
-    color: black;
-    font-weight: 500;
+.homeHeaderButton:hover{
+    font-weight:500;
 }
 
 /* header*/
-
 .homePageLanding {
     z-index:-1;
     position: absolute;

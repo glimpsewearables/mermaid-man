@@ -26,19 +26,16 @@ class Home extends Component {
             <div className="homeHeaderTitle">
               {/* GlipseCam // */}
             </div> 
-            <div className="homeHeaderButton homeHeaderLoginButton">
-              <Link to="/login">
-                <button >
+            
+              <Link to="/login" className="homeHeaderButton homeHeaderLoginButton">
                   Webapp Login 
-                </button>
               </Link>
-            </div>
           </div>
         </header>
 
         <div>
           <div className="homePageLanding">
-            <video autoPlay className="backgroundVideo" >
+            <video className="backgroundVideo" autoPlay>
               <source src={montage} type="video/mp4" />
             </video>     
           </div>
@@ -94,12 +91,12 @@ class Home extends Component {
 const HeroBanner = ({ image, min, max, children }) => (
   <div className="hero-container">
     <Parallax strength={300}>
-            <Background className="custom-bg">
-              <video className="backgroundVideo" autoPlay>
-                <source className="backgroundVideo" src={montage} type="video/mp4" />
-              </video>            
-            </Background>
-        </Parallax>
+        <Background className="custom-bg">
+          <video className="backgroundVideo" autoPlay>
+            <source className="backgroundVideo" src={montage} type="video/mp4" />
+          </video>            
+        </Background>
+    </Parallax>
   </div>
 );
 
