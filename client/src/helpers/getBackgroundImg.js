@@ -1,7 +1,7 @@
-const getBackgroundImg = (url) =>{
+const getBackgroundImg = (url, size = "cover") =>{
     return  ({ 
                 backgroundImage: ['url(',url,  ')'].join(''),
-                backgroundSize: "cover",
+                backgroundSize: size,
             })
   }
 

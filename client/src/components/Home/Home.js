@@ -17,7 +17,7 @@ class Home extends Component {
     if(this.props.logout){
       return <Redirect to="/login" />
     }
-    const backgroundStyle = getBackgroundImg("https://static.wixstatic.com/media/8b81a7_7993c177db104862854481500116554e~mv2.png/v1/crop/x_0,y_0,w_933,h_540/fill/w_933,h_540,al_c,q_85/Instasamples.webp")
+    const backgroundStyle = getBackgroundImg("https://static.wixstatic.com/media/8b81a7_7993c177db104862854481500116554e~mv2.png/v1/crop/x_0,y_0,w_933,h_540/fill/w_933,h_540,al_c,q_85/Instasamples.webp", 'contain')
     return (
       <div className="home">
 
@@ -52,37 +52,37 @@ class Home extends Component {
                 <div className="pick3Img">
                   <Camera />
                 </div>
-                <h2>Bring GlimpseCam</h2>
-                <div>
-                  
-                </div>
+                <h2>GlimpseCam</h2>
+                <p> 
+                    Blendi fashion with a high tech device for seamless moment capture.
+                </p>
               </div>
               <div className="home3Grid">
                 <div className="pick3Img">
                   <Glasses />
                 </div>
                 <h2>Live in The Moment</h2>
-                <div>
-                </div>
+                <p>
+                    Simply push a button on the wearable to capture 10 seconds of media.
+                </p>
               </div>
               <div className="home3Grid">
                   <div className="pick3Img">
                     <World />
                   </div>
-                  <h2>Capture Your Experience</h2>
-
-                <div>
-                </div>
+                  <h2>Engage Your Experience</h2>
+                <p>
+                    By visiting our mobile and desktop app, you can see the photos for the event currated for you.
+                </p>
               </div>
             </div>
           </div>
 
-          <div className="containerSpace">
-            <div>
-              
+          <div className="containerSpace" >
+            <div style={backgroundStyle}>
             </div>
           </div>
-          <Footer />
+          <Footer backgroundStyle={backgroundStyle} />
       </div>
     )
   }

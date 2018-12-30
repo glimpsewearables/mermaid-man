@@ -1,8 +1,9 @@
 import React from 'react';
 
-const Footer = () => {
+const Footer = (props) => {
+    console.log(props);
     return (
-        <div className="Footer">
+        <div className="Footer" style={props.backgroundStyle}>
             
         </div>
     );
