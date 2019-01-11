@@ -1,12 +1,27 @@
-import React from 'react';
+import React, { Component } from 'react'
 
-const Footer = (props) => {
-    console.log(props);
-    return (
-        <div className="Footer" style={props.backgroundStyle}>
-            
-        </div>
-    );
-};
+export default class Footer extends Component {
+    constructor(props){
+        super(props)
+        this.submit = this.submit.bind(this);
+    }
 
-export default Footer;
+    submit(){
+        
+    }
+    render() {
+        return (
+            <div className="Footer" style={this.props.backgroundStyle}>
+                <div className="emailContainer">
+                    <p className="emailTagline"> Stay up to date with Glimpse Updates.</p>
+                        <input
+                            type="email"
+                            placeholder="Email" 
+                            className="emailInput"
+                        />
+                        <button className="emailButton" onClick={this.submit}>Subscribe</button>
+                </div>
+            </div>
+        )
+    }
+}

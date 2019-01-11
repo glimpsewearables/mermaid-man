@@ -139,8 +139,48 @@
 
 /* Footer */
 .Footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-size: cover;
     height: 300px;
-    line-height: 200px;
     background-color:#001a33;
+}
+
+.emailTagline{
+    font-weight: 600;
+    font-size: 25px;
+    color: blue;
+    background-color:white;
+}
+
+.emailInputWrapper{
+    border-radius: 2px;
+}
+.emailInput{
+    border-radius: 3px 0px 0px 3px;
+    width: 200px;
+    max-width:80%;
+    padding: 8px;
+    color: black;
+    border-bottom: 0;
+
+}
+
+.emailInput:focus {
+    outline-width: none;
+    border-bottom: 0;
+}
+
+.emailButton, .emailInput{
+    font-size: 14px;
+}
+
+.emailButton{
+    border-radius: 0px 3px 3px 0px;
+    width: 100px;
+    color: white;
+    border: none;
+    background-color: blue;
+    padding: 8px;
 }
