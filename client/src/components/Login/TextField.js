@@ -8,6 +8,7 @@ export default class TextField extends Component {
         <div>
         <label >{ title }:</label> <br />
         <input
+            className="deviceInput"
             name={value}
             type="text"
             value={value}

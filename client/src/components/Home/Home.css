@@ -172,6 +172,10 @@
     border-bottom: 0;
 }
 
+.emailButton:hover{
+    cursor: pointer;
+}
+
 .emailButton, .emailInput{
     font-size: 14px;
 }

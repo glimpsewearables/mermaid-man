@@ -35,7 +35,7 @@ class Home extends Component {
 
         <div>
           <div className="homePageLanding">
-            <video className="backgroundVideo" autoPlay>
+            <video className="backgroundVideo" autoPlay muted>
               <source src={montage} type="video/mp4" />
             </video>     
           </div>
