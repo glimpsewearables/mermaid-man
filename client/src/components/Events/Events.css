@@ -1,4 +1,6 @@
 .welcomeImage{
+    transition:0.6s ease;
+    background-color: #003366;
     height: 85vh;
     width: 100%;
     display: flex;
@@ -45,6 +47,10 @@
 
 .eventTile{
     height: 300px;
+}
+
+.eventTile:hover{
+    cursor:pointer;
 }
 
 .eventTileInfo{

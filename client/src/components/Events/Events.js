@@ -40,7 +40,7 @@ class Events extends Component{
         <div className="eventsWelcome">
           Dive into the experiences <br />that matter to you
         </div>
-      </div>
+        <img className="welcomeImage" src="https://invibed.com/wp-content/uploads/2016/01/rsz_millennials_-_music_festival_friends_carrying_one_girl.jpg" />
       <div className="Event">
         <div className="pastEvents">
           </div>
@@ -71,7 +71,7 @@ class Events extends Component{
               eventId={0}
               date="12/5/18"
               onClick={(id) => this.eventSelect(id)}
-              imgUrl={"https://s3-us-west-2.amazonaws.com/users-edited-content/DSC_0098.JPG"}
+              imgUrl={"https://static1.squarespace.com/static/5ad6ece6372b9612a4fa1d3a/t/5b6a86e48a922df70e400ac0/1533708039249/zach-searcy-643560-unsplash.jpg?format=2500w"}
             />
 
         </div>

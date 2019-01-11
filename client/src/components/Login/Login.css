@@ -128,7 +128,10 @@ input:focus{
 
 .btnLogin:active {
     color:#f2f2f2;
+}
 
+.btnLogin:hover{
+    cursor: pointer;
 }
 select, .btnLogin{
     font-weight: 400;
