@@ -39,7 +39,7 @@ export const getAllDevices = (deviceId) => {
 
             dispatch(deviceIsLoading(false));
             return res.json();
-            })
+          })
           .then(
             (res) => {
                 dispatch( recieveDevices( JSON.parse(res.data) ))

@@ -81,7 +81,7 @@
     width: 100%;
 }
 .loginWrapper > form {
-    overflow: scroll;
+    overflow: hidden;
     margin: auto;
     padding:0;
 }
