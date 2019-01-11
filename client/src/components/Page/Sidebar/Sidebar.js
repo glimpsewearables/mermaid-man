@@ -1,10 +1,11 @@
-import React, { Component } from 'react';
+import React, { Component, Children } from 'react';
+import { withRouter, Redirect, Link} from 'react-router-dom'
 
 import { slide as Menu } from 'react-burger-menu'
 import HamburgerMenu from 'react-hamburger-menu';
 import Account from "../Account";
 import './Sidebar.css';
-
+import SidebarEvent from './SidebarEvent'
 import settingsIcon from "../../../assets/settings.svg";
 
 class Sidebar extends Component {
@@ -13,6 +14,14 @@ class Sidebar extends Component {
     this.state = {
         open: true
     }
+
+    this.events = [
+      {'name':"Louis the Child",
+        'id':"LouistheChild"
+      },{'name':"Miscellaneous",
+      'id':"Miscellaneous"}
+    ]
+
 
     this.handleClick = this.handleClick.bind(this);
     this.showSettings = this.showSettings.bind(this);
@@ -50,6 +59,16 @@ class Sidebar extends Component {
                   />
               </div>
 
+              <ul className="sidebarEvents">
+                {this.events.map((el, item) => {
+                    let link = "events/" + el.id;
+                    return(
+                      <li onClick={this.handleClick}><Link to={link} style={{ textDecoration: 'none' }}>{el.name}</Link></li>
+                    )
+                  }
+                )}
+              </ul>
+              
               <div className="settings"
               onClick={this.showSettings}>
                 <img src={settingsIcon}/>

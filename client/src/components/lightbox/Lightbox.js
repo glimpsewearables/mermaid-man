@@ -287,7 +287,7 @@ class Lightbox extends Component {
 		} else{
 			return (
 				<div class="video-wrapper" className={css(this.classes.videoWrapper)} key={image.index}>
-					<video id="iframe" width="100%" controls  className={css(this.classes.video)}>
+					<video id="iframe" width="100%"   controls  className={css(this.classes.video)}>
 						<source src={image.src} type="video/mp4" />
 						Your browser does not currenttly support our video platform.
 					</video>

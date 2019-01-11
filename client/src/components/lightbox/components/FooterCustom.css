@@ -4,12 +4,13 @@
 
 .closeShare{
     font-size: 1.25em;
-    font-weight: 400;
+    font-weight: 300;
 }
 .photoTools{
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: top;
+    top:-5px;
 }
 /* container */
 
@@ -17,7 +18,6 @@
     float: right;
     display: flex;
     justify-content: center;
-    align-items: center;
 }
 
 #share > * {
@@ -26,8 +26,8 @@
 /* buttons */
 
 #share a {
-	width: 35px;
-  	height: 35px;
+	width: 30px;
+  	height: 30px;
   	border-radius: 50%;
   	
   	color: #fff;

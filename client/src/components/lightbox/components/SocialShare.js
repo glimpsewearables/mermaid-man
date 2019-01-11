@@ -32,13 +32,9 @@ class SocialShare extends Component  {
 
 	render(){
 		let { isActive } = this.state;
-		console.log(isActive);
-
 		return (
 			<div className="photoTools">
-				<a		href={this.props.imgUrl} download="Glimpse Photo" target="blank"
-		
-					>
+				<a href={this.props.imgUrl} download="Glimpse Photo" target="blank">
 						<Download />
 				</a>
 				{ !isActive 

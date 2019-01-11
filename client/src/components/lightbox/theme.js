@@ -21,6 +21,9 @@ theme.header = {
 	height: 40,
 };
 theme.close = {
+	position:'fixed',
+	right:'20px',
+	top: '5px',
 	fill: 'white',
 };
 
@@ -31,7 +34,7 @@ theme.footer = {
 		color: 'rgba(255, 255, 255, 0.75)',
 		fontSize: '0.85em',
 	},
-	height: 40,
+	height: 100,
 	gutter: {
 		horizontal: 0,
 		vertical: 5,
