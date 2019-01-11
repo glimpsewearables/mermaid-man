@@ -22,10 +22,6 @@
   },
   "scripts": {
     "start": "node server.js",
-    "heroku-postbuild": "cd client && npm && npm run build"
-  },
-  "engines":{
-    "node": "11.3.0",
-    "npm":"6.5.0"
+    "heroku-postbuild": "cd client && npm install && npm run build"
   }
 }
