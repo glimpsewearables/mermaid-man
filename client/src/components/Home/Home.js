@@ -42,7 +42,7 @@ class Home extends Component {
           <div className="overlayHome">
             <h1 className="heroTitle"> 
               GlimpseCam <br/>
-              Capture your experience.
+              Live in your experience.
             </h1>
           </div>
         </div>
@@ -54,7 +54,7 @@ class Home extends Component {
                 </div>
                 <h2>GlimpseCam</h2>
                 <p> 
-                    Blendi fashion with a high tech device for seamless moment capture.
+                    Blends fashion with a high tech device for seamless in-moment capture.
                 </p>
               </div>
               <div className="home3Grid">
@@ -63,7 +63,7 @@ class Home extends Component {
                 </div>
                 <h2>Live in The Moment</h2>
                 <p>
-                    Simply push a button on the wearable to capture 10 seconds of media.
+                  Simply push a button on the wearable to capture 10 seconds of media.
                 </p>
               </div>
               <div className="home3Grid">

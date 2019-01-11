@@ -74,7 +74,7 @@ class Login extends Component {
 
         <div className="wordsToLiveByWrapper">
           <div className="wordsToLiveBy">
-            <b>Welcome to the unveiling of the first CLiP wearable at Louis the Child.</b> 
+            <b>Welcome to the testing of the CLiP wearable at Louis the Child.</b> 
             <br /><br />We are excited to give you a tool that can make your concert experience even better. Have a blast!          
           </div>
           <EventImage name="eventImage" />
