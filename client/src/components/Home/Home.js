@@ -42,7 +42,7 @@ class Home extends Component {
           <div className="overlayHome">
             <h1 className="heroTitle"> 
               GlimpseCam <br/>
-              Live in your experience.
+              Capture your experience.
             </h1>
           </div>
         </div>
