@@ -35,7 +35,6 @@ class Events extends Component{
     }
 
     return (
-      <div>
       <div className="welcomeImage" style={welcomeImage}>
         <div className="eventsWelcome">
           Dive into the experiences <br />that matter to you
