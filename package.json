@@ -23,5 +23,8 @@
   "scripts": {
     "start": "node server.js",
     "heroku-postbuild": "cd client && npm && npm run build"
+  },
+  "engine":{ // heroku is telling me to add this randomily?
+    "node": "11.3.0"
   }
 }
