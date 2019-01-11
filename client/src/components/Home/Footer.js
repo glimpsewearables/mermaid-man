@@ -7,7 +7,7 @@ export default class Footer extends Component {
     }
 
     submit(){
-        
+        this.inputTitle.value = "";    
     }
     render() {
         return (
@@ -15,6 +15,7 @@ export default class Footer extends Component {
                 <div className="emailContainer">
                     <p className="emailTagline"> Stay up to date with Glimpse Updates.</p>
                         <input
+                            ref={el => this.inputTitle = el}
                             type="email"
                             placeholder="Email" 
                             className="emailInput"
